@@ -1,0 +1,725 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Linux学习笔记一、linux（MAC）上各种快捷键
+vi翻滚命令
+
+j &amp;amp; Ctrl+n 向下滚动一行 
+k &amp;amp; Ctrl+p 向上滚动一行 Ctrl+p
+
+h 向左移动一个字符
+l 向右移动一个字符
+
+ctrl + f(front) 向下滚动一屏
+
+ctrl + b(back)  向上滚动一屏
+
+ctrl + d(down)  向下滚动半屏  
+
+ctrl + u(up)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux学习">
+<meta property="og:url" content="http://www.liyanshan.com/2016/02/03/linux学习/index.html">
+<meta property="og:site_name" content="好奇boy">
+<meta property="og:description" content="Linux学习笔记一、linux（MAC）上各种快捷键
+vi翻滚命令
+
+j &amp;amp; Ctrl+n 向下滚动一行 
+k &amp;amp; Ctrl+p 向上滚动一行 Ctrl+p
+
+h 向左移动一个字符
+l 向右移动一个字符
+
+ctrl + f(front) 向下滚动一屏
+
+ctrl + b(back)  向上滚动一屏
+
+ctrl + d(down)  向下滚动半屏  
+
+ctrl + u(up)">
+<meta property="og:updated_time" content="2016-04-25T06:52:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux学习">
+<meta name="twitter:description" content="Linux学习笔记一、linux（MAC）上各种快捷键
+vi翻滚命令
+
+j &amp;amp; Ctrl+n 向下滚动一行 
+k &amp;amp; Ctrl+p 向上滚动一行 Ctrl+p
+
+h 向左移动一个字符
+l 向右移动一个字符
+
+ctrl + f(front) 向下滚动一屏
+
+ctrl + b(back)  向上滚动一屏
+
+ctrl + d(down)  向下滚动半屏  
+
+ctrl + u(up)">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> linux学习 | 好奇boy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1f5c68947c5379d690f7294cc426aa93";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">好奇boy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">技术随笔</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.babyforlove.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/pod4g" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            pod4g
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github2">
+          <a href="https://github.com/MyNameIsJimGreen" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            jimGreen
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-03T04:07:15+08:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/03/linux学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/linux学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a>Linux学习笔记</h1><h2 id="一、linux（MAC）上各种快捷键"><a href="#一、linux（MAC）上各种快捷键" class="headerlink" title="一、linux（MAC）上各种快捷键"></a>一、linux（MAC）上各种快捷键</h2><ol>
+<li><p>vi翻滚命令</p>
+<ul>
+<li>j &amp; Ctrl+n 向下滚动一行 </li>
+<li><p>k &amp; Ctrl+p 向上滚动一行 Ctrl+p</p>
+<ul>
+<li>h 向左移动一个字符</li>
+<li><p>l 向右移动一个字符</p>
+</li>
+<li><p>ctrl + f(front) 向下滚动一屏</p>
+</li>
+<li><p>ctrl + b(back)  向上滚动一屏</p>
+</li>
+<li><p>ctrl + d(down)  向下滚动半屏  </p>
+</li>
+<li><p>ctrl + u(up)    向上滚动半屏</p>
+</li>
+<li><p>ctrl + </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>ctrl + a 切换到命令行开始</p>
+</li>
+<li><p>ctrl + e 切换到命令行结尾</p>
+</li>
+<li><p>ctrl + l 清屏</p>
+</li>
+<li><p>ctrl + u 删除光标位置到开头的所有字符</p>
+</li>
+<li><p>ctrl + k 删除光标位置到结尾的所有字符</p>
+</li>
+<li><p>ctrl + y 粘贴刚才删除的字符（ctrl＋ｕ和 ctrl+k删除的）</p>
+</li>
+<li><p>ctrl + c 终止当前命令</p>
+</li>
+<li><p>ctrl + d 退出shell</p>
+</li>
+<li><p>ctrl + z 转入后台运行</p>
+</li>
+<li><p>!! 重复执行刚才最后一条命令</p>
+</li>
+<li><p>history列出所有历史命令</p>
+</li>
+<li><p>!number 执行第number条历史命令</p>
+</li>
+</ol>
+<hr>
+<h2 id="二、常用命令（与MAC命令通用）"><a href="#二、常用命令（与MAC命令通用）" class="headerlink" title="二、常用命令（与MAC命令通用）"></a>二、常用命令（与MAC命令通用）</h2><h3 id="1-文件查找命令"><a href="#1-文件查找命令" class="headerlink" title="1. 文件查找命令"></a>1. 文件查找命令</h3><ul>
+<li><p>find 查找范围 [参数] 被查找内容</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>./ -name index.html```  在当前目录下查找名字为index.html的文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">      * ```find ~/work/webapp -user liyanfeng```  在家目录下的work/webapp目录下，查找属于用户```liyanfeng```的文件</span><br><span class="line">      * ```find / -nouser``` 在根目录下查找没有所属用户的文件（一般为垃圾文件，也有可能是系统产生的文件）</span><br><span class="line"></span><br><span class="line">      * ```find / -mtime +10 ``` 在根目录下查找在10天前修改的文件</span><br><span class="line">      * ```find / -mtime -10 ``` 在根目录下查找在10内前修改的文件</span><br><span class="line">      * ```find / -mtime -10 ``` 在根目录下查找在10天时修改的文件</span><br><span class="line"></span><br><span class="line">      * ```find / -ctime +10 ``` 在根目录下查找在10天前创建的文件</span><br><span class="line">      * ```find / -ctime -10 ``` 在根目录下查找在10内前创建的文件</span><br><span class="line">      * ```find / -ctime -10 ``` 在根目录下查找在10天时创建的文件</span><br><span class="line"></span><br><span class="line">      * ```find / -atime +10 ``` 在根目录下查找在10天前访问的文件</span><br><span class="line">      * ```find / -atime -10 ``` 在根目录下查找在10内前访问的文件</span><br><span class="line">      * ```find / -atime -10 ``` 在根目录下查找在10天时访问的文件</span><br><span class="line"> </span><br><span class="line">      * ```find ~ -size +25k ``` 在家目录下查找大小大于25Kb的文件</span><br><span class="line">      * ```find ~ -size -25k ``` 在家目录下查找大小小于25Kb的文件</span><br><span class="line">      * ```find ~ -size -25k ``` 在家目录下查找大小等于25Kb的文件</span><br><span class="line"></span><br><span class="line">      * ```find ~ -size +25M ``` 在家目录下查找大小大于25Mb的文件</span><br><span class="line">      * ```find ~ -size -25M ``` 在家目录下查找大小小于25Mb的文件</span><br><span class="line">      * ```find ~ -size -25M ``` 在家目录下查找大小等于25Mb的文件</span><br><span class="line"></span><br><span class="line">      * ```find ~ -size +25k -a -50k``` 在家目录下查找大小大于25Kb且小于50Kb的文件</span><br><span class="line">      * ```find ~ -size +25k -a -size -50k -a -user liyanfeng``` 在家目录下查找大小大于25Kb且小于50Kb的文件且属于用户```liyanfeng```的文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> * locate 文件名</span><br><span class="line"></span><br><span class="line">     * 优点：此查找命令相对于```find```要快多了</span><br><span class="line">     * 缺点：没有```find```命令的功能多，且只能根据文件名查找</span><br><span class="line">     * 未完待续</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2. 字符串查找命令</span><br><span class="line"></span><br><span class="line">   * grep 要查找的字符串 文件</span><br><span class="line">     </span><br><span class="line">     * ```grep liyanfeng ~/node.txt ``` 在node.txt下查找字符串```liyanfeng```，会列出来所有含有该字符串的行</span><br><span class="line">     * ```grep -i liyanfeng ~/node.txt```在node.txt下查找字符串```liyanfeng```，忽略大小写，会列出来所有含有该字符串的行</span><br><span class="line">     * ```grep -v liyanfeng ~/node.txt```在node.txt下查找不包含字符串```liyanfeng```的行</span><br><span class="line"></span><br><span class="line">### 3. 压缩与解压缩命令</span><br><span class="line"></span><br><span class="line">&gt; linux下主要有3种压缩方式：_zip_、_gzip_、_bzip2_，对应的文件格式分别为：_.zip_、_.gz_、_.bz2_</span><br><span class="line"></span><br><span class="line">&gt; zip可以压缩文件和目录，而gzip只能压缩文件（当压缩目录时，压缩的是目录内的文件），bzip2也是只能压缩文件，它压缩目录时，索性就报错</span><br><span class="line"></span><br><span class="line">&gt; 所以在压缩之前，先要学会 _打包_ ，linux中有可以把目录_打包_成文件的```tar```命令</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 登录服务器不用密码</span><br><span class="line"></span><br><span class="line">1. ```ssh-keygen -t [rsa|dsa]``` 在本机生成两个文件```/User/liyanfeng/.ssh/id_dsa &amp; /User/liyanfeng/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><figure class="highlight plain"><figcaption><span>/User/liyanfeng/.ssh/ & scp id_rsa.pub user@xxx.xxx.xxx.xxx:~/.ssh```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 登录到```user@xxx.xxx.xxx.xxx &amp; cd ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>cat id_dsa.pub &gt;&gt; authorized_keys &amp; rm id_rsa.pub</code></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/02/location-href跳转的时机/" rel="next" title="location.href跳转的时机">
+                <i class="fa fa-chevron-left"></i> location.href跳转的时机
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/05/HACK/" rel="prev" title="CSS HACK">
+                CSS HACK <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/03/linux学习/"
+           data-title="linux学习" data-url="http://www.liyanshan.com/2016/02/03/linux学习/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12889190?v=3&s=460"
+               alt="李彦峰" />
+          <p class="site-author-name" itemprop="name">李彦峰</p>
+          <p class="site-description motion-element" itemprop="description">全栈工程师 <br>前端、Java、NodeJS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Linux学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、linux（MAC）上各种快捷键"><span class="nav-number">1.1.</span> <span class="nav-text">一、linux（MAC）上各种快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、常用命令（与MAC命令通用）"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用命令（与MAC命令通用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-文件查找命令"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 文件查找命令</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李彦峰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liyanshan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

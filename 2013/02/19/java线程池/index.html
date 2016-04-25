@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="后端,java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="java是多线程的，是在顺序编程的基础上添加了对多线程的支持，所以java的多线程是保守的。在java中实现多线程有两种方式：a.实现Runnable接口;b.继承Thread类，个人建议使用a方式。
+  多线程也叫并发，并发使得你可以将复杂的任务分解成小任务，然后把这些小任务提交给不同的线程来执行，多线程能提高效率。
+  并发编程使我们可以将任务划分为多个分离的，独立运行的任务，通过使用多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java线程池">
+<meta property="og:url" content="http://www.liyanshan.com/2013/02/19/java线程池/index.html">
+<meta property="og:site_name" content="好奇boy">
+<meta property="og:description" content="java是多线程的，是在顺序编程的基础上添加了对多线程的支持，所以java的多线程是保守的。在java中实现多线程有两种方式：a.实现Runnable接口;b.继承Thread类，个人建议使用a方式。
+  多线程也叫并发，并发使得你可以将复杂的任务分解成小任务，然后把这些小任务提交给不同的线程来执行，多线程能提高效率。
+  并发编程使我们可以将任务划分为多个分离的，独立运行的任务，通过使用多线程">
+<meta property="og:updated_time" content="2016-04-25T06:52:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java线程池">
+<meta name="twitter:description" content="java是多线程的，是在顺序编程的基础上添加了对多线程的支持，所以java的多线程是保守的。在java中实现多线程有两种方式：a.实现Runnable接口;b.继承Thread类，个人建议使用a方式。
+  多线程也叫并发，并发使得你可以将复杂的任务分解成小任务，然后把这些小任务提交给不同的线程来执行，多线程能提高效率。
+  并发编程使我们可以将任务划分为多个分离的，独立运行的任务，通过使用多线程">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> java线程池 | 好奇boy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1f5c68947c5379d690f7294cc426aa93";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">好奇boy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">技术随笔</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.babyforlove.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/pod4g" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            pod4g
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github2">
+          <a href="https://github.com/MyNameIsJimGreen" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            jimGreen
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java线程池
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-02-19T04:26:24+08:00" content="2013-02-18">
+              2013-02-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/02/19/java线程池/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/02/19/java线程池/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> java是多线程的，是在顺序编程的基础上添加了对多线程的支持，所以java的多线程是保守的。在java中实现多线程有两种方式：a.实现Runnable接口;b.继承Thread类，个人建议使用a方式。</p>
+<p>  多线程也叫并发，并发使得你可以将复杂的任务分解成小任务，然后把这些小任务提交给不同的线程来执行，多线程能提高效率。</p>
+<p>  并发编程使我们可以将任务划分为多个分离的，独立运行的任务，通过使用多线程机制，这些独立任务中的每一个都将由 执行线程  驱动，一个线程就是在进程中的一个单一的顺序执行流，因此，单个进程可以拥有多个并发执行的任务，但是你的程序使得每个任务都好像是有其自己的CPU一样。其底层机制是切分CPU时间。</p>
+<p>  下面用a方式实现多线程编程，1.先写一个类，这个类我叫做“任务类”，因为它的存在的唯一目的就是为完成“任务”；2.把这个“任务类”实现Runnable接口；3.重写Runnable接口的run方法,这个run方法即是该“任务类”要完成的“任务”</p>
+<p>代码如下：</p>
+<p>public class LiftOff implements Runnable{//任务类<br>  protected int countDown =10;//用来限定任务中循环的次数<br>  private static int taskCount=0;//静态变量，给类增加一个 标识<br>  //每次实例化一个对象，使该对象的成员变量等于 类标识+1，这样可以确定到底生成了多少对象<br>  private final int id =++taskCount;<br>  public String status(){<br>   return “#”+id+”(“+(countDown&gt;0?countDown:”liftOff!)”)+”).”;<br>  }<br> @Override<br> public void run() {//具体的任务，里面一般有个循环<br>  while(countDown–&gt;0){<br>   System.out.print(status());<br>   Thread.yield();<br>  }<br> }<br>}<br>好了，“任务类”写好了，此时“任务类” 没有任何的潜在的线程能力，这个“任务类”和普通的类没有一点区别，你甚至可以实例化这个“任务类”，然后用该“任务类”的对象来调用run方法，就相当于run方法是一个普通方法似的</p>
+<p>要想使“任务类”获得线程能力，必须得把“任务类”的实例提交给一个线程，这样“任务类”里的任务（run方法）才能执行，代码如下:<br>Thread thread = new Thread(new LiftOff());//把任务提交给线程，使得线程可以驱动该任务<br>thread.start();//使线程准备执行</p>
+<p>当然你也可以创建多个线程：</p>
+<p> for (int i = 0; i &lt; 5; i++) {<br>  new Thread(new LiftOff()).start();<br> }</p>
+<p>你可能会注意到，“任务类”中的“任务（run方法）”中有一行Thread.yield(),在run中调用Thread的静态方法yield是对 线程调度器 （Java线程机制的一部分，可以将CPU从一个线程转移给另一个线程）的一种建议，它在声明：“我已经执行完生命周期中最重要的部分了，此刻正是切换给其他任务执行一段时间的大好机会”，但是，这完全是选择性的，在这里使用这个方法，只是为了让你看到线程换进换出的几率增大一些而已。。</p>
+<p>比起自己管理Thread对象（上面这几种情况），java也为你提供了Executor(执行器)对象来帮助你管理Thread对象，从而简化了并发编程。记住Java SE5/6中是启动任务的优选方法。。  个人建议：使用Executor对象来管理Thread对象<br>代码如下（都是固定写法）：</p>
+<p>三种线程池</p>
+<p>一：<br>public class CachedThreadPool {<br>  public static void main(String[] args) {<br> ExecutorService exec = Executors.newCachedThreadPool();<br> for(int i=0;i&lt;5;i++){<br>  exec.execute(new LiftOff());//把任务提交给执行器，而不是直接提交给驱动线程，让执行器来管理线程<br> }<br> exec.shutdown();<br>}<br>}</p>
+<p>二：<br>public class FiexdThreadPool{<br>  public static void main(String[] args){<br>    ExecutorService exec = Executors.newFiexdThreadPool(5);//线程池的大小是固定的<br>    for(int i=0;i&lt;5;i++){<br>      exec.execute(new LiftOff());<br>    }<br>  }<br>  exec.shutdown();<br>}</p>
+<p>三：<br>public class SingleThreadPool{<br>  public static void main(String[] args){<br>   ExecutorService exec = Executors.newSingleTheadPool();<br>   for(int i=0;i&lt;5;i++){<br>     exec.execute(new LiftOff());<br>   }<br>   exec.shutdown();<br>  }<br>}<br>第一种方式产生的线程池，里面可以放任意多个线程，第一种方式产生的线程池，在初始化的时候必须制定该线程池到底有多少个线程，第三种方式相当于第二种方式在初始化的时候在构造器里传了一个1。。第三种方式执行任务的时候，有一个特点：必须等到上一个任务完全执行完了，下个任务才会执行。用第三种方式管理线程看不出线程换进换出，好像所有线程都是顺序执行的</p>
+<p>有一个问题，有时候，人们希望任务在完成时能够返回一个值，那么，就要实现Callable接口了，其实这个接口，用法和Runable接口差不多，只不过是用来让人们解决  任务完成返回值  这一需求的</p>
+<p>代码如下：</p>
+<p>//想要该“任务类”的“任务”执行完毕返回值，那么，在实现接口的时候，要加一个泛型<br>//即，你想要返回什么类型的值，就加什么类型的泛型，我想要String类型的返回值，所以我加了一个<br>//String类型的泛型<br>public class TaskWithResult implements Callable{<br>    private int id;<br>    public TaskWithResult(int id) {this.id=id;}<br> //Callable接口中没有run方法，只有一个call方法，这个call方法和run方法是相当的<br> @Override<br> public String call() throws Exception {<br>  return “Result of TaskWithResult “+id;<br> }<br>}<br>如何驱动这个“任务类”的“任务”呢？代码如下：</p>
+<p> import java.util.ArrayList;<br>import java.util.concurrent.ExecutionException;<br>import java.util.concurrent.ExecutorService;<br>import java.util.concurrent.Executors;<br>import java.util.concurrent.Future;<br>public class TaskWithResultDemo {<br>  public static void main(String[] args) {<br> ExecutorService exec = Executors.newCachedThreadPool();<br> //该数组是用来存 任务结束时返回的数据的<br> ArrayList&gt; results =<br>   new ArrayList&gt;();<br> //循环提交每个任务，然后把任务结束时返回的数据放入集合中<br> for (int i = 0; i &lt; 10; i++) {<br>  results.add(exec.submit(new TaskWithResult(i)));<br> }<br> for (Future future : results) {<br>  try {<br>   System.out.println(future.get());<br>  } catch (InterruptedException e) {<br>   e.printStackTrace();<br>  } catch (ExecutionException e) {<br>   e.printStackTrace();<br>  } finally{<br>   exec.shutdown();<br>  }<br> }<br>}<br>}</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/后端/" rel="tag">#后端</a>
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/02/15/Statement和PreparedStatement的区别/" rel="next" title="Statement和PreparedStatement的区别">
+                <i class="fa fa-chevron-left"></i> Statement和PreparedStatement的区别
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/03/17/list删除相同元素的问题/" rel="prev" title="list删除相同元素的问题">
+                list删除相同元素的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2013/02/19/java线程池/"
+           data-title="java线程池" data-url="http://www.liyanshan.com/2013/02/19/java线程池/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12889190?v=3&s=460"
+               alt="李彦峰" />
+          <p class="site-author-name" itemprop="name">李彦峰</p>
+          <p class="site-description motion-element" itemprop="description">全栈工程师 <br>前端、Java、NodeJS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李彦峰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liyanshan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
