@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="后端,java," />
+  <meta name="keywords" content="linux,笔记," />
 
 
 
@@ -80,16 +80,25 @@
 
 
 
-<meta name="description" content="闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越 全部代码如下：public class Test {  public static void main(String[] args) { testIntegerParstInt(100000); testIntegerValueOf(100000);}  public static vo">
+<meta name="description" content="1.linux中根分区和swap分区是必须要分的2.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符3.格式化是为了把文件系统写入到硬盘中   格式化有两个步骤
+
+把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。
+生成一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Integer.parseInt和Integer.valueOf方法性能比较">
-<meta property="og:url" content="http://www.liyanshan.com/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/index.html">
+<meta property="og:title" content="linux学习笔记">
+<meta property="og:url" content="http://www.liyanshan.com/2016/04/26/linux学习笔记/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越 全部代码如下：public class Test {  public static void main(String[] args) { testIntegerParstInt(100000); testIntegerValueOf(100000);}  public static vo">
-<meta property="og:updated_time" content="2016-04-25T06:52:34.000Z">
+<meta property="og:description" content="1.linux中根分区和swap分区是必须要分的2.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符3.格式化是为了把文件系统写入到硬盘中   格式化有两个步骤
+
+把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。
+生成一个">
+<meta property="og:updated_time" content="2016-04-26T03:57:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Integer.parseInt和Integer.valueOf方法性能比较">
-<meta name="twitter:description" content="闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越 全部代码如下：public class Test {  public static void main(String[] args) { testIntegerParstInt(100000); testIntegerValueOf(100000);}  public static vo">
+<meta name="twitter:title" content="linux学习笔记">
+<meta name="twitter:description" content="1.linux中根分区和swap分区是必须要分的2.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符3.格式化是为了把文件系统写入到硬盘中   格式化有两个步骤
+
+把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。
+生成一个">
 
 
 
@@ -107,7 +116,7 @@
   };
 </script>
 
-  <title> Integer.parseInt和Integer.valueOf方法性能比较 | 好奇boy </title>
+  <title> linux学习笔记 | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +276,7 @@
             
             
               
-                Integer.parseInt和Integer.valueOf方法性能比较
+                linux学习笔记
               
             
           </h1>
@@ -279,8 +288,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-05-23T04:29:43+08:00" content="2013-05-22">
-              2013-05-22
+            <time itemprop="dateCreated" datetime="2016-04-26T19:50:42+08:00" content="2016-04-26">
+              2016-04-26
             </time>
           </span>
 
@@ -290,8 +299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="commentsCount"></span>
+                <a href="/2016/04/26/linux学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/linux学习笔记/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,10 +323,27 @@
       
 
       
-        <p>闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越<br> 全部代码如下：<br>public class Test {<br>  public static void main(String[] args) {<br> testIntegerParstInt(100000);<br> testIntegerValueOf(100000);<br>}<br>  public static void testIntegerValueOf(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.valueOf(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ValueOf方法的时间性能为:”+(end-start)+”ms”);</p>
-<p>  }<br>  public static void testIntegerParstInt(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.parseInt(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ParseInt方法的时间性能为:”+(end-start)+”ms”);<br>  }<br>}<br>经过测试，发现valueOf方法性能比parseInt方法高好几倍，以后尽量使用valueOf方法</p>
-<p>我在网上查ifelse和三目运算谁的效率高？很多人说是三目效率高，也有相应的测试代码，但是语言是c#的，我用java测试了一下，发现ifelse和三目运算的效率是相当的，ifelse比三目稍快个几毫秒（和c#的结论相反）</p>
-<p>还有ifelse和switch的效率，是switch的效率稍高</p>
+        <p><strong>1</strong>.linux中根分区和swap分区是必须要分的<br><strong>2</strong>.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符<br><strong>3</strong>.格式化是为了把文件系统写入到硬盘中<br>   格式化有两个步骤</p>
+<ul>
+<li>把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。</li>
+<li>生成一个表格，记录这个文件的ID，最后修改时间，权限，存储这个文件数据的方块的位置等信息</li>
+</ul>
+<p><strong>4</strong>.命令 [选项] [参数]<br>这是linux命令遵守的格式，方括号的意思是可选的。<br>选项用来调整命令的结果和功能的<br>参数是命令的操作对象。<br>有些命令必须有参数<br>当有多个选项时可以写在一起<br>例如 -a 和 -l 可以写成 -al<br>我们写的一般都是简化选项，完整选项是–all</p>
+<p><strong>5</strong>.linux中一切皆文件，包括目录也是文件，它叫目录文件。文件是用来保存数据的，而目录文件是用来保存文件的</p>
+<p><strong>6</strong>.cd - 切换到上一次所在目录</p>
+<p><strong>7</strong>.linux可以进行目录补全也可以进行命令补全</p>
+<p><strong>8</strong>.纯字符界面的linux是木有回收站滴，删了就是删了</p>
+<p><strong>9</strong>./bin和/usr/bin用来保存任何用户都可执行的命令，而/sbin和/usr/sbin用来保存root才可以执行的命令</p>
+<p><strong>10</strong>./boot是启动目录，保存的是启动数据，没事儿不要动它，并且最好给它单独分区，大小是200M</p>
+<p><strong>11</strong>./dev硬件文件目录，没事儿不要动它</p>
+<p><strong>12</strong>./etc系统的默认配置文件的保存位置，与服务相关的东西需要多次用到这个目录</p>
+<p><strong>13</strong>./root超级管理员家目录，/home普通管理员家目录</p>
+<p><strong>14</strong>./lib linux中函数库的保存位置，函数库就是一些常用的功能，使用时直接调用即可</p>
+<p><strong>15</strong>.所有的存储设备，比如优盘和移动硬盘，想要使用就必须挂载，挂载就是分配盘符的过程，/media，/misc，/mnt这三个空目录作为外接存储设备的盘符</p>
+<p><strong>16</strong>./proc和/sys目录不能直接操作，它们保存的是内存的过载点，可以理解为它们是内存的盘符，里面的内容是直接写在内存中的</p>
+<p><strong>17</strong>./usr系统软件资源保存目录</p>
+<p><strong>18</strong>./var 可变文档目录</p>
+<p><strong>19</strong>.grep [选项] 字符串 文件名</p>
 
       
     </div>
@@ -338,9 +364,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/后端/" rel="tag">#后端</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/java/" rel="tag">#java</a>
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
           
         </div>
       
@@ -349,17 +375,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2013/03/23/mysql卸载不全/" rel="next" title="mysql卸载不全">
-                <i class="fa fa-chevron-left"></i> mysql卸载不全
+              <a href="/2016/04/26/名词/" rel="next" title="工作中常用的名词及解释">
+                <i class="fa fa-chevron-left"></i> 工作中常用的名词及解释
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/03/09/自执行匿名函数和模块模式/" rel="prev" title="自执行匿名函数和模块模式">
-                自执行匿名函数和模块模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -385,8 +407,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/"
-           data-title="Integer.parseInt和Integer.valueOf方法性能比较" data-url="http://www.liyanshan.com/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/">
+      <div class="ds-thread" data-thread-key="2016/04/26/linux学习笔记/"
+           data-title="linux学习笔记" data-url="http://www.liyanshan.com/2016/04/26/linux学习笔记/">
       </div>
     
   </div>

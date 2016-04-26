@@ -269,6 +269,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/26/linux学习笔记/" itemprop="url">
+                  linux学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-26T11:50:42+00:00" content="2016-04-26">
+              2016-04-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/26/linux学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/linux学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1</strong>.linux中根分区和swap分区是必须要分的<br><strong>2</strong>.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符<br><strong>3</strong>.格式化是为了把文件系统写入到硬盘中<br>   格式化有两个步骤</p>
+<ul>
+<li>把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。</li>
+<li>生成一个表格，记录这个文件的ID，最后修改时间，权限，存储这个文件数据的方块的位置等信息</li>
+</ul>
+<p><strong>4</strong>.命令 [选项] [参数]<br>这是linux命令遵守的格式，方括号的意思是可选的。<br>选项用来调整命令的结果和功能的<br>参数是命令的操作对象。<br>有些命令必须有参数<br>当有多个选项时可以写在一起<br>例如 -a 和 -l 可以写成 -al<br>我们写的一般都是简化选项，完整选项是–all</p>
+<p><strong>5</strong>.linux中一切皆文件，包括目录也是文件，它叫目录文件。文件是用来保存数据的，而目录文件是用来保存文件的</p>
+<p><strong>6</strong>.cd - 切换到上一次所在目录</p>
+<p><strong>7</strong>.linux可以进行目录补全也可以进行命令补全</p>
+<p><strong>8</strong>.纯字符界面的linux是木有回收站滴，删了就是删了</p>
+<p><strong>9</strong>./bin和/usr/bin用来保存任何用户都可执行的命令，而/sbin和/usr/sbin用来保存root才可以执行的命令</p>
+<p><strong>10</strong>./boot是启动目录，保存的是启动数据，没事儿不要动它，并且最好给它单独分区，大小是200M</p>
+<p><strong>11</strong>./dev硬件文件目录，没事儿不要动它</p>
+<p><strong>12</strong>./etc系统的默认配置文件的保存位置，与服务相关的东西需要多次用到这个目录</p>
+<p><strong>13</strong>./root超级管理员家目录，/home普通管理员家目录</p>
+<p><strong>14</strong>./lib linux中函数库的保存位置，函数库就是一些常用的功能，使用时直接调用即可</p>
+<p><strong>15</strong>.所有的存储设备，比如优盘和移动硬盘，想要使用就必须挂载，挂载就是分配盘符的过程，/media，/misc，/mnt这三个空目录作为外接存储设备的盘符</p>
+<p><strong>16</strong>./proc和/sys目录不能直接操作，它们保存的是内存的过载点，可以理解为它们是内存的盘符，里面的内容是直接写在内存中的</p>
+<p><strong>17</strong>./usr系统软件资源保存目录</p>
+<p><strong>18</strong>./var 可变文档目录</p>
+<p><strong>19</strong>.grep [选项] 字符串 文件名</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/26/名词/" itemprop="url">
                   工作中常用的名词及解释
                 </a>
@@ -1340,123 +1461,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/28/vi的3种模式及切换/" itemprop="url">
-                  vi的3种模式及切换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-27T20:09:14+00:00" content="2016-03-27">
-              2016-03-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/28/vi的3种模式及切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/vi的3种模式及切换/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="vi的3种模式"><a href="#vi的3种模式" class="headerlink" title="vi的3种模式"></a>vi的3种模式</h1><blockquote>
-<p>1.命令模式（command mode）。刚进入vi后的第一个模式就是命令模式。</p>
-</blockquote>
-<p>在该模式中，可以输入命令来执行许多种功能。控制屏幕光标的移动，字符、字或行的删除，移动复制某区段及进入Insert mode下，或者到 last  line mode。</p>
-<hr>
-<blockquote>
-<p>2.vi被运行时，通常处在命令模式下。</p>
-</blockquote>
-<p>键入以下命令 可以使vi退出命令模式，进入输入模式：I（i）、A（a）、O（o）。</p>
-<hr>
-<blockquote>
-<p>3.末行模式（last line mode）—执行待定命令　　</p>
-</blockquote>
-<p>将文件保存或退出vi，也可以设置编辑环境，如寻找字符串、列出行号……等。不过一般我们在使用时把vi简化成两个模式，就是将末行模式（last   line mode）也算入命令行模式command mode）。 </p>
-<hr>
-<p><img src="http://www.dzsc.com/news/uploadfile/2011525141834429.jpg" alt="3种模式之间的关系示意图"></p>
-<p><a href="http://ju.outofmemory.cn/entry/79671" target="_blank" rel="external">http://ju.outofmemory.cn/entry/79671</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1502,7 +1506,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

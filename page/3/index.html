@@ -269,6 +269,171 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/03/linux学习/" itemprop="url">
+                  linux学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-02T20:07:15+00:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/03/linux学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/linux学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a>Linux学习笔记</h1><h2 id="一、linux（MAC）上各种快捷键"><a href="#一、linux（MAC）上各种快捷键" class="headerlink" title="一、linux（MAC）上各种快捷键"></a>一、linux（MAC）上各种快捷键</h2><ol>
+<li><p>vi翻滚命令</p>
+<ul>
+<li>j &amp; Ctrl+n 向下滚动一行 </li>
+<li><p>k &amp; Ctrl+p 向上滚动一行 Ctrl+p</p>
+<ul>
+<li>h 向左移动一个字符</li>
+<li><p>l 向右移动一个字符</p>
+</li>
+<li><p>ctrl + f(front) 向下滚动一屏</p>
+</li>
+<li><p>ctrl + b(back)  向上滚动一屏</p>
+</li>
+<li><p>ctrl + d(down)  向下滚动半屏  </p>
+</li>
+<li><p>ctrl + u(up)    向上滚动半屏</p>
+</li>
+<li><p>ctrl + </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>ctrl + a 切换到命令行开始</p>
+</li>
+<li><p>ctrl + e 切换到命令行结尾</p>
+</li>
+<li><p>ctrl + l 清屏</p>
+</li>
+<li><p>ctrl + u 删除光标位置到开头的所有字符</p>
+</li>
+<li><p>ctrl + k 删除光标位置到结尾的所有字符</p>
+</li>
+<li><p>ctrl + y 粘贴刚才删除的字符（ctrl＋ｕ和 ctrl+k删除的）</p>
+</li>
+<li><p>ctrl + c 终止当前命令</p>
+</li>
+<li><p>ctrl + d 退出shell</p>
+</li>
+<li><p>ctrl + z 转入后台运行</p>
+</li>
+<li><p>!! 重复执行刚才最后一条命令</p>
+</li>
+<li><p>history列出所有历史命令</p>
+</li>
+<li><p>!number 执行第number条历史命令</p>
+</li>
+</ol>
+<hr>
+<h2 id="二、常用命令（与MAC命令通用）"><a href="#二、常用命令（与MAC命令通用）" class="headerlink" title="二、常用命令（与MAC命令通用）"></a>二、常用命令（与MAC命令通用）</h2><h3 id="1-文件查找命令"><a href="#1-文件查找命令" class="headerlink" title="1. 文件查找命令"></a>1. 文件查找命令</h3><ul>
+<li><p>find 查找范围 [参数] 被查找内容</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>./ -name index.html```  在当前目录下查找名字为index.html的文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">      * ```find ~/work/webapp -user liyanfeng```  在家目录下的work/webapp目录下，查找属于用户```liyanfeng```的文件</span><br><span class="line">      * ```find / -nouser``` 在根目录下查找没有所属用户的文件（一般为垃圾文件，也有可能是系统产生的文件）</span><br><span class="line"></span><br><span class="line">      * ```find / -mtime +10 ``` 在根目录下查找在10天前修改的文件</span><br><span class="line">      * ```find / -mtime -10 ``` 在根目录下查找在10内前修改的文件</span><br><span class="line">      * ```find / -mtime -10 ``` 在根目录下查找在10天时修改的文件</span><br><span class="line"></span><br><span class="line">      * ```find / -ctime +10 ``` 在根目录下查找在10天前创建的文件</span><br><span class="line">      * ```find / -ctime -10 ``` 在根目录下查找在10内前创建的文件</span><br><span class="line">      * ```find / -ctime -10 ``` 在根目录下查找在10天时创建的文件</span><br><span class="line"></span><br><span class="line">      * ```find / -atime +10 ``` 在根目录下查找在10天前访问的文件</span><br><span class="line">      * ```find / -atime -10 ``` 在根目录下查找在10内前访问的文件</span><br><span class="line">      * ```find / -atime -10 ``` 在根目录下查找在10天时访问的文件</span><br><span class="line"> </span><br><span class="line">      * ```find ~ -size +25k ``` 在家目录下查找大小大于25Kb的文件</span><br><span class="line">      * ```find ~ -size -25k ``` 在家目录下查找大小小于25Kb的文件</span><br><span class="line">      * ```find ~ -size -25k ``` 在家目录下查找大小等于25Kb的文件</span><br><span class="line"></span><br><span class="line">      * ```find ~ -size +25M ``` 在家目录下查找大小大于25Mb的文件</span><br><span class="line">      * ```find ~ -size -25M ``` 在家目录下查找大小小于25Mb的文件</span><br><span class="line">      * ```find ~ -size -25M ``` 在家目录下查找大小等于25Mb的文件</span><br><span class="line"></span><br><span class="line">      * ```find ~ -size +25k -a -50k``` 在家目录下查找大小大于25Kb且小于50Kb的文件</span><br><span class="line">      * ```find ~ -size +25k -a -size -50k -a -user liyanfeng``` 在家目录下查找大小大于25Kb且小于50Kb的文件且属于用户```liyanfeng```的文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> * locate 文件名</span><br><span class="line"></span><br><span class="line">     * 优点：此查找命令相对于```find```要快多了</span><br><span class="line">     * 缺点：没有```find```命令的功能多，且只能根据文件名查找</span><br><span class="line">     * 未完待续</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2. 字符串查找命令</span><br><span class="line"></span><br><span class="line">   * grep 要查找的字符串 文件</span><br><span class="line">     </span><br><span class="line">     * ```grep liyanfeng ~/node.txt ``` 在node.txt下查找字符串```liyanfeng```，会列出来所有含有该字符串的行</span><br><span class="line">     * ```grep -i liyanfeng ~/node.txt```在node.txt下查找字符串```liyanfeng```，忽略大小写，会列出来所有含有该字符串的行</span><br><span class="line">     * ```grep -v liyanfeng ~/node.txt```在node.txt下查找不包含字符串```liyanfeng```的行</span><br><span class="line"></span><br><span class="line">### 3. 压缩与解压缩命令</span><br><span class="line"></span><br><span class="line">&gt; linux下主要有3种压缩方式：_zip_、_gzip_、_bzip2_，对应的文件格式分别为：_.zip_、_.gz_、_.bz2_</span><br><span class="line"></span><br><span class="line">&gt; zip可以压缩文件和目录，而gzip只能压缩文件（当压缩目录时，压缩的是目录内的文件），bzip2也是只能压缩文件，它压缩目录时，索性就报错</span><br><span class="line"></span><br><span class="line">&gt; 所以在压缩之前，先要学会 _打包_ ，linux中有可以把目录_打包_成文件的```tar```命令</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 登录服务器不用密码</span><br><span class="line"></span><br><span class="line">1. ```ssh-keygen -t [rsa|dsa]``` 在本机生成两个文件```/User/liyanfeng/.ssh/id_dsa &amp; /User/liyanfeng/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><figure class="highlight plain"><figcaption><span>/User/liyanfeng/.ssh/ & scp id_rsa.pub user@xxx.xxx.xxx.xxx:~/.ssh```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 登录到```user@xxx.xxx.xxx.xxx &amp; cd ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>cat id_dsa.pub &gt;&gt; authorized_keys &amp; rm id_rsa.pub</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/02/location-href跳转的时机/" itemprop="url">
                   location.href跳转的时机
                 </a>
@@ -1278,108 +1443,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/10/12/java高性能编程/" itemprop="url">
-                  java高性能编程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-10-11T20:32:42+00:00" content="2012-10-11">
-              2012-10-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2012/10/12/java高性能编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/10/12/java高性能编程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.这里比较一下ArrayList和LinkedList：</p>
-<p>ArrayList是基于数组，LinkedList基于链表实现。<br>对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。<br>对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。<br>查找操作indexOf,lastIndexOf,contains等，两者差不多。<br>这里只是理论上分析，事实上也不一定，比如ArrayList在末尾插入和删除数据就不设计到数据移动，不过还是<br>有这么个建议：随机访问比较多的话一定要用ArrayList而不是LinkedList，如果需要频繁的插入和删除应该<br>考虑用LinkedList来提高性能。<br>2.减少不必要的对象的创建是提高性能的好办法。不仅对JAVA，所有语言都适用。<br>3.避免在循环条件中使用复杂表达式 在不做编译优化的情况下，在循环中，循环条件会被反复计算，如果不使用复杂表达式，而使循环条件值不变的话，程序将会运行的更快。<br>4.为’Vectors’ 和 ‘Hashtables’定义初始大小 JVM为Vector扩充大小的时候需要重新创建一个更大的数组，将原原先数组中的内容复制过来，最后，原先的数组再被回收。可见Vector容量的扩大是一个颇费时间的事。通常，默认的10个元素大小是不够的。你最好能准确的估计你所需要的最佳大小<br>5.在finally块中关闭Stream 程序中使用到的资源应当被释放，以避免资源泄漏。这最好在finally块中去做。不管程序执行的结果如何，finally块总是会执行的，以确保资源的正确关闭。<br>6.使用’System.arraycopy ()’代替通过来循环复制数组,’System.arraycopy ()’ 要比通过循环来复制数组快的多。<br>7.在一些知道循环次数的循环中使用short甚至byte.好象很多人习惯用int<br>8.字符串的连接尽可能使用stringbuffer ，stringbuilder,java.lang.StringBuffer线程安全的可变字符序列。一个类似于 String 的字符串缓冲区，但不能修改。虽然在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。可将字符串缓冲区安全地用于多个线程。可以在必要时对这些方法进行同步，因此任意特定实例上的所有操作就好像是以串行顺序发生的，该顺序与所涉及的每个线程进行的方法调用顺序一致。StringBuffer 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串缓冲区中。append 方法始终将这些字符添加到缓冲区的末端；而 insert 方法则在指定的点添加字符。<br>例如，如果 z 引用一个当前内容是“start”的字符串缓冲区对象，则此方法调用 z.append(“le”) 会使字符串缓冲区包含“startle”，而 z.insert(4, “le”) 将更改字符串缓冲区，使之包含“starlet”。通常，如果 sb 引用 StringBuilder 的一个实例，则 sb.append(x) 和 sb.insert(sb.length(), x) 具有相同的效果。<br>只要发生有关源序列（如在源序列中追加或插入）的操作，该类就只在执行此操作的字符串缓冲区上而不是在源上实现同步。<br>每个字符串缓冲区都有一定的容量。只要字符串缓冲区所包含的字符序列的长度没有超出此容量，就无需分配新的内部缓冲区数组。如果内部缓冲区溢出，则此容量自动增大。从 JDK 5 开始，为该类补充了一个单个线程使用的等价类，即 StringBuilder。与该类相比，通常应该优先使用 StringBuilder 类，因为它支持所有相同的操作，但由于它不执行同步，所以速度更快。<br>java.lang.StringBuilder一个可变的字符序列。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。该类被设计用作 StringBuffer 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。<br>在 StringBuilder 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串生成器中。append 方法始终将这些字符添加到生成器的末端；而 insert 方法则在指定的点添加字符。<br>例如，如果 z 引用一个当前内容为“start”的字符串生成器对象，则该方法调用 z.append(“le”) 将使字符串生成器包含“startle”，而 z.insert(4, “le”) 将更改字符串生成器，使之包含“starlet”。<br>通常，如果 sb 引用 StringBuilder 的实例，则 sb.append(x) 和 sb.insert(sb.length(), x) 具有相同的效果。每个字符串生成器都有一定的容量。只要字符串生成器所包含的字符序列的长度没有超出此容量，就无需分配新的内部缓冲区。如果内部缓冲区溢出，则此容量自动增大。<br>将 StringBuilder 的实例用于多个线程是不安全的。如果需要这样的同步，则建议使用 StringBuffer。<br>9.如果字符串特别长，采用charAt逐一获取特定位置的字符是非常耗时的。因为每次获取制定索引位置的字符都要引起新的检索过程，更好的办法是将字符串通过调用toCharArray方法转换成字符数组，然后通过数组索引值获得指定位置的字符<br>10.java中有很一些类是为同步而设置的。比如Hashtable，为了防止多个用户同时访问时出现问题进行了一些很好的设计。如果，你的数据可以被多个人访问，但是是一次写入，然后基本上值有读的操作，那就可以考虑不用它的同步机制，而是用HashMap等来代替它。而自己在适当的地方做些控制。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1425,7 +1488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
