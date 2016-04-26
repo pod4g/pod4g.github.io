@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="后端,java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,22 +80,15 @@
 
 
 
-<meta name="description" content="今天研究了一下list的删除元素的问题，发现了很多容易出现错误的点，记录下来，防止自己再犯同样的错误
-代码如下：
- List list = new ArrayList(); list.add(“北”); list.add(“京”); list.add(“京”); list.add(“北”); for (String string : list){  if(“北”.equals(string)){">
-<meta property="og:type" content="article">
-<meta property="og:title" content="list删除相同元素的问题">
-<meta property="og:url" content="http://www.liyanshan.com/2013/03/17/list删除相同元素的问题/index.html">
+<meta name="description" content="全栈工程师 前端、Java、NodeJS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="好奇boy">
+<meta property="og:url" content="http://www.liyanshan.com/archives/2015/11/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="今天研究了一下list的删除元素的问题，发现了很多容易出现错误的点，记录下来，防止自己再犯同样的错误
-代码如下：
- List list = new ArrayList(); list.add(“北”); list.add(“京”); list.add(“京”); list.add(“北”); for (String string : list){  if(“北”.equals(string)){">
-<meta property="og:updated_time" content="2016-04-25T06:54:03.000Z">
+<meta property="og:description" content="全栈工程师 前端、Java、NodeJS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="list删除相同元素的问题">
-<meta name="twitter:description" content="今天研究了一下list的删除元素的问题，发现了很多容易出现错误的点，记录下来，防止自己再犯同样的错误
-代码如下：
- List list = new ArrayList(); list.add(“北”); list.add(“京”); list.add(“京”); list.add(“北”); for (String string : list){  if(“北”.equals(string)){">
+<meta name="twitter:title" content="好奇boy">
+<meta name="twitter:description" content="全栈工程师 前端、Java、NodeJS">
 
 
 
@@ -113,7 +106,7 @@
   };
 </script>
 
-  <title> list删除相同元素的问题 | 好奇boy </title>
+  <title> 目录 | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,139 +245,65 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+      
+      OK! 目前共计 35 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
+      
+      
+      
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+      
         
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2015/11/26/浅谈JavaScript转型/" itemprop="url">
               
-                list删除相同元素的问题
+                <span itemprop="name">浅谈JavaScript转型</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-17T04:25:26+08:00" content="2013-03-16">
-              2013-03-16
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-11-25T21:09:59+00:00"
+              content="2015-11-25" >
+          11-25
+        </time>
+      </div>
 
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/03/17/list删除相同元素的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/17/list删除相同元素的问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>今天研究了一下list的删除元素的问题，发现了很多容易出现错误的点，记录下来，防止自己再犯同样的错误</p>
-<p>代码如下：</p>
-<p> List<string> list = new ArrayList<string>();<br> list.add(“北”);<br> list.add(“京”);<br> list.add(“京”);<br> list.add(“北”);<br> for (String string : list){<br>  if(“北”.equals(string)){<br>   list.remove(string);<br>  }else{<br>   continue;<br>  }<br> }<br>我要删除所有“北”，原先以为这样可以很正常的删掉所有“北”，但是，运行的时候出现异常了：<br>Exception in thread “main” java.util.ConcurrentModificationException<br> at java.util.AbstractList$Itr.checkForComodification(AbstractList.java:372)<br> at java.util.AbstractList$Itr.next(AbstractList.java:343)<br> at day07.pro.TestThread.main(TestThread.java:16)</string></string></p>
-<p>我就想，如果把foreach循环改成普通的for循环会不会在出现这个问题呢？</p>
-<p>试了一下：<br> List<string> list = new ArrayList<string>();<br> list.add(“北”);<br> list.add(“京”);<br> list.add(“京”);<br> list.add(“北”);<br> for(int i=0;i&lt;list.size();i++){<br>  if(“京”.equals(list.get(i))){<br>   list.remove(i);<br>  }else{<br>   continue;<br>  }<br> }<br>运行结果正常，但是如果要remove “京”就不行了，只会把第一个“京”，即，索引为1位置的“京”删除，<br>这是为什么呢？上网查了一下，发现也有人出现这个问题，用普通for循环如果要删除相同的元素只能删掉不相邻的元素，所以用这种方法是不可取的</string></string></p>
-<p>解决办法：<br> 方式一：<br>   for(int i=0;i<list.size();i++) {="" if("京".equals(list.get(i)))="" list.remove(i);="" i--;="" }="" 方式二：="" iterator<string=""> iter = list.iterator();<br>   while(iter.hasNext()){<br>       String s = iter.next();<br>       if(s.equals(“京”)){<br>           iter.remove();<br>       }<br>   }<br>注：使用Iterator遍历，通常情况下，会出现java.util.ConcurrentModificationException，比如在<br>while(it.hasNext()){<br>  String str = it.next();<br>  if(“北”.equals(str)){<br>    list.remove(str);<br>  }<br>}<br>即会出现此异常</list.size();i++)></p>
-<p>解决办法：<br>while(it.hasNext()){<br>  String str = it.next();<br>  if(“北”.equals(str)){<br>    it.remove();<br>  }<br>}</p>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/后端/" rel="tag">#后端</a>
-          
-            <a href="/tags/java/" rel="tag">#java</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2013/02/19/java线程池/" rel="next" title="java线程池">
-                <i class="fa fa-chevron-left"></i> java线程池
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2013/03/18/java深层复制和浅层赋值/" rel="prev" title="java深层复制和浅层赋值">
-                java深层复制和浅层赋值 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+
 
 
           </div>
@@ -392,14 +311,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2013/03/17/list删除相同元素的问题/"
-           data-title="list删除相同元素的问题" data-url="http://www.liyanshan.com/2013/03/17/list删除相同元素的问题/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -419,17 +330,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12889190?v=3&s=460"
@@ -472,17 +374,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -579,9 +470,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   
