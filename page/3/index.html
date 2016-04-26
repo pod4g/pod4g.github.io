@@ -269,6 +269,120 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/02/location-href跳转的时机/" itemprop="url">
+                  location.href跳转的时机
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T20:11:12+00:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/02/location-href跳转的时机/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/location-href跳转的时机/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><strong>测试时间：20160201</strong></li>
+<li><strong>测试环境MacBook</strong></li>
+<li><strong>测试浏览器：chrome/safari/firefox</strong></li>
+</ul>
+<blockquote>
+<p>当在页面上点击“前往慕课网”按钮时，并不会马上跳转到慕课网，而是先把循环执行完毕，再跳转。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>测试location.href跳转时机<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">value</span>=<span class="string">"前往慕课网"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">        btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            location.href = <span class="string">"http://imooc.com"</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="literal">false</span>)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>如果不是一个循环，而是一个定时器呢？答案是，当时间足够小时，会先执行定时器，当时间很大，那么就不会执行</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>测试location.href执行时机<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">value</span>=<span class="string">"前往慕课网"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">        btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            location.href = <span class="string">"http://imooc.com"</span>;</span><br><span class="line">            <span class="comment">// 当时间为0或100执行定时器再跳转，当时间为1000时，先跳转。</span></span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                alert(<span class="number">2</span>);</span><br><span class="line">            &#125;,<span class="number">100</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="literal">false</span>)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/22/Chrome插件开发/" itemprop="url">
                   Chrome插件开发
                 </a>
@@ -1266,115 +1380,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/09/13/servlet操作cookie/" itemprop="url">
-                  servlet操作cookie
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-09-12T20:32:06+00:00" content="2012-09-12">
-              2012-09-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2012/09/13/servlet操作cookie/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/09/13/servlet操作cookie/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> 通常在servlet或者jsp中需要操作cookie，这样在每一处需要操作cookie的地方都会出现重复代码，为了精简代码，常常写一个cookie操作的工具类 CookieUtil</p>
-<p> 代码如下:</p>
-<p> public class CookieUtil{</p>
-<p>   private static String default_path=”/appname”;//cookie的默认路径为当前项目<br>   private static int default_age =365<em>24</em>3600;//cookie的默认生存时间为1年</p>
-<p>   //此方法实现了在response中放入cookie的功能，指定放入的数据（name和value），及指定的生存时间<br>   public static void addCookie(String name,String value,int age,HttpServletResponse response){<br>      Cookie cookie = new Cookie(name,URLEcoder.ecoder(value,”utf-8”));<br>      cookie.setMaxAge(age);<br>      cookie.setPath(default_path);<br>      response.addCookie(cookie);<br>   }</p>
-<p>   //此方法是上面方法的重载方法，少一个生存时间的参数，使用默认生存时间<br>   public static void addCookie(String name,String value,HttpServletResponse response){<br>      addCookie(name,value,default_age,response);<br>   }</p>
-<p>   //此方法根据cookie的name查找cookie，如果找到就返回相应的value，否则返回null<br>   public static String findCookie(String name,HttpServletRequest request){<br>      String value = null;<br>      Cookie[] cookies = request.getCookies();<br>      if(cookies!=null){<br>         for(Cookie cookie:cookies){<br>           if(cookie.getName().equals(name)){<br>             value = URLDecoder.decode(cookie.getVlaue(),”utf-8”);<br>           }<br>         }<br>      }<br>           return value;<br>   }</p>
-<p>   //此方法实现删除cookie的功能<br>   public static void deleteCookie(String name,HttpServletResponse response){<br>      Cookie cookie = new Cookie(name,””);<br>      cookie.setMaxAge(0);<br>      response.addCookie(cookie);<br>   }</p>
-<p> }</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1420,7 +1425,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
