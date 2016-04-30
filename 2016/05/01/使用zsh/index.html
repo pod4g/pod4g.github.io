@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="github," />
+  <meta name="keywords" content="linux,笔记," />
 
 
 
@@ -80,28 +80,34 @@
 
 
 
-<meta name="description" content="背景我有两个Gighub账户，一个是 MyNameIsJimGreen 一个是 pod4g ，一个帐号是学习、私人项目使用，一个是工作使用。
-但是现在有一个问题，如何在一个电脑上同时使用这两个账户呢？
-对于Gighub来说，两个帐号是不能添加同一个SSH公钥的（Key is already in use）。
-两个帐号也不能添加同一个email。
-每个github帐号的ssh key并不一定非要使用">
+<meta name="description" content="早就听说ZSH很好用，周末在家准备装一个试试
+其实MAC系统是默认自带ZSH的，是不需要再安装的。
+查看命令：1cat /etc/shells
+命令执行结果：123456/bin/bash/bin/csh/bin/ksh/bin/sh/bin/tcsh/bin/zsh
+查看默认使用的shell：1echo $SHELL
+命令执行结果：1/bin/bash
+切换到zsh：1chsh -s /bin/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多个github帐号的切换">
-<meta property="og:url" content="http://www.liyanshan.com/2016/04/25/多个github帐号的切换/index.html">
+<meta property="og:title" content="使用zsh">
+<meta property="og:url" content="http://www.liyanshan.com/2016/05/01/使用zsh/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="背景我有两个Gighub账户，一个是 MyNameIsJimGreen 一个是 pod4g ，一个帐号是学习、私人项目使用，一个是工作使用。
-但是现在有一个问题，如何在一个电脑上同时使用这两个账户呢？
-对于Gighub来说，两个帐号是不能添加同一个SSH公钥的（Key is already in use）。
-两个帐号也不能添加同一个email。
-每个github帐号的ssh key并不一定非要使用">
-<meta property="og:updated_time" content="2016-04-25T06:49:53.000Z">
+<meta property="og:description" content="早就听说ZSH很好用，周末在家准备装一个试试
+其实MAC系统是默认自带ZSH的，是不需要再安装的。
+查看命令：1cat /etc/shells
+命令执行结果：123456/bin/bash/bin/csh/bin/ksh/bin/sh/bin/tcsh/bin/zsh
+查看默认使用的shell：1echo $SHELL
+命令执行结果：1/bin/bash
+切换到zsh：1chsh -s /bin/">
+<meta property="og:updated_time" content="2016-04-30T16:49:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多个github帐号的切换">
-<meta name="twitter:description" content="背景我有两个Gighub账户，一个是 MyNameIsJimGreen 一个是 pod4g ，一个帐号是学习、私人项目使用，一个是工作使用。
-但是现在有一个问题，如何在一个电脑上同时使用这两个账户呢？
-对于Gighub来说，两个帐号是不能添加同一个SSH公钥的（Key is already in use）。
-两个帐号也不能添加同一个email。
-每个github帐号的ssh key并不一定非要使用">
+<meta name="twitter:title" content="使用zsh">
+<meta name="twitter:description" content="早就听说ZSH很好用，周末在家准备装一个试试
+其实MAC系统是默认自带ZSH的，是不需要再安装的。
+查看命令：1cat /etc/shells
+命令执行结果：123456/bin/bash/bin/csh/bin/ksh/bin/sh/bin/tcsh/bin/zsh
+查看默认使用的shell：1echo $SHELL
+命令执行结果：1/bin/bash
+切换到zsh：1chsh -s /bin/">
 
 
 
@@ -119,7 +125,7 @@
   };
 </script>
 
-  <title> 多个github帐号的切换 | 好奇boy </title>
+  <title> 使用zsh | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +285,7 @@
             
             
               
-                多个github帐号的切换
+                使用zsh
               
             
           </h1>
@@ -291,8 +297,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T19:57:33+08:00" content="2016-04-25">
-              2016-04-25
+            <time itemprop="dateCreated" datetime="2016-05-01T08:15:54+08:00" content="2016-05-01">
+              2016-05-01
             </time>
           </span>
 
@@ -302,8 +308,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/25/多个github帐号的切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/多个github帐号的切换/" itemprop="commentsCount"></span>
+                <a href="/2016/05/01/使用zsh/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/使用zsh/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,34 +332,22 @@
       
 
       
-        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>我有两个Gighub账户，一个是 <a href="https://github.com/MyNameIsJimGreen" target="_blank" rel="external">MyNameIsJimGreen</a> 一个是 <a href="https://github.com/pod4g" target="_blank" rel="external">pod4g</a> ，一个帐号是学习、私人项目使用，一个是工作使用。</p>
-<p>但是现在有一个问题，如何在一个电脑上同时使用这两个账户呢？</p>
-<p><strong>对于Gighub来说，两个帐号是不能添加同一个SSH公钥的（Key is already in use）。</strong></p>
-<p><strong>两个帐号也不能添加同一个email。</strong></p>
-<p><strong>每个github帐号的ssh key并不一定非要使用注册时（绑定）的邮箱</strong></p>
-<p>MyNameIsJimGreen对应的邮箱是：455322185@qq.com<br>pod4g对应的邮箱是           ：1601942611@qq.com</p>
-<p>我想默认使用pod4g账户</p>
-<p>操作系统：Mac OSX EI Capitan 10.11.4<br>terminal：iTerm2<br>相关文章：<a href="http://blog.csdn.net/itmyhome1990/article/details/42643233" target="_blank" rel="external">http://blog.csdn.net/itmyhome1990/article/details/42643233</a></p>
+        <p>早就听说ZSH很好用，周末在家准备装一个试试</p>
+<p>其实MAC系统是默认自带ZSH的，是不需要再安装的。</p>
+<p>查看命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure></p>
+<p>命令执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash</span><br><span class="line">/bin/csh</span><br><span class="line">/bin/ksh</span><br><span class="line">/bin/sh</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure></p>
+<p>查看默认使用的shell：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></table></figure></p>
+<p>命令执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>切换到zsh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure></p>
+<p>如果想要更有个性的ZSH，你需要安装 oh-my-zsh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>zsh的配置文件位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.zshrc</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="下面开始配置多个gihub帐号在同一台机器上使用"><a href="#下面开始配置多个gihub帐号在同一台机器上使用" class="headerlink" title="下面开始配置多个gihub帐号在同一台机器上使用"></a>下面开始配置多个gihub帐号在同一台机器上使用</h3><p><strong>1</strong>.首先生成pod4g的ssh key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;1601942611@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>2</strong>.把生成的位于 ~/.ssh/ 下的 id_rsa.pub 公钥文件内的内容添加到pod4g的帐号中（在github网站操作）</p>
-<p><strong>3</strong>.验证是否验证成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<p>到这一步，pod4g的配置已经完成了</p>
+<p>在切换到zsh之后，我在bash下常用的 subl 和 chrome 命令不能用了，需要改 ~/.zshrc ，<br>首先，输出 bash 的配置内容到控制台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alias ll=&quot;ls -lh&quot;</span><br><span class="line">alias vi=&quot;vim&quot;</span><br><span class="line">alias ep=&apos;echo $PATH&apos;</span><br><span class="line">alias chrome=&apos;open /Applications/Google\ Chrome.app/&apos;</span><br><span class="line">alias firefox=&apos;open /Applications/Firefox.app/&apos;</span><br><span class="line">alias opera=&apos;open /Applications/Opera.app/&apos;</span><br><span class="line">alias safari=&apos;open /Applications/Safari.app/&apos;</span><br><span class="line">export PATH=&quot;~/bin:$PATH&quot;</span><br></pre></td></tr></table></figure></p>
+<p>把上述内容拷贝到 ~/.zshrc 下的最后面，<br>且加上一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias subl=&quot;&apos;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&apos;&quot;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p><strong>4</strong>.生成 MyNameIsJimGreen的ssh key<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;455322185@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>5</strong>.生成key时，不要使用默认名称，如果使用默认的话，会覆盖掉pod4g的key pairs<br>   假如使用的key名称为 jim_rsa</p>
-<p><strong>6</strong>.在  ~/.ssh/ 下，vim config<br>   内容为：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 第一个帐号 pod4g 默认使用的账户</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"># 第二个帐号 MyNameIsJimGreen</span><br><span class="line">Host github_jim</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~/.ssh/jim_rsa</span><br></pre></td></tr></table></figure></p>
-<p><strong>7</strong>.把生成的位于 ~/.ssh/ 下的 jim_rsa.pub 公钥文件内的内容添加到MyNameIsJimGreen的帐号中（在github网站操作）</p>
-<p><strong>8</strong>.验证是否验证成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github_jim</span><br></pre></td></tr></table></figure></p>
-<p>此时，在一台电脑上我就可以使用两个github帐号了。。</p>
-<p>不过，在第一次使用时，</p>
-<ul>
-<li><p>给MyNameIsJimGreen的管理的项目指定远程仓库（已经存在的项目也需要这么做） git remote add origin_jim git@github_jim:MyNameIsJimGreen/Vuri-BoyKa.git</p>
-</li>
-<li><p>把本地的需要MyNameIsJimGreen的管理的项目push到上一步指定的远程仓库中（在push之前可能需要add和commit） git push -u origin_jim master</p>
-</li>
-</ul>
-<p>以后使用的时候，就按照以前使用github的方式来使用即可。。</p>
+<p>在修改 .zshrc 时，我强制退出，下次修改时，会出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Found a swap file by the name &quot;.zshrc.swp&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除这个文件即可</p>
 
       
     </div>
@@ -374,7 +368,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
           
         </div>
       
@@ -383,17 +379,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/24/本地已经存在的项目如何和github发生关联/" rel="next" title="本地已经存在的项目如何和github发生关联">
-                <i class="fa fa-chevron-left"></i> 本地已经存在的项目如何和github发生关联
+              <a href="/2016/04/26/名词/" rel="next" title="工作中常用的名词及解释">
+                <i class="fa fa-chevron-left"></i> 工作中常用的名词及解释
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/26/名词/" rel="prev" title="工作中常用的名词及解释">
-                工作中常用的名词及解释 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -419,8 +411,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/25/多个github帐号的切换/"
-           data-title="多个github帐号的切换" data-url="http://www.liyanshan.com/2016/04/25/多个github帐号的切换/">
+      <div class="ds-thread" data-thread-key="2016/05/01/使用zsh/"
+           data-title="使用zsh" data-url="http://www.liyanshan.com/2016/05/01/使用zsh/">
       </div>
     
   </div>
@@ -504,7 +496,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面开始配置多个gihub帐号在同一台机器上使用"><span class="nav-number">2.</span> <span class="nav-text">下面开始配置多个gihub帐号在同一台机器上使用</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

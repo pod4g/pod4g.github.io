@@ -269,6 +269,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/01/使用zsh/" itemprop="url">
+                  使用zsh
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-01T00:15:54+00:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/01/使用zsh/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/使用zsh/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>早就听说ZSH很好用，周末在家准备装一个试试</p>
+<p>其实MAC系统是默认自带ZSH的，是不需要再安装的。</p>
+<p>查看命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure></p>
+<p>命令执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash</span><br><span class="line">/bin/csh</span><br><span class="line">/bin/ksh</span><br><span class="line">/bin/sh</span><br><span class="line">/bin/tcsh</span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure></p>
+<p>查看默认使用的shell：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></table></figure></p>
+<p>命令执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>切换到zsh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure></p>
+<p>如果想要更有个性的ZSH，你需要安装 oh-my-zsh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>zsh的配置文件位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>在切换到zsh之后，我在bash下常用的 subl 和 chrome 命令不能用了，需要改 ~/.zshrc ，<br>首先，输出 bash 的配置内容到控制台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>内容为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alias ll=&quot;ls -lh&quot;</span><br><span class="line">alias vi=&quot;vim&quot;</span><br><span class="line">alias ep=&apos;echo $PATH&apos;</span><br><span class="line">alias chrome=&apos;open /Applications/Google\ Chrome.app/&apos;</span><br><span class="line">alias firefox=&apos;open /Applications/Firefox.app/&apos;</span><br><span class="line">alias opera=&apos;open /Applications/Opera.app/&apos;</span><br><span class="line">alias safari=&apos;open /Applications/Safari.app/&apos;</span><br><span class="line">export PATH=&quot;~/bin:$PATH&quot;</span><br></pre></td></tr></table></figure></p>
+<p>把上述内容拷贝到 ~/.zshrc 下的最后面，<br>且加上一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias subl=&quot;&apos;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&apos;&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>在修改 .zshrc 时，我强制退出，下次修改时，会出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Found a swap file by the name &quot;.zshrc.swp&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除这个文件即可</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/26/名词/" itemprop="url">
                   工作中常用的名词及解释
                 </a>
@@ -1385,123 +1501,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/28/vi的3种模式及切换/" itemprop="url">
-                  vi的3种模式及切换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-27T20:09:14+00:00" content="2016-03-27">
-              2016-03-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/28/vi的3种模式及切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/vi的3种模式及切换/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="vi的3种模式"><a href="#vi的3种模式" class="headerlink" title="vi的3种模式"></a>vi的3种模式</h1><blockquote>
-<p>1.命令模式（command mode）。刚进入vi后的第一个模式就是命令模式。</p>
-</blockquote>
-<p>在该模式中，可以输入命令来执行许多种功能。控制屏幕光标的移动，字符、字或行的删除，移动复制某区段及进入Insert mode下，或者到 last  line mode。</p>
-<hr>
-<blockquote>
-<p>2.vi被运行时，通常处在命令模式下。</p>
-</blockquote>
-<p>键入以下命令 可以使vi退出命令模式，进入输入模式：I（i）、A（a）、O（o）。</p>
-<hr>
-<blockquote>
-<p>3.末行模式（last line mode）—执行待定命令　　</p>
-</blockquote>
-<p>将文件保存或退出vi，也可以设置编辑环境，如寻找字符串、列出行号……等。不过一般我们在使用时把vi简化成两个模式，就是将末行模式（last   line mode）也算入命令行模式command mode）。 </p>
-<hr>
-<p><img src="http://www.dzsc.com/news/uploadfile/2011525141834429.jpg" alt="3种模式之间的关系示意图"></p>
-<p><a href="http://ju.outofmemory.cn/entry/79671" target="_blank" rel="external">http://ju.outofmemory.cn/entry/79671</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1547,7 +1546,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
