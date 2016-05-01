@@ -269,6 +269,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/06/再探this指向/" itemprop="url">
+                  再探this指向
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-05T20:15:00+00:00" content="2016-04-05">
+              2016-04-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/06/再探this指向/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/再探this指向/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> property = <span class="string">"window property"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.property = <span class="string">"test object property"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test.property = <span class="string">"test function property"</span>;</span><br><span class="line"><span class="keyword">var</span> fn = test.fn = test.property.fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.property);</span><br><span class="line">&#125;</span><br><span class="line">fn(); <span class="comment">// window property</span></span><br><span class="line">test.fn(); <span class="comment">// test function property</span></span><br><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> test();</span><br><span class="line">alert(t.property); <span class="comment">// test object property</span></span><br></pre></td></tr></table></figure>
+<h3 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> property = <span class="string">"window property"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  property:<span class="string">"obj property"</span>,</span><br><span class="line">  sayProperty:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.property);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.sayProperty(); <span class="comment">// obj property</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = obj.sayProperty;</span><br><span class="line"></span><br><span class="line">fn();  <span class="comment">// window property</span></span><br><span class="line"></span><br><span class="line">(obj.sayProperty)(); <span class="comment">// obj property</span></span><br></pre></td></tr></table></figure>
+<h3 id="第三个例子"><a href="#第三个例子" class="headerlink" title="第三个例子"></a>第三个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果不适用严格模式，那么两个函数内部的this都是指向window的</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"IIFE inner"</span>,<span class="keyword">this</span>); <span class="comment">// undefined</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"this inner"</span>,<span class="keyword">this</span>) <span class="comment">// undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">    test();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><ol>
+<li>普通函数调用，this为全局对象或是undefined</li>
+<li>作为对象的方法，this为那个对象</li>
+<li>new 表达式，this为以该函数为原型的新创建的对象</li>
+<li>使用 apply/call指定 this</li>
+<li>用bind绑定固定的this</li>
+<li>事件处理函数中的this是当前的触发事件的DOM元素(event.currentTarget)</li>
+<li><strong>this跟代码中的位置没关系，是在执行的时候赋值的</strong></li>
+<li><strong>this是不会沿着变量作用域、原型链或闭包结构向上查找</strong></li>
+<li><strong>this只存在于函数调用期间，在变量作用域中不存在</strong>跟第 7 条是一个意思，这里列出来，是为了在不同的语境下理解</li>
+</ol>
+<hr>
+<h3 id="一个面试题"><a href="#一个面试题" class="headerlink" title="一个面试题"></a>一个面试题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> length = <span class="number">10</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;</span><br><span class="line">        length:<span class="number">5</span>,</span><br><span class="line">        method:<span class="function"><span class="keyword">function</span>(<span class="params"> fn <span class="comment">/* , a */</span> </span>)</span>&#123;</span><br><span class="line">            fn(); <span class="comment">// 10</span></span><br><span class="line">            <span class="built_in">arguments</span>[<span class="number">0</span>](); <span class="comment">//1</span></span><br><span class="line">            <span class="comment">// this.method.arguments[0]();</span></span><br><span class="line">            <span class="comment">// console.dir(arguments);</span></span><br><span class="line">            <span class="comment">// console.dir(this.method.length);</span></span><br><span class="line">            <span class="comment">// console.dir(arguments.length);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    obj.method(fn);</span><br></pre></td></tr></table></figure>
+<p>第一个弹出10应该好理解，第二个弹出1<br>arguments并不是一个数组<br>arguments[0]这个0就相当于arguments的一个属性，跟obj[attrName]是一样的<br>arguments<a href="">0</a>就跟调用obj[attrName]一样，这时候fn里面的this就指向arguments了<br>这样就能理解后一个为什么是1了</p>
+<p><a href="https://segmentfault.com/q/1010000004867221?_ea=712571" target="_blank" rel="external">https://segmentfault.com/q/1010000004867221?_ea=712571</a></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/28/vi的3种模式及切换/" itemprop="url">
                   vi的3种模式及切换
                 </a>
@@ -1306,119 +1424,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/08/钩子函数/" itemprop="url">
-                  钩子函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-07T20:20:26+00:00" content="2016-03-07">
-              2016-03-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/08/钩子函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/钩子函数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h1><h3 id="什么是钩子函数？"><a href="#什么是钩子函数？" class="headerlink" title="什么是钩子函数？"></a>什么是钩子函数？</h3><blockquote>
-<p>钩子函数是Windows消息处理机制的一部分，通过设置“钩子”，应用程序可以在系统级对所有消息、事件进行过滤，访问在正常情况下无法访问的消息。钩子的本质是一段用以处理系统消息的程序，通过系统调用，把它挂入系统 — <a href="http://baike.baidu.com/link?url=3A-ja3BMbchjGHMkhdr3OxTiWyq57I26JQTb68k2jPjiPB5KulgwzgiADIIOWxu7fJyZ4XOt20OQZsgsS9ybS_" target="_blank" rel="external">百度百科的定义</a></p>
-</blockquote>
-<p><strong>我的理解是：钩子函数可以 钩住 我喜欢的东西（在window中就是我喜欢的消息），这应该就是钩子函数叫钩子函数的原因吧。。？</strong></p>
-<p>钩子函数的意义（用处）在于：我写了一个window程序，在程序中我写了一段代码（调用window的api来实现钩子），这段代码被系统通过系统调用，把其挂入系统中，然后我就可以对我感兴趣的消息进行处理，我写的这段代码包含有一个回调函数，当有我喜欢的消息发出时，这个回调函数就会执行，所以说，钩子就是指的回调函数</p>
-<p><strong>下面是一个程序挂载全局钩子从而被360拦截的例子（其实360也有钩子，不然怎么知道别人要挂载钩子呢？即360可以拦截“挂载钩子”的消息。这个弹窗就是在360的钩子函数中创建的）</strong></p>
-<p><img src="http://7xt9n8.com2.z0.glb.clouddn.com/hookfunc.png" alt="一个程序挂载全局钩子被360拦截的实例"></p>
-<hr>
-<h3 id="那么对于前端，什么是钩子函数呢？"><a href="#那么对于前端，什么是钩子函数呢？" class="headerlink" title="那么对于前端，什么是钩子函数呢？"></a>那么对于前端，什么是钩子函数呢？</h3><blockquote>
-<p>对于前端来说，钩子函数就是指再所有函数执行前，我先执行了的函数，即 <strong>钩住</strong> 我感兴趣的函数，只要它执行，我就先执行。此概念（或者说现象）跟AOP（面向切面编程）很像</p>
-</blockquote>
-<p><strong>一个钩子函数的例子</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hooks</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        initEnv:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">Function</span>.prototype.hook = <span class="function"><span class="keyword">function</span> (<span class="params">realFunc,hookFunc,context,funcName</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> _context = <span class="literal">null</span>; <span class="comment">//函数上下文</span></span><br><span class="line">                <span class="keyword">var</span> _funcName = <span class="literal">null</span>; <span class="comment">//函数名</span></span><br><span class="line"></span><br><span class="line">                _context = context || <span class="built_in">window</span>;</span><br><span class="line">                _funcName = funcName || getFuncName(<span class="keyword">this</span>);</span><br><span class="line">                _context[realFunc] = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(_context[_funcName].prototype &amp;&amp; _context[_funcName].prototype.isHooked)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"Already has been hooked,unhook first"</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="function"><span class="keyword">function</span> <span class="title">getFuncName</span> (<span class="params">fn</span>) </span>&#123;</span><br><span class="line">                    <span class="comment">// 获取函数名</span></span><br><span class="line">                    <span class="keyword">var</span> strFunc = fn.toString();</span><br><span class="line">                    <span class="keyword">var</span> _regex = <span class="regexp">/function\s+(\w+)\s*\(/</span>;</span><br><span class="line">                    <span class="keyword">var</span> patten = strFunc.match(_regex);</span><br><span class="line">                    <span class="keyword">if</span> (patten) &#123;</span><br><span class="line">                        <span class="keyword">return</span> patten[<span class="number">1</span>];</span><br><span class="line">                    &#125;;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    <span class="built_in">eval</span>(<span class="string">'_context[_funcName] = function '</span>+_funcName+<span class="string">'()&#123;\n'</span>+</span><br><span class="line">                        <span class="string">'var args = Array.prototype.slice.call(arguments,0);\n'</span>+</span><br><span class="line">                        <span class="string">'var obj = this;\n'</span>+</span><br><span class="line">                        <span class="string">'hookFunc.apply(obj,args)\n'</span>+</span><br><span class="line">                        <span class="string">'return _context[realFunc].apply(obj,args);\n'</span>+</span><br><span class="line">                        <span class="string">'&#125;;'</span>);</span><br><span class="line">                    _context[_funcName].prototype.isHooked = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;<span class="keyword">catch</span> (e)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"Hook failed,check the params."</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">Function</span>.prototype.unhook = <span class="function"><span class="keyword">function</span> (<span class="params">realFunc,funcName,context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> _context = <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">var</span> _funcName = <span class="literal">null</span>;</span><br><span class="line">                _context = context || <span class="built_in">window</span>;</span><br><span class="line">                _funcName = funcName;</span><br><span class="line">                <span class="keyword">if</span> (!_context[_funcName].prototype.isHooked)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">"No function is hooked on"</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                _context[_funcName] = _context[realFunc];</span><br><span class="line">                <span class="keyword">delete</span> _context[realFunc];</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        cleanEnv:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">Function</span>.prototype.hasOwnProperty(<span class="string">"hook"</span>))&#123;</span><br><span class="line">                <span class="keyword">delete</span> <span class="built_in">Function</span>.prototype.hook;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">Function</span>.prototype.hasOwnProperty(<span class="string">"unhook"</span>))&#123;</span><br><span class="line">                <span class="keyword">delete</span> <span class="built_in">Function</span>.prototype.unhook;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hook = Hooks();</span><br><span class="line">hook.initEnv();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个是要执行的正常的函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'test'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个是钩子函数。此钩子函数内心戏：</span></span><br><span class="line"><span class="comment">// 我只喜欢test函数，所以我必须出现在她前面（在她前面执行），这样她才能看到我。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hookFunc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'hookFunc'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hookFunc钩住test</span></span><br><span class="line">test.hook(test,hookFunc,<span class="built_in">window</span>,<span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 由于钩子函数hookFunc钩住了test函数，所以test执行时，会先执行hookFunc。</span></span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1464,7 +1469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
