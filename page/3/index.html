@@ -269,6 +269,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/08/linux学习笔记/" itemprop="url">
+                  linux学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T11:50:42+00:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/08/linux学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/linux学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1</strong>.linux中根分区和swap分区是必须要分的<br><strong>2</strong>.挂载是一个过程，指的是给分区分配盘符的过程，这个过程的产物叫挂载点，挂载点就是盘符<br><strong>3</strong>.格式化是为了把文件系统写入到硬盘中<br>   格式化有两个步骤</p>
+<ul>
+<li>把硬盘分成一个一个等大小的方块，一个方块默认是4KB。如果一个文件大小是10KB的话，跪占用3个方块，这3个方块不一定是连续第三，期中一个方块只用了2KB，但是其他文件也不能用，只能让原主用。</li>
+<li>生成一个表格，记录这个文件的ID，最后修改时间，权限，存储这个文件数据的方块的位置等信息</li>
+</ul>
+<p><strong>4</strong>.命令 [选项] [参数]<br>这是linux命令遵守的格式，方括号的意思是可选的。<br>选项用来调整命令的结果和功能的<br>参数是命令的操作对象。<br>有些命令必须有参数<br>当有多个选项时可以写在一起<br>例如 -a 和 -l 可以写成 -al<br>我们写的一般都是简化选项，完整选项是–all</p>
+<p><strong>5</strong>.linux中一切皆文件，包括目录也是文件，它叫目录文件。文件是用来保存数据的，而目录文件是用来保存文件的</p>
+<p><strong>6</strong>.cd - 切换到上一次所在目录</p>
+<p><strong>7</strong>.linux可以进行目录补全也可以进行命令补全</p>
+<p><strong>8</strong>.纯字符界面的linux是木有回收站滴，删了就是删了</p>
+<p><strong>9</strong>./bin和/usr/bin用来保存任何用户都可执行的命令，而/sbin和/usr/sbin用来保存root才可以执行的命令</p>
+<p><strong>10</strong>./boot是启动目录，保存的是启动数据，没事儿不要动它，并且最好给它单独分区，大小是200M</p>
+<p><strong>11</strong>./dev硬件文件目录，没事儿不要动它</p>
+<p><strong>12</strong>./etc系统的默认配置文件的保存位置，与服务相关的东西需要多次用到这个目录</p>
+<p><strong>13</strong>./root超级管理员家目录，/home普通管理员家目录</p>
+<p><strong>14</strong>./lib linux中函数库的保存位置，函数库就是一些常用的功能，使用时直接调用即可</p>
+<p><strong>15</strong>.所有的存储设备，比如优盘和移动硬盘，想要使用就必须挂载，挂载就是分配盘符的过程，/media，/misc，/mnt这三个空目录作为外接存储设备的盘符</p>
+<p><strong>16</strong>./proc和/sys目录不能直接操作，它们保存的是内存的过载点，可以理解为它们是内存的盘符，里面的内容是直接写在内存中的</p>
+<p><strong>17</strong>./usr系统软件资源保存目录</p>
+<p><strong>18</strong>./var 可变文档目录</p>
+<p><strong>19</strong>.grep [选项] 字符串 文件名</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/08/钩子函数/" itemprop="url">
                   钩子函数
                 </a>
@@ -1407,112 +1528,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/18/java深层复制和浅层赋值/" itemprop="url">
-                  java深层复制和浅层赋值
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-17T20:24:42+00:00" content="2013-03-17">
-              2013-03-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/03/18/java深层复制和浅层赋值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/18/java深层复制和浅层赋值/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  在java中，默认是浅层复制的，如果要复制的对象中只含有基本数据类型和String类型，那么浅层复制和浅层复制是没有区别的，所以你可以放心的使用默认的浅层复制，但是如果要复制的对象中除了上述类型还有数组和集合的话，浅层复制和深层复制是有区别的，有时候会出现意想不到的效果</p>
-<p>实现浅层复制的方法：使你将来要复制的类实现Colneable接口，该接口中没有任何的方法，只是一个标示接口，跟Serializable是一样的，由于你的类是继承Object类的，所以要在类里重写Clone方法<br>代码如下：<br>public class Student implements Cloneable{<br> public int id;<br> public String name;<br> public int[] ids;<br> public List list;<br> public Student() {}<br> public Student(int id,String name,int[] ids,List list){<br>  this.id=id;this.name=name;this.ids=ids;this.list=list;<br> }<br> public Object clone(){//该方法是Object类的Clone方法<br>  Object obj=null;<br>  try {<br>  obj= super.clone();<br> } catch (CloneNotSupportedException e) {}//这个异常的意思是，如果要复制的类没有实现Cloneable，<br>//那么它是不支持复制的，所以前面实现该接口，就是为了标示此类可以被复制<br>  return obj;<br> }<br>}<br>这样的话，如果我在:<br> int[] ids = {2,3,4,5};<br> Student s = new Student(1,”李戡”,ids,list);<br> Student s2 =(Student)s.clone();<br> System.out.println(s2.id+”,”+s2.name+”,”+Arrays.toString(s2.ids));<br> s2.ids[0]=100;<br> System.out.println(Arrays.toString(s.ids));//[100,3,4,5]</p>
-<p>此时，对象s中的数组也会变，同样对list进行类似操作也会得到相同结果，为什么呢？这是因为浅层复制没有把新复制的对象和被复制对象隔离开，其在堆中引用的是一个数组，所以，一个对象操作数组使得数组发生改变，另一个对象也会改变（因为两者引用同一个数组），即新老对象没有完全隔离开</p>
-<p>一般情况下，用浅层复制就够了，但是一些特殊情况下，必须使得新老对象完完全全的隔离开，两者之间没有任何关系，那么就得使用深层复制了（deep clone）使用深层复制，也得使被复制的类实现一个接口：Serializable，这个接口是序列化接口，要实现深层复制，只能用IO来解决了</p>
-<p>代码如下：</p>
-<p>public class Student implements java.io.Serializable{<br>  public int id;<br>  public String name;<br>  public int[] ids;<br>  public List list;<br>  public Test t;<br>  public Student() {}<br>  public Student(int id,String name,int[] ids,List list){<br>   this.id=id;this.name=name;this.ids=ids;this.list=list;<br>  }<br>}<br>然后使用ObjectInputStream,ObjectOutputStream的readObject，writeObject方法即可实现深层复制</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1558,7 +1573,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1568,7 +1583,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
