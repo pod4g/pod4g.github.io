@@ -269,6 +269,118 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/13/闭包和柯里化/" itemprop="url">
+                  闭包和柯里化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-12T20:21:20+00:00" content="2016-03-12">
+              2016-03-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/13/闭包和柯里化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/13/闭包和柯里化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="闭包和柯里化"><a href="#闭包和柯里化" class="headerlink" title="闭包和柯里化"></a>闭包和柯里化</h1><ol>
+<li><p>JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境</p>
+<ul>
+<li><p>全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局<br>执行环境是<code>window</code>对象，因此所有全局变量和函数都是作为<code>window</code>对象的属性和方法创建的。当JS开始执行时，会构建一个全局<br>执行环境，全局执行环境直到应用程序退出–例如浏览器关闭–时才会被销毁。</p>
+</li>
+<li><p>局部执行环境：每当函数被调用的时候，就会产生一个新的环境，此环境就会被推入一个环境栈中，而在函数执行之后，栈将其弹出，把控制权返回给之前的环境。局部执行环境是一种概念，是运行中的函数的意思，他不是对象。</p>
+</li>
+<li><p>某个执行环境执行完后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁</p>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/08/linux学习笔记/" itemprop="url">
                   linux学习笔记
                 </a>
@@ -1412,122 +1524,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/03/23/mysql卸载不全/" itemprop="url">
-                  mysql卸载不全
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-03-22T20:27:29+00:00" content="2013-03-22">
-              2013-03-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/03/23/mysql卸载不全/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/23/mysql卸载不全/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  解决办法:</p>
-<pre><code>1.使用mysql自带的卸载程序进行卸载
-
-2.把mysql安装目录下的所有文件和文件夹都删了
-
-3.还有mysql的数据文件没有删，找不到？别着急，打开“我的电脑” ctrl+F，搜索所有含有mysql的文件或者文件夹，把搜索出来的文件和文件夹都删了（当然，没有关系的不用删，比如 mysql.txt，你删了，有用么？这一步非常重要）
-
-4.清理注册表，
-</code></pre><p>　　HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL 目录删除 </p>
-<p>　　HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL 目录删除 </p>
-<p>　　HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL 目录删除</p>
-<pre><code>  5.在注册表中，Ctrl+F,搜索所有mysql字样的注册表对象，把找到的全删了（当然，没有关系的不用删，这一步非常重要）
-
-6.打开cmd，运行netstat -an 命令看看有没有程序占用mysql端口，如果有的话，再次安装的时候，就需要改端口，一般情况下，是没有程序占用的
-</code></pre><p>上述步骤做完以后，如果有360或者QQ电脑管家，最好在扫描一下垃圾，然后把扫出来的垃圾都删了</p>
-<p>重启电脑，关闭防火墙，关闭杀毒软件，重新安装，就可以了。。。我可以保证，我这个方法比网上那些方法强多了，绝对能完完全全卸载mysql</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1573,7 +1569,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1583,7 +1579,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
