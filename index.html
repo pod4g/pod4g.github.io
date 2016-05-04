@@ -1504,6 +1504,9 @@
 <p>引入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var $ = require(&apos;./jquery&apos;);</span><br><span class="line">var echarts = require(&apos;./echarts&apos;);</span><br><span class="line">var sayHello = require(&apos;./test&apos;);</span><br><span class="line">sayHello(); // hello</span><br><span class="line">sayHello(&apos;李彦峰&apos;);// 李彦峰</span><br></pre></td></tr></table></figure>
 <h3 id="两者之间的编译命令稍有区别，其他用法完全一样！！"><a href="#两者之间的编译命令稍有区别，其他用法完全一样！！" class="headerlink" title="两者之间的编译命令稍有区别，其他用法完全一样！！"></a>两者之间的编译命令稍有区别，其他用法完全一样！！</h3><p>下一步学习怎么和 grunt 或 gulp 结合起来，监控文件变化，自动实现编译！！</p>
+<h3 id="这两个技术存在的意义是什么？-2016-05-04更新"><a href="#这两个技术存在的意义是什么？-2016-05-04更新" class="headerlink" title="这两个技术存在的意义是什么？   2016-05-04更新"></a>这两个技术存在的意义是什么？   2016-05-04更新</h3><p>原先我一直认为这两个技术意义不大，因为对于文件合并和压缩，有grunt和gulp就够了。</p>
+<p>他们作为build tool，一个build命令就能把所有的js文件合并且压缩成2个（或1个）文件，所以我觉得没必要再用webpack和browserify了。</p>
+<p>但是今天我突然明白了，这两个技术本来就不是为了合并和压缩而存在的，他们不是要抢grunt和gulp的饭碗，他们抢的是sea.js和require.js的饭碗，他们是模块化工具，当业务需要按需加载js时，可以使用这两个技术，而grunt和gulp简单粗暴，只要我在页面里引用的js，都会被合并和压缩，有些js可能我压根用不到，而webpack和browserify恰好可以弥补</p>
 
           
         
