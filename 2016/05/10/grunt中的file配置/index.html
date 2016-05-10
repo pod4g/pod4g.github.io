@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="github," />
+  <meta name="keywords" content="前端,Node.js,grunt," />
 
 
 
@@ -80,34 +80,52 @@
 
 
 
-<meta name="description" content="切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。
+<meta name="description" content="grunt官方文档
+grunt中共有3种文件配置方式
+Compact Format
+Files Object Format
+Files Array Format
 
-把修改的文件存入暂存区 git add .  
 
-生成一次提交 git commit -m ‘initial commit’ 
+Compact Format
 
-与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add">
+
+其中的src可以是数组。但是dest不能是数组
+
+ 1234567copy:&amp;#123;    dist:&amp;#123;        // src:&apos;&amp;lt;%= config.app %&amp;gt;/i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="本地已经存在的项目如何和github发生关联">
-<meta property="og:url" content="http://www.liyanshan.com/2016/04/24/本地已经存在的项目如何和github发生关联/index.html">
+<meta property="og:title" content="grunt中的file配置">
+<meta property="og:url" content="http://www.liyanshan.com/2016/05/10/grunt中的file配置/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。
+<meta property="og:description" content="grunt官方文档
+grunt中共有3种文件配置方式
+Compact Format
+Files Object Format
+Files Array Format
 
-把修改的文件存入暂存区 git add .  
 
-生成一次提交 git commit -m ‘initial commit’ 
+Compact Format
 
-与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add">
-<meta property="og:updated_time" content="2016-04-25T06:50:13.000Z">
+
+其中的src可以是数组。但是dest不能是数组
+
+ 1234567copy:&amp;#123;    dist:&amp;#123;        // src:&apos;&amp;lt;%= config.app %&amp;gt;/i">
+<meta property="og:updated_time" content="2016-05-10T02:54:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="本地已经存在的项目如何和github发生关联">
-<meta name="twitter:description" content="切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。
+<meta name="twitter:title" content="grunt中的file配置">
+<meta name="twitter:description" content="grunt官方文档
+grunt中共有3种文件配置方式
+Compact Format
+Files Object Format
+Files Array Format
 
-把修改的文件存入暂存区 git add .  
 
-生成一次提交 git commit -m ‘initial commit’ 
+Compact Format
 
-与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add">
+
+其中的src可以是数组。但是dest不能是数组
+
+ 1234567copy:&amp;#123;    dist:&amp;#123;        // src:&apos;&amp;lt;%= config.app %&amp;gt;/i">
 
 
 
@@ -125,7 +143,7 @@
   };
 </script>
 
-  <title> 本地已经存在的项目如何和github发生关联 | 好奇boy </title>
+  <title> grunt中的file配置 | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +303,7 @@
             
             
               
-                本地已经存在的项目如何和github发生关联
+                grunt中的file配置
               
             
           </h1>
@@ -297,8 +315,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-24T02:09:15+08:00" content="2016-04-23">
-              2016-04-23
+            <time itemprop="dateCreated" datetime="2016-05-10T18:17:42+08:00" content="2016-05-10">
+              2016-05-10
             </time>
           </span>
 
@@ -308,8 +326,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/24/本地已经存在的项目如何和github发生关联/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/本地已经存在的项目如何和github发生关联/" itemprop="commentsCount"></span>
+                <a href="/2016/05/10/grunt中的file配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/grunt中的file配置/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -332,22 +350,34 @@
       
 
       
-        <ol>
-<li><p>切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。</p>
-</li>
-<li><p>把修改的文件存入暂存区 git add .  </p>
-</li>
-<li><p>生成一次提交 git commit -m ‘initial commit’ </p>
-</li>
-<li><p>与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add origin <a href="https://github.com/pod4g/sku" target="_blank" rel="external">https://github.com/pod4g/sku</a></p>
-<p>可能需要执行git config –global push.default matching命令，使得push命令默认push到github的同名仓库中</p>
-</li>
-<li><p>把本地项目push到远程github仓库 push -u origin master</p>
-</li>
+        <p><a href="http://gruntjs.com/configuring-tasks" target="_blank" rel="external">grunt官方文档</a></p>
+<h3 id="grunt中共有3种文件配置方式"><a href="#grunt中共有3种文件配置方式" class="headerlink" title="grunt中共有3种文件配置方式"></a>grunt中共有3种文件配置方式</h3><ul>
+<li>Compact Format</li>
+<li>Files Object Format</li>
+<li>Files Array Format</li>
+</ul>
+<ol>
+<li>Compact Format</li>
 </ol>
 <blockquote>
-<p>本地仓库与远程仓库解除关联rm -rf .git删除该仓库的工作树即可<br>  第2、3步可以在第4步之后执行</p>
+<p>其中的src可以是数组。但是dest不能是数组</p>
 </blockquote>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">        <span class="comment">// src:'&lt;%= config.app %&gt;/index.html',</span></span><br><span class="line">        src:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>,<span class="string">'&lt;%= config.app %&gt;/test.html'</span>],</span><br><span class="line">        dest:<span class="string">'&lt;%= config.dist %&gt;/index.html'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Files Object Format</p>
+<blockquote>
+<p>其中value是src，key是dest</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">        files:&#123;</span><br><span class="line">            <span class="string">'&lt;%= config.dist %&gt;/index.html'</span>:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>],</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Files Array Format</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">       files:[</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">// src:'&lt;%= config.app %&gt;/index.html',</span></span><br><span class="line">            src:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>,<span class="string">'&lt;%= config.app %&gt;/test.html'</span>],</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/index.html'</span></span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            src:<span class="string">'&lt;%= config.app %&gt;/js/index.js'</span>,</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/js/index.js'</span></span><br><span class="line">         &#125;</span><br><span class="line">       ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Compact Format 和 Files Array Format处理支持src和dest属性之外，还支持其他属性</p>
+</blockquote>
+<p><a href="http://gruntjs.com/configuring-tasks#files" target="_blank" rel="external">看看官网</a> </p>
+</li>
+</ol>
 
       
     </div>
@@ -368,7 +398,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/github/" rel="tag">#github</a>
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+            <a href="/tags/grunt/" rel="tag">#grunt</a>
           
         </div>
       
@@ -377,17 +411,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/22/Chrome-DEVTools/" rel="next" title="Chrome-DEVTools的NETWORK面板">
-                <i class="fa fa-chevron-left"></i> Chrome-DEVTools的NETWORK面板
+              <a href="/2016/05/04/字符串排版的小技巧/" rel="next" title="字符串排版的小技巧">
+                <i class="fa fa-chevron-left"></i> 字符串排版的小技巧
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/25/多个github帐号的切换/" rel="prev" title="多个github帐号的切换">
-                多个github帐号的切换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +443,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/24/本地已经存在的项目如何和github发生关联/"
-           data-title="本地已经存在的项目如何和github发生关联" data-url="http://www.liyanshan.com/2016/04/24/本地已经存在的项目如何和github发生关联/">
+      <div class="ds-thread" data-thread-key="2016/05/10/grunt中的file配置/"
+           data-title="grunt中的file配置" data-url="http://www.liyanshan.com/2016/05/10/grunt中的file配置/">
       </div>
     
   </div>
@@ -498,7 +528,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#grunt中共有3种文件配置方式"><span class="nav-number">1.</span> <span class="nav-text">grunt中共有3种文件配置方式</span></a></li></ol></div>
             
           </div>
         </section>

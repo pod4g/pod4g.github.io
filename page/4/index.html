@@ -269,6 +269,110 @@
             
               
                 
+                <a class="post-title-link" href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="url">
+                  Integer.parseInt和Integer.valueOf方法性能比较
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-05-22T20:29:43+00:00" content="2013-05-22">
+              2013-05-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越<br> 全部代码如下：<br>public class Test {<br>  public static void main(String[] args) {<br> testIntegerParstInt(100000);<br> testIntegerValueOf(100000);<br>}<br>  public static void testIntegerValueOf(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.valueOf(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ValueOf方法的时间性能为:”+(end-start)+”ms”);</p>
+<p>  }<br>  public static void testIntegerParstInt(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.parseInt(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ParseInt方法的时间性能为:”+(end-start)+”ms”);<br>  }<br>}<br>经过测试，发现valueOf方法性能比parseInt方法高好几倍，以后尽量使用valueOf方法</p>
+<p>我在网上查ifelse和三目运算谁的效率高？很多人说是三目效率高，也有相应的测试代码，但是语言是c#的，我用java测试了一下，发现ifelse和三目运算的效率是相当的，ifelse比三目稍快个几毫秒（和c#的结论相反）</p>
+<p>还有ifelse和switch的效率，是switch的效率稍高</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/03/23/mysql卸载不全/" itemprop="url">
                   mysql卸载不全
                 </a>
@@ -1288,7 +1392,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1298,7 +1402,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
