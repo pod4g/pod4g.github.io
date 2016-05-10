@@ -269,6 +269,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/10/jade语法/" itemprop="url">
+                  jade语法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T11:10:29+00:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/jade语法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/jade语法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="下面是我写的jade的语法例子"><a href="#下面是我写的jade的语法例子" class="headerlink" title="下面是我写的jade的语法例子"></a>下面是我写的jade的语法例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">doctype html</span><br><span class="line">html(lang=&quot;zh-CN&quot;)</span><br><span class="line">    head</span><br><span class="line">        meta(charset=&quot;utf-8&quot;)</span><br><span class="line">        meta(name=&quot;viewport&quot;,content=&quot;initial-scale=1, maximum-scale=1&quot;)</span><br><span class="line">        meta(name=&quot;apple-mobile-web-app-capable&quot;,content=&quot;yes&quot;)</span><br><span class="line">        meta(name=&quot;apple-mobile-web-app-status-bar-style&quot;,content=&quot;black&quot;)</span><br><span class="line">        title 你好jade</span><br><span class="line">        //- 内部样式</span><br><span class="line">        style.</span><br><span class="line">            body&#123;</span><br><span class="line">                color:red;</span><br><span class="line">            &#125;</span><br><span class="line">        //- 内部脚本</span><br><span class="line">        script(type=&quot;text/javascript&quot;). </span><br><span class="line">            var a = 1;</span><br><span class="line">            alert(a);</span><br><span class="line"></span><br><span class="line">        //- 引入外部样式</span><br><span class="line">        link(rel=&quot;stylesheet&quot;,href=&quot;//g.alicdn.com/msui/sm/0.6.2/css/sm.css&quot;)</span><br><span class="line"></span><br><span class="line">        //- 引入外部脚本</span><br><span class="line">        script(type=&quot;text/javascript&quot;,src=&quot;//g.alicdn.com/sj/lib/zepto/zepto.min.js&quot;,charset=&quot;utf-8&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    body</span><br><span class="line">        h1 你好jade</span><br><span class="line"></span><br><span class="line">    // 这是一段会输出到html文件中的注释</span><br><span class="line"></span><br><span class="line">    //- 这是一段不会显示在html文件中的注释</span><br><span class="line"></span><br><span class="line">    //- 这是一大段注释</span><br><span class="line">        这是一大段注释</span><br><span class="line">    </span><br><span class="line">    - var name = &apos;LiYanFeng&apos;;</span><br><span class="line">    p= name.toUpperCase()</span><br><span class="line">    p #&#123;name.toLowerCase()&#125;</span><br><span class="line"></span><br><span class="line">    div.wrapper</span><br><span class="line">        div#container</span><br><span class="line">            //- 第一种多段文本+标签混合</span><br><span class="line">                这种方式只能写全标签</span><br><span class="line">            p.</span><br><span class="line">                调调，发现全球品质好物</span><br><span class="line">                &lt;span&gt;span&lt;/span&gt;</span><br><span class="line">                找到最适合你的好物</span><br><span class="line">                &lt;strong&gt;strong&lt;/strong&gt;</span><br><span class="line"></span><br><span class="line">            //- 第二种多段文本+标签混合</span><br><span class="line">                这种方式可以使用jade语法来写标签</span><br><span class="line">            article</span><br><span class="line">                | 这又是一大段文本</span><br><span class="line">                span span</span><br><span class="line">                | 这还是一大段文本</span><br><span class="line">                strong strong</span><br><span class="line"></span><br><span class="line">            //- 属性的书写</span><br><span class="line">            div.d(class=&quot;d2&quot;,id=&quot;d&quot;)</span><br><span class="line"></span><br><span class="line">            a(href=&quot;http://diaox2.com&quot;,target=&quot;_blank&quot;,title=&quot;去调调&quot;) 调调</span><br><span class="line">            </span><br><span class="line">            //- 写服务端js代码</span><br><span class="line">            -   var name = &quot;liyanfeng&quot;;</span><br><span class="line">            -   var age = 26;</span><br><span class="line"></span><br><span class="line">            //- 等号</span><br><span class="line">            p= name.toUpperCase() + 2</span><br><span class="line">            p= age + 2  &gt; 100</span><br><span class="line">            p= age * 4</span><br><span class="line"></span><br><span class="line">            //- #&#123;variable&#125;</span><br><span class="line">            p #&#123;name.split(&apos;&apos;)&#125; </span><br><span class="line">            p #&#123;　age +2 &#125;</span><br><span class="line">            p #&#123; age * 4 + 2 &gt; 100 &#125;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            //- 转义</span><br><span class="line">            - var htmlStr = &apos;&lt;script&gt;alert(3)&lt;/script&gt;&apos;</span><br><span class="line"></span><br><span class="line">            p \#&#123;name&#125;</span><br><span class="line">            //- jade会自动地进行安全转义</span><br><span class="line">            p #&#123;htmlStr&#125;</span><br><span class="line">            //- 如果不想jade转义可以加上 !</span><br><span class="line">            p !&#123;htmlStr&#125;</span><br><span class="line">            p!= htmlStr</span><br><span class="line"></span><br><span class="line">            - var v;</span><br><span class="line">            //- 由于v是undefined所以value的值就是undefined</span><br><span class="line">            input(value=&quot;#&#123;v&#125;&quot;)</span><br><span class="line">            //- 可以用这种方式，如果是undefined就不输出</span><br><span class="line">            input(value=v)</span><br><span class="line"></span><br><span class="line">            - var friends = 10</span><br><span class="line">              case friends</span><br><span class="line">                when 0</span><br><span class="line">                  p you have no friends</span><br><span class="line">                when 1</span><br><span class="line">                  p you have a friend</span><br><span class="line">                default</span><br><span class="line">                  p you have #&#123;friends&#125; friends</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/10/grunt中的file配置/" itemprop="url">
                   grunt中的file配置
                 </a>
@@ -1404,137 +1504,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/13/记录一次移动开发的bug/" itemprop="url">
-                  记录一次移动开发的bug
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T20:22:20+00:00" content="2016-04-12">
-              2016-04-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/13/记录一次移动开发的bug/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/记录一次移动开发的bug/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="移动开发要注意的问题"><a href="#移动开发要注意的问题" class="headerlink" title="移动开发要注意的问题"></a>移动开发要注意的问题</h1><p>常见移动设备尺寸列表：</p>
-<ul>
-<li>320 iphone4/s iphone5/s （4吋屏幕）</li>
-<li>360 sumsang galaxy node2/3 s3/4 &amp; Google Nexus 5</li>
-<li>375 iphone6/s （4.7吋屏幕）</li>
-<li>384 meizuo pro4 &amp; LG Optimus L70 &amp; Google Nexus 4</li>
-<li>400</li>
-<li>412 Google Nexus 6</li>
-<li>414 iphone6/s plus（5.5吋屏幕）</li>
-<li>424</li>
-<li>480</li>
-<li>540</li>
-<li>520</li>
-<li>600 BlackBerry PlayBook &amp; Google Nexus 7</li>
-<li>720</li>
-<li>768</li>
-<li>800</li>
-<li>900</li>
-<li>960</li>
-<li>955</li>
-<li>966</li>
-<li>1024 ipad3</li>
-</ul>
-<p>在写媒体查询时，可以隔开某些没有的尺寸，但是有的话，一定要注意！<br>同时，在写css的时候，不要写的正正好，因为屏幕的大小不是连续的</p>
-<p>例如在做百度阿拉丁礼物筛选页面时，在其他手机上都是好的，但是在魅族mx pro 4下布局全乱了，问题就出现在我把页面的像素写的刚刚好，没有余地，导致一行浮动放不下了。。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width: 414px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 64px; &#125; &#125;</span><br><span class="line"></span><br><span class="line">&lt;!--这段代码是新加的，保证能囊括魅族pro4的384px的逻辑像素--&gt;</span><br><span class="line">@media screen and (max-width: 384px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 60px; &#125; &#125;</span><br><span class="line"></span><br><span class="line">@media screen and (max-width: 380px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 56px; &#125; &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1575,7 +1549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

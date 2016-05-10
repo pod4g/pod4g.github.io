@@ -269,6 +269,131 @@
             
               
                 
+                <a class="post-title-link" href="/2015/03/09/自执行匿名函数和模块模式/" itemprop="url">
+                  自执行匿名函数和模块模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-08T20:19:24+00:00" content="2015-03-08">
+              2015-03-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/03/09/自执行匿名函数和模块模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/09/自执行匿名函数和模块模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><strong>通常的函数定义及调用：</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"></span><br><span class="line">    这种定义方式经过了3个步骤</span><br><span class="line">    1.定义（匿名）函数</span><br><span class="line">    2.把函数赋值给一个变量</span><br><span class="line">    3.执行函数</span><br><span class="line"></span><br><span class="line">    这样做显得冗长和不灵活，并且有一个更不好的地方在于：每次都要起一个函数名（变量名）   </span><br><span class="line"></span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'do something'</span>);   </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>相当于：</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">  自执行的匿名函数(IIFE)</span><br><span class="line">  这种写法可以减少冗余，减少名字不匹配的机率 </span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'do something...'</span>)</span><br><span class="line"></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自执行的匿名函数的好处除了简短、灵活外，还有3个非常重要的好处</p>
+</blockquote>
+<ol>
+<li><strong>不会向全局名字空间添加任何变量，即我不会影响别人</strong></li>
+<li><strong>内部定义的变量会覆盖全局同名变量，即别人也不会影响到我</strong></li>
+<li><strong>当某些函数只需要使用1次时，可以使用IIFE</strong></li>
+</ol>
+<blockquote>
+<p><strong>例如：</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> global_var = <span class="string">"global_var"</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> global_var = <span class="string">"IIFE local var"</span>; <span class="comment">// 我只使用自己定义的变量，别人不会影响到我</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> local_var = <span class="string">"local var"</span>;</span><br><span class="line"></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(local_var); <span class="comment">// 在别的地方别人也不会访问到我定义的变量，我不会影响别人</span></span><br></pre></td></tr></table></figure>
+<h2 id="模块模式-modele-pattern"><a href="#模块模式-modele-pattern" class="headerlink" title="模块模式(modele pattern)"></a>模块模式(modele pattern)</h2><blockquote>
+<p>我们可以把应用封装到IIFE中，使应用免受第三方库（和我们自己）的影响，这是很不错的。但是应用往往很庞大，不能定义在一个文件中，<br>  如果有办法将文件分成一个个的模块，每个模块都有他们自己的私有变量，这当然是很好的。好吧，模块模式入场！</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 定义一个A模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ModuleA = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> name = <span class="string">"李彦峰"</span>;<span class="comment">// 模块A内的变量</span></span><br><span class="line">   <span class="keyword">var</span> age = <span class="number">25</span>;</span><br><span class="line">   <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' '</span> + <span class="keyword">this</span>.age;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">     name:name,</span><br><span class="line">     age:age,</span><br><span class="line">     foo:foo</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果使用A模块呢？</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( ModuleA.name );<span class="comment">// 李彦峰</span></span><br><span class="line"><span class="built_in">console</span>.log( ModuleA.age ); <span class="comment">// 26</span></span><br><span class="line"><span class="built_in">console</span>.log( Module.foo() ); <span class="comment">// 李彦峰 26</span></span><br></pre></td></tr></table></figure>
+<p><strong>可以看到，本来要往全局添加3个成员，即<em>name</em>、<strong>age</strong>、<strong>foo</strong>，现在只需添加1个即可，在较复杂系统中，减少全局变量很重要</strong></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="url">
                   Integer.parseInt和Integer.valueOf方法性能比较
                 </a>
@@ -1231,127 +1356,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2012/06/09/Servlet的过滤器和监听器/" itemprop="url">
-                  Servlet的过滤器和监听器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-08T20:30:19+00:00" content="2012-06-08">
-              2012-06-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2012/06/09/Servlet的过滤器和监听器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/09/Servlet的过滤器和监听器/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能</p>
-<p>  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet<br>  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：init(),destroy(),doFilter()<br>  前两个方法又容器调用，所以这两个方法不需要你自己写，需要写的是doFilter方法<br>  代码如下：</p>
-<p>public class FilterTest implements Filter{<br> public FilterTest() {<br>     System.out.println(“filter1 instance….”);<br> }<br> @Override<br> public void destroy() {<br>  System.out.println(“filter1 destory….”);<br> }<br> @Override<br> public void doFilter(ServletRequest arg1, ServletResponse arg2,<br>   FilterChain chain) throws IOException, ServletException {<br>  // TODO Auto-generated method stub<br>  HttpServletRequest request1 =  (HttpServletRequest) arg1;<br>  HttpServletResponse response1 = (HttpServletResponse) arg2;<br>  request1.setCharacterEncoding(“utf-8”);<br>  response1.setContentType(“text/html;charset=utf-8”);<br>  System.out.println(“doFilter1 execute….”);<br>  chain.doFilter(request1, response1);<br> }<br> @Override<br> public void init(FilterConfig filterConfig) throws ServletException {<br>  System.out.println(“filter1 init execute….”);<br> }<br>}<br>在doFilter里写完相应的逻辑之后，要调用chain的doFilter方法，并把request和response对象传递进去，使过滤器链能够继续执行下去</p>
-<p>过滤器常用来实现编码，参数效验等功能</p>
-<p>写完过滤器，需要在web.xml里配置<br>如下：</p>
-<p>  <filter><br>    <filter-name>filter</filter-name><br>    <filter-class>com.vencent.servlet.FilterTest</filter-class><br>  </filter><br>  <filter-mapping><br>    <filter-name>filter</filter-name><br>    <url-pattern>/login.do</url-pattern><br>  </filter-mapping><br>因为我想要过滤login.do这个请求，所以写成/login.do，如果想要过滤所有.do请求，写成<em>.do，如果想要过滤所有请求，写成</em></p>
-<p>当服务器启动的时候，容器会实例化过滤器，紧接着马上调用init方法对其进行初始化，可以再相应的方法里打印信息来追踪其实例化、初始化的点，destroy方法是在容器stop的时候调用的</p>
-<p>监听器</p>
-<p>package com.vencent.servlet;<br>import javax.servlet.ServletContext;<br>import javax.servlet.ServletContextAttributeEvent;<br>import javax.servlet.ServletContextAttributeListener;<br>import javax.servlet.ServletContextEvent;<br>import javax.servlet.ServletContextListener;<br>import javax.servlet.http.HttpSession;<br>import javax.servlet.http.HttpSessionEvent;<br>import javax.servlet.http.HttpSessionListener;<br>public class ListenerTest implements ServletContextListener,HttpSessionListener,<br> ServletContextAttributeListener{<br> @Override<br> public void contextDestroyed(ServletContextEvent arg0) {}<br> @Override<br> public void contextInitialized(ServletContextEvent event) {<br>  ServletContext sc = event.getServletContext();<br>  sc.setAttribute(“user”, 123);<br> }<br> @Override<br> public void sessionCreated(HttpSessionEvent event) {<br>  // TODO Auto-generated method stub<br>  HttpSession session = event.getSession();<br> }<br> @Override<br> public void sessionDestroyed(HttpSessionEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeAdded(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeRemoved(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeReplaced(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br>}<br>然后在web.xml里，配置如下：</p>
-<p>   com.vencent.servlet.ListenerTest.java</p>
-<p>比如统计在线人数，就要使用监听器了</p>
-<p>监听器和过滤器一样，也是伴随着web容器的启动而启动（然后实例化）、停止而销毁的</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1392,7 +1401,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

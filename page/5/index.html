@@ -83,7 +83,7 @@
 <meta name="description" content="全栈工程师 前端、Java、NodeJS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="好奇boy">
-<meta property="og:url" content="http://www.liyanshan.com/archives/2012/07/index.html">
+<meta property="og:url" content="http://www.liyanshan.com/page/5/index.html">
 <meta property="og:site_name" content="好奇boy">
 <meta property="og:description" content="全栈工程师 前端、Java、NodeJS">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
   };
 </script>
 
-  <title> 目录 | 好奇boy </title>
+  <title> 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +137,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,65 +246,130 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  
+  
 
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 41 篇日志。 继续努力。
-    </span>
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2012">2012</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2012/06/09/Servlet的过滤器和监听器/" itemprop="url">
+                  Servlet的过滤器和监听器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-06-08T20:30:19+00:00" content="2012-06-08">
+              2012-06-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2012/06/09/Servlet的过滤器和监听器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/09/Servlet的过滤器和监听器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2012/07/30/web页面中的中文乱码解决办法/" itemprop="url">
-              
-                <span itemprop="name">web页面中的中文乱码解决办法</span>
-              
-            </a>
+          
+            <p>过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能</p>
+<p>  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet<br>  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：init(),destroy(),doFilter()<br>  前两个方法又容器调用，所以这两个方法不需要你自己写，需要写的是doFilter方法<br>  代码如下：</p>
+<p>public class FilterTest implements Filter{<br> public FilterTest() {<br>     System.out.println(“filter1 instance….”);<br> }<br> @Override<br> public void destroy() {<br>  System.out.println(“filter1 destory….”);<br> }<br> @Override<br> public void doFilter(ServletRequest arg1, ServletResponse arg2,<br>   FilterChain chain) throws IOException, ServletException {<br>  // TODO Auto-generated method stub<br>  HttpServletRequest request1 =  (HttpServletRequest) arg1;<br>  HttpServletResponse response1 = (HttpServletResponse) arg2;<br>  request1.setCharacterEncoding(“utf-8”);<br>  response1.setContentType(“text/html;charset=utf-8”);<br>  System.out.println(“doFilter1 execute….”);<br>  chain.doFilter(request1, response1);<br> }<br> @Override<br> public void init(FilterConfig filterConfig) throws ServletException {<br>  System.out.println(“filter1 init execute….”);<br> }<br>}<br>在doFilter里写完相应的逻辑之后，要调用chain的doFilter方法，并把request和response对象传递进去，使过滤器链能够继续执行下去</p>
+<p>过滤器常用来实现编码，参数效验等功能</p>
+<p>写完过滤器，需要在web.xml里配置<br>如下：</p>
+<p>  <filter><br>    <filter-name>filter</filter-name><br>    <filter-class>com.vencent.servlet.FilterTest</filter-class><br>  </filter><br>  <filter-mapping><br>    <filter-name>filter</filter-name><br>    <url-pattern>/login.do</url-pattern><br>  </filter-mapping><br>因为我想要过滤login.do这个请求，所以写成/login.do，如果想要过滤所有.do请求，写成<em>.do，如果想要过滤所有请求，写成</em></p>
+<p>当服务器启动的时候，容器会实例化过滤器，紧接着马上调用init方法对其进行初始化，可以再相应的方法里打印信息来追踪其实例化、初始化的点，destroy方法是在容器stop的时候调用的</p>
+<p>监听器</p>
+<p>package com.vencent.servlet;<br>import javax.servlet.ServletContext;<br>import javax.servlet.ServletContextAttributeEvent;<br>import javax.servlet.ServletContextAttributeListener;<br>import javax.servlet.ServletContextEvent;<br>import javax.servlet.ServletContextListener;<br>import javax.servlet.http.HttpSession;<br>import javax.servlet.http.HttpSessionEvent;<br>import javax.servlet.http.HttpSessionListener;<br>public class ListenerTest implements ServletContextListener,HttpSessionListener,<br> ServletContextAttributeListener{<br> @Override<br> public void contextDestroyed(ServletContextEvent arg0) {}<br> @Override<br> public void contextInitialized(ServletContextEvent event) {<br>  ServletContext sc = event.getServletContext();<br>  sc.setAttribute(“user”, 123);<br> }<br> @Override<br> public void sessionCreated(HttpSessionEvent event) {<br>  // TODO Auto-generated method stub<br>  HttpSession session = event.getSession();<br> }<br> @Override<br> public void sessionDestroyed(HttpSessionEvent arg0) {<br>  // TODO Auto-generated method stub</p>
+<p> }<br> @Override<br> public void attributeAdded(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
+<p> }<br> @Override<br> public void attributeRemoved(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
+<p> }<br> @Override<br> public void attributeReplaced(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
+<p> }<br>}<br>然后在web.xml里，配置如下：</p>
+<p>   com.vencent.servlet.ListenerTest.java</p>
+<p>比如统计在线人数，就要使用监听器了</p>
+<p>监听器和过滤器一样，也是伴随着web容器的启动而启动（然后实例化）、停止而销毁的</p>
+
+          
         
-      </h1>
+      
+    </div>
+    
+    <div>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2012-07-29T20:31:15+00:00"
-              content="2012-07-29" >
-          07-29
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
-
     
-
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
 
 
 
@@ -470,12 +537,6 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 

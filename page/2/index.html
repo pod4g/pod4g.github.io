@@ -269,6 +269,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/13/记录一次移动开发的bug/" itemprop="url">
+                  记录一次移动开发的bug
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T20:22:20+00:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/记录一次移动开发的bug/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/记录一次移动开发的bug/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="移动开发要注意的问题"><a href="#移动开发要注意的问题" class="headerlink" title="移动开发要注意的问题"></a>移动开发要注意的问题</h1><p>常见移动设备尺寸列表：</p>
+<ul>
+<li>320 iphone4/s iphone5/s （4吋屏幕）</li>
+<li>360 sumsang galaxy node2/3 s3/4 &amp; Google Nexus 5</li>
+<li>375 iphone6/s （4.7吋屏幕）</li>
+<li>384 meizuo pro4 &amp; LG Optimus L70 &amp; Google Nexus 4</li>
+<li>400</li>
+<li>412 Google Nexus 6</li>
+<li>414 iphone6/s plus（5.5吋屏幕）</li>
+<li>424</li>
+<li>480</li>
+<li>540</li>
+<li>520</li>
+<li>600 BlackBerry PlayBook &amp; Google Nexus 7</li>
+<li>720</li>
+<li>768</li>
+<li>800</li>
+<li>900</li>
+<li>960</li>
+<li>955</li>
+<li>966</li>
+<li>1024 ipad3</li>
+</ul>
+<p>在写媒体查询时，可以隔开某些没有的尺寸，但是有的话，一定要注意！<br>同时，在写css的时候，不要写的正正好，因为屏幕的大小不是连续的</p>
+<p>例如在做百度阿拉丁礼物筛选页面时，在其他手机上都是好的，但是在魅族mx pro 4下布局全乱了，问题就出现在我把页面的像素写的刚刚好，没有余地，导致一行浮动放不下了。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-width: 414px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 64px; &#125; &#125;</span><br><span class="line"></span><br><span class="line">&lt;!--这段代码是新加的，保证能囊括魅族pro4的384px的逻辑像素--&gt;</span><br><span class="line">@media screen and (max-width: 384px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 60px; &#125; &#125;</span><br><span class="line"></span><br><span class="line">@media screen and (max-width: 380px) &#123;</span><br><span class="line">  button, html, input &#123;</span><br><span class="line">    font-size: 56px; &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/12/webpack和browserify用法/" itemprop="url">
                   webpack和browserify用法
                 </a>
@@ -1293,126 +1419,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/19/从一个例子来理解函数声明预解析/" itemprop="url">
-                  从一个例子来理解函数声明预解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T20:13:49+00:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/19/从一个例子来理解函数声明预解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/从一个例子来理解函数声明预解析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="先来看一个例子："><a href="#先来看一个例子：" class="headerlink" title="先来看一个例子："></a>先来看一个例子：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log(sayHello()); //  Hello function </span><br><span class="line"></span><br><span class="line">var sayHello = function() &#123;</span><br><span class="line">   return &apos;Hello var&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(sayHello()); // Hello var </span><br><span class="line"></span><br><span class="line">function sayHello(name) &#123;</span><br><span class="line">   return &apos;Hello function&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(sayHello()); // Hello var</span><br></pre></td></tr></table></figure>
-<p><strong>第一轮处理：</strong></p>
-<blockquote>
-<p>第一轮处理是JS引擎干的事儿，此时并没有真正的执行代码</p>
-</blockquote>
-<p>1.函数声明预解析。在全局变量对象中声明一个变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">function(name) &#123;</span><br><span class="line">   return &apos;Hello function&apos;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>2.第一轮接着往下走，现在遇到了一个变量声明<figure class="highlight plain"><figcaption><span>sayHello```，由于全局变量对象上已经有了同名变量```sayHello```，且此同名变量已经有值，所以会忽略这个变量声明。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3.第一轮处理完毕</span><br><span class="line"></span><br><span class="line">**第二轮处理：**</span><br><span class="line"></span><br><span class="line">&gt; 第一轮处理完毕之后，进入第二轮，即JS引擎开始真正的执行你写的代码了</span><br><span class="line"></span><br><span class="line">1.遇到一个函数调用 ```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值是函数声明所声明的函数值）。</span><br><span class="line"></span><br><span class="line">2.遇到一个赋值语句</span><br></pre></td></tr></table></figure></p>
-<p>var sayHello = function() {<br>   return ‘Hello var’;<br>};</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">把新值赋值给```sayHello```变量。</span><br><span class="line"></span><br><span class="line">3.遇到一个函数调用```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值就是第2步设置的值）</span><br><span class="line"></span><br><span class="line">4.遇到一个函数声明，由于其值已经被预声明和初始化，所以什么也不干</span><br><span class="line"></span><br><span class="line">5.遇到一个函数调用```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值也是第2步设置的值）</span><br><span class="line"></span><br><span class="line">6.第二轮执行完毕</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">### 稍加变化的例子：</span><br></pre></td></tr></table></figure>
-<p>console.log(sayHello()); //  Hello function </p>
-<p>function sayHello(name) {<br>   return ‘Hello function’;<br>};</p>
-<p>console.log(sayHello()); // Hello function </p>
-<p>var sayHello = function() {<br>   return ‘Hello var’;<br>};<br>console.log(sayHello()); // Hello var </p>
-<p>```</p>
-<p>分析方法同上。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1453,7 +1464,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

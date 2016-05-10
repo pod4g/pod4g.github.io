@@ -269,6 +269,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/19/从一个例子来理解函数声明预解析/" itemprop="url">
+                  从一个例子来理解函数声明预解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T20:13:49+00:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/19/从一个例子来理解函数声明预解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/从一个例子来理解函数声明预解析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="先来看一个例子："><a href="#先来看一个例子：" class="headerlink" title="先来看一个例子："></a>先来看一个例子：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log(sayHello()); //  Hello function </span><br><span class="line"></span><br><span class="line">var sayHello = function() &#123;</span><br><span class="line">   return &apos;Hello var&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(sayHello()); // Hello var </span><br><span class="line"></span><br><span class="line">function sayHello(name) &#123;</span><br><span class="line">   return &apos;Hello function&apos;;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(sayHello()); // Hello var</span><br></pre></td></tr></table></figure>
+<p><strong>第一轮处理：</strong></p>
+<blockquote>
+<p>第一轮处理是JS引擎干的事儿，此时并没有真正的执行代码</p>
+</blockquote>
+<p>1.函数声明预解析。在全局变量对象中声明一个变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">function(name) &#123;</span><br><span class="line">   return &apos;Hello function&apos;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>2.第一轮接着往下走，现在遇到了一个变量声明<figure class="highlight plain"><figcaption><span>sayHello```，由于全局变量对象上已经有了同名变量```sayHello```，且此同名变量已经有值，所以会忽略这个变量声明。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3.第一轮处理完毕</span><br><span class="line"></span><br><span class="line">**第二轮处理：**</span><br><span class="line"></span><br><span class="line">&gt; 第一轮处理完毕之后，进入第二轮，即JS引擎开始真正的执行你写的代码了</span><br><span class="line"></span><br><span class="line">1.遇到一个函数调用 ```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值是函数声明所声明的函数值）。</span><br><span class="line"></span><br><span class="line">2.遇到一个赋值语句</span><br></pre></td></tr></table></figure></p>
+<p>var sayHello = function() {<br>   return ‘Hello var’;<br>};</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">把新值赋值给```sayHello```变量。</span><br><span class="line"></span><br><span class="line">3.遇到一个函数调用```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值就是第2步设置的值）</span><br><span class="line"></span><br><span class="line">4.遇到一个函数声明，由于其值已经被预声明和初始化，所以什么也不干</span><br><span class="line"></span><br><span class="line">5.遇到一个函数调用```console.log(sayHello());```，查询全局变量对象，发现有此函数，调用之（此时的函数值也是第2步设置的值）</span><br><span class="line"></span><br><span class="line">6.第二轮执行完毕</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">### 稍加变化的例子：</span><br></pre></td></tr></table></figure>
+<p>console.log(sayHello()); //  Hello function </p>
+<p>function sayHello(name) {<br>   return ‘Hello function’;<br>};</p>
+<p>console.log(sayHello()); // Hello function </p>
+<p>var sayHello = function() {<br>   return ‘Hello var’;<br>};<br>console.log(sayHello()); // Hello var </p>
+<p>```</p>
+<p>分析方法同上。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/19/function应用技巧/" itemprop="url">
                   function应用技巧
                 </a>
@@ -1424,136 +1539,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/09/自执行匿名函数和模块模式/" itemprop="url">
-                  自执行匿名函数和模块模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-08T20:19:24+00:00" content="2015-03-08">
-              2015-03-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/03/09/自执行匿名函数和模块模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/09/自执行匿名函数和模块模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><strong>通常的函数定义及调用：</strong></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"></span><br><span class="line">    这种定义方式经过了3个步骤</span><br><span class="line">    1.定义（匿名）函数</span><br><span class="line">    2.把函数赋值给一个变量</span><br><span class="line">    3.执行函数</span><br><span class="line"></span><br><span class="line">    这样做显得冗长和不灵活，并且有一个更不好的地方在于：每次都要起一个函数名（变量名）   </span><br><span class="line"></span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'do something'</span>);   </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myFunc();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>相当于：</strong></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">  自执行的匿名函数(IIFE)</span><br><span class="line">  这种写法可以减少冗余，减少名字不匹配的机率 </span><br><span class="line"></span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'do something...'</span>)</span><br><span class="line"></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自执行的匿名函数的好处除了简短、灵活外，还有3个非常重要的好处</p>
-</blockquote>
-<ol>
-<li><strong>不会向全局名字空间添加任何变量，即我不会影响别人</strong></li>
-<li><strong>内部定义的变量会覆盖全局同名变量，即别人也不会影响到我</strong></li>
-<li><strong>当某些函数只需要使用1次时，可以使用IIFE</strong></li>
-</ol>
-<blockquote>
-<p><strong>例如：</strong></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> global_var = <span class="string">"global_var"</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> global_var = <span class="string">"IIFE local var"</span>; <span class="comment">// 我只使用自己定义的变量，别人不会影响到我</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> local_var = <span class="string">"local var"</span>;</span><br><span class="line"></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(local_var); <span class="comment">// 在别的地方别人也不会访问到我定义的变量，我不会影响别人</span></span><br></pre></td></tr></table></figure>
-<h2 id="模块模式-modele-pattern"><a href="#模块模式-modele-pattern" class="headerlink" title="模块模式(modele pattern)"></a>模块模式(modele pattern)</h2><blockquote>
-<p>我们可以把应用封装到IIFE中，使应用免受第三方库（和我们自己）的影响，这是很不错的。但是应用往往很庞大，不能定义在一个文件中，<br>  如果有办法将文件分成一个个的模块，每个模块都有他们自己的私有变量，这当然是很好的。好吧，模块模式入场！</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 定义一个A模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ModuleA = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> name = <span class="string">"李彦峰"</span>;<span class="comment">// 模块A内的变量</span></span><br><span class="line">   <span class="keyword">var</span> age = <span class="number">25</span>;</span><br><span class="line">   <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' '</span> + <span class="keyword">this</span>.age;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">     name:name,</span><br><span class="line">     age:age,</span><br><span class="line">     foo:foo</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果使用A模块呢？</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( ModuleA.name );<span class="comment">// 李彦峰</span></span><br><span class="line"><span class="built_in">console</span>.log( ModuleA.age ); <span class="comment">// 26</span></span><br><span class="line"><span class="built_in">console</span>.log( Module.foo() ); <span class="comment">// 李彦峰 26</span></span><br></pre></td></tr></table></figure>
-<p><strong>可以看到，本来要往全局添加3个成员，即<em>name</em>、<strong>age</strong>、<strong>foo</strong>，现在只需添加1个即可，在较复杂系统中，减少全局变量很重要</strong></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1594,7 +1584,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

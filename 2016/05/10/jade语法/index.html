@@ -1,0 +1,611 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node.js," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="下面是我写的jade的语法例子12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jade语法">
+<meta property="og:url" content="http://www.liyanshan.com/2016/05/10/jade语法/index.html">
+<meta property="og:site_name" content="好奇boy">
+<meta property="og:description" content="下面是我写的jade的语法例子12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+<meta property="og:updated_time" content="2016-05-10T03:11:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jade语法">
+<meta name="twitter:description" content="下面是我写的jade的语法例子12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> jade语法 | 好奇boy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1f5c68947c5379d690f7294cc426aa93";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">好奇boy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">技术随笔</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.babyforlove.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github">
+          <a href="https://github.com/pod4g" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            pod4g
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-github2">
+          <a href="https://github.com/MyNameIsJimGreen" rel="section">
+            
+              <i class="menu-item-icon fa fa-github fa-fw"></i> <br />
+            
+            jimGreen
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jade语法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T11:10:29+00:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/jade语法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/jade语法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="下面是我写的jade的语法例子"><a href="#下面是我写的jade的语法例子" class="headerlink" title="下面是我写的jade的语法例子"></a>下面是我写的jade的语法例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">doctype html</span><br><span class="line">html(lang=&quot;zh-CN&quot;)</span><br><span class="line">    head</span><br><span class="line">        meta(charset=&quot;utf-8&quot;)</span><br><span class="line">        meta(name=&quot;viewport&quot;,content=&quot;initial-scale=1, maximum-scale=1&quot;)</span><br><span class="line">        meta(name=&quot;apple-mobile-web-app-capable&quot;,content=&quot;yes&quot;)</span><br><span class="line">        meta(name=&quot;apple-mobile-web-app-status-bar-style&quot;,content=&quot;black&quot;)</span><br><span class="line">        title 你好jade</span><br><span class="line">        //- 内部样式</span><br><span class="line">        style.</span><br><span class="line">            body&#123;</span><br><span class="line">                color:red;</span><br><span class="line">            &#125;</span><br><span class="line">        //- 内部脚本</span><br><span class="line">        script(type=&quot;text/javascript&quot;). </span><br><span class="line">            var a = 1;</span><br><span class="line">            alert(a);</span><br><span class="line"></span><br><span class="line">        //- 引入外部样式</span><br><span class="line">        link(rel=&quot;stylesheet&quot;,href=&quot;//g.alicdn.com/msui/sm/0.6.2/css/sm.css&quot;)</span><br><span class="line"></span><br><span class="line">        //- 引入外部脚本</span><br><span class="line">        script(type=&quot;text/javascript&quot;,src=&quot;//g.alicdn.com/sj/lib/zepto/zepto.min.js&quot;,charset=&quot;utf-8&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    body</span><br><span class="line">        h1 你好jade</span><br><span class="line"></span><br><span class="line">    // 这是一段会输出到html文件中的注释</span><br><span class="line"></span><br><span class="line">    //- 这是一段不会显示在html文件中的注释</span><br><span class="line"></span><br><span class="line">    //- 这是一大段注释</span><br><span class="line">        这是一大段注释</span><br><span class="line">    </span><br><span class="line">    - var name = &apos;LiYanFeng&apos;;</span><br><span class="line">    p= name.toUpperCase()</span><br><span class="line">    p #&#123;name.toLowerCase()&#125;</span><br><span class="line"></span><br><span class="line">    div.wrapper</span><br><span class="line">        div#container</span><br><span class="line">            //- 第一种多段文本+标签混合</span><br><span class="line">                这种方式只能写全标签</span><br><span class="line">            p.</span><br><span class="line">                调调，发现全球品质好物</span><br><span class="line">                &lt;span&gt;span&lt;/span&gt;</span><br><span class="line">                找到最适合你的好物</span><br><span class="line">                &lt;strong&gt;strong&lt;/strong&gt;</span><br><span class="line"></span><br><span class="line">            //- 第二种多段文本+标签混合</span><br><span class="line">                这种方式可以使用jade语法来写标签</span><br><span class="line">            article</span><br><span class="line">                | 这又是一大段文本</span><br><span class="line">                span span</span><br><span class="line">                | 这还是一大段文本</span><br><span class="line">                strong strong</span><br><span class="line"></span><br><span class="line">            //- 属性的书写</span><br><span class="line">            div.d(class=&quot;d2&quot;,id=&quot;d&quot;)</span><br><span class="line"></span><br><span class="line">            a(href=&quot;http://diaox2.com&quot;,target=&quot;_blank&quot;,title=&quot;去调调&quot;) 调调</span><br><span class="line">            </span><br><span class="line">            //- 写服务端js代码</span><br><span class="line">            -   var name = &quot;liyanfeng&quot;;</span><br><span class="line">            -   var age = 26;</span><br><span class="line"></span><br><span class="line">            //- 等号</span><br><span class="line">            p= name.toUpperCase() + 2</span><br><span class="line">            p= age + 2  &gt; 100</span><br><span class="line">            p= age * 4</span><br><span class="line"></span><br><span class="line">            //- #&#123;variable&#125;</span><br><span class="line">            p #&#123;name.split(&apos;&apos;)&#125; </span><br><span class="line">            p #&#123;　age +2 &#125;</span><br><span class="line">            p #&#123; age * 4 + 2 &gt; 100 &#125;</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            //- 转义</span><br><span class="line">            - var htmlStr = &apos;&lt;script&gt;alert(3)&lt;/script&gt;&apos;</span><br><span class="line"></span><br><span class="line">            p \#&#123;name&#125;</span><br><span class="line">            //- jade会自动地进行安全转义</span><br><span class="line">            p #&#123;htmlStr&#125;</span><br><span class="line">            //- 如果不想jade转义可以加上 !</span><br><span class="line">            p !&#123;htmlStr&#125;</span><br><span class="line">            p!= htmlStr</span><br><span class="line"></span><br><span class="line">            - var v;</span><br><span class="line">            //- 由于v是undefined所以value的值就是undefined</span><br><span class="line">            input(value=&quot;#&#123;v&#125;&quot;)</span><br><span class="line">            //- 可以用这种方式，如果是undefined就不输出</span><br><span class="line">            input(value=v)</span><br><span class="line"></span><br><span class="line">            - var friends = 10</span><br><span class="line">              case friends</span><br><span class="line">                when 0</span><br><span class="line">                  p you have no friends</span><br><span class="line">                when 1</span><br><span class="line">                  p you have a friend</span><br><span class="line">                default</span><br><span class="line">                  p you have #&#123;friends&#125; friends</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/10/grunt中的file配置/" rel="next" title="grunt中的file配置">
+                <i class="fa fa-chevron-left"></i> grunt中的file配置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/10/jade语法/"
+           data-title="jade语法" data-url="http://www.liyanshan.com/2016/05/10/jade语法/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/12889190?v=3&s=460"
+               alt="李彦峰" />
+          <p class="site-author-name" itemprop="name">李彦峰</p>
+          <p class="site-description motion-element" itemprop="description">全栈工程师 <br>前端、Java、NodeJS</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下面是我写的jade的语法例子"><span class="nav-number">1.</span> <span class="nav-text">下面是我写的jade的语法例子</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李彦峰</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liyanshan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
