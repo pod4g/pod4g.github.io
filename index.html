@@ -326,28 +326,22 @@
 <li>Files Object Format</li>
 <li>Files Array Format</li>
 </ul>
-<ol>
-<li>Compact Format</li>
-</ol>
+<p>一、Compact Format</p>
 <blockquote>
 <p>其中的src可以是数组。但是dest不能是数组</p>
 </blockquote>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">        <span class="comment">// src:'&lt;%= config.app %&gt;/index.html',</span></span><br><span class="line">        src:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>,<span class="string">'&lt;%= config.app %&gt;/test.html'</span>],</span><br><span class="line">        dest:<span class="string">'&lt;%= config.dist %&gt;/index.html'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>Files Object Format</p>
+<p> 二、Files Object Format</p>
 <blockquote>
 <p>其中value是src，key是dest</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">        files:&#123;</span><br><span class="line">            <span class="string">'&lt;%= config.dist %&gt;/index.html'</span>:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>],</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Files Array Format</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">       files:[</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">// src:'&lt;%= config.app %&gt;/index.html',</span></span><br><span class="line">            src:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>,<span class="string">'&lt;%= config.app %&gt;/test.html'</span>],</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/index.html'</span></span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            src:<span class="string">'&lt;%= config.app %&gt;/js/index.js'</span>,</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/js/index.js'</span></span><br><span class="line">         &#125;</span><br><span class="line">       ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">        files:&#123;</span><br><span class="line">            <span class="string">'&lt;%= config.dist %&gt;/index.html'</span>:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>],</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 三、Files Array Format</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">copy:&#123;</span><br><span class="line">    dist:&#123;</span><br><span class="line">       files:[</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="comment">// src:'&lt;%= config.app %&gt;/index.html',</span></span><br><span class="line">            src:[<span class="string">'&lt;%= config.app %&gt;/index.html'</span>,<span class="string">'&lt;%= config.app %&gt;/test.html'</span>],</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/index.html'</span></span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            src:<span class="string">'&lt;%= config.app %&gt;/js/index.js'</span>,</span><br><span class="line">            dest:<span class="string">'&lt;%= config.dist %&gt;/js/index.js'</span></span><br><span class="line">         &#125;</span><br><span class="line">       ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Compact Format 和 Files Array Format处理支持src和dest属性之外，还支持其他属性</p>
 </blockquote>
-<p><a href="http://gruntjs.com/configuring-tasks#files" target="_blank" rel="external">看看官网</a> </p>
-</li>
-</ol>
+<p> <a href="http://gruntjs.com/configuring-tasks#files" target="_blank" rel="external">看看官网</a> </p>
 
           
         
