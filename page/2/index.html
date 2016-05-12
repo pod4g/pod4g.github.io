@@ -269,6 +269,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/22/Chrome-DEVTools/" itemprop="url">
+                  Chrome-DEVTools的NETWORK面板
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-22T14:55:31+00:00" content="2016-04-22">
+              2016-04-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/22/Chrome-DEVTools/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/Chrome-DEVTools/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading" target="_blank" rel="external">参考资料：谷歌chrome开发文档</a></p>
+<p>此文是由我的<a href="https://github.com/pod4g/tool/wiki/Chrome-DEVTools%E7%9A%84NETWORK%E9%9D%A2%E6%9D%BF" target="_blank" rel="external">github</a>迁移过来的</p>
+<h1 id="大小相关"><a href="#大小相关" class="headerlink" title="大小相关"></a>大小相关</h1><p>Size：Size is the combined size of the response headers (usually a few hundred bytes) plus the response body, as delivered by the server；</p>
+<p>Size = 响应头（大小通常为几百byte）+ 响应体；<strong>size是真正走网络的大小。</strong></p>
+<p>Content：Content is the size of the resource’s decoded content</p>
+<p>Content是资源在硬盘上的真实大小。</p>
+<p>大多数情况下服务器一般会启用<code>GZIP</code>压缩，所以有<code>size &lt; content</code></p>
+<p>但若是图片或font字体，那么<code>GZIP</code>压缩不起作用，此时有<code>size = content + response header</code>，所以有<code>size &gt; content</code>，可以认为<code>size - content</code>等于<code>response header</code></p>
+<p>:100: </p>
+<hr>
+<h1 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h1><p>Time：Time is total duration, from the start of the request to the receipt of the final byte in the response</p>
+<p>Time是一个资源从<code>开始发送请求</code>到接受到该资源的<code>最后一个byte</code>时的总用时</p>
+<p>Latency：Latency is the time to load the first byte in the response</p>
+<p>Latency是一个资源从<code>开始发送请求</code>到接收到该资源的<code>第一个byte</code>时的总用时</p>
+<p>所以，<code>Latency &lt; Time</code> 永远成立，<strong><code>Time - Latency</code>的差值就是<code>资源下载</code>的时间</strong>。</p>
+<p>Timeline中有两条垂直线，一条蓝色的线是<code>DOMContentLoaded</code>事件触发的时间点，一条红色的线是<code>load</code>事件触发的时间点</p>
+<blockquote>
+<p>含DNS Lookup 和 Initial connection：</p>
+</blockquote>
+<p><img src="http://ww4.sinaimg.cn/large/6fd55a97jw1f0l1yke99gj21kw0d5jvx.jpg" alt="含DNS Lookup 和 Initial connection"></p>
+<p><code>Queueing + Stalled + Proxy negotiation + DNS Lookup + Initial connection + Request sent + TTFB + Content Download = Explanation</code></p>
+<p><code>Stalled + Proxy negotiation + DNS Lookup + Initial connection + Request sent + TTFB + Content Download = Time</code></p>
+<p> 因此有 <code>Queueing + Time = Explannation</code></p>
+<blockquote>
+<p>不含DNS Lookup 和 Initial connection：</p>
+</blockquote>
+<p><img src="http://ww2.sinaimg.cn/large/6fd55a97jw1f0l250q20rj21kw0bpn0w.jpg" alt="不含DNS Lookup 和 Initial connection"></p>
+<p><code>Queueing + Stalled + Proxy negotiation + Request sent + TTFB + Content Download = Explanation</code></p>
+<p><code>Stalled + Proxy negotiation + Request sent + TTFB + Content Download = Time</code></p>
+<p>因此也有 <code>Queueing + Time = Explannation</code></p>
+<blockquote>
+<p>如果含<code>SSL</code>，那么<code>Explannation</code>和<code>Time</code>都不把<code>SSL</code>计算在内。当scheme是HTTPS时，会有<code>SSL</code>，这也是HTTPS慢的原因之一</p>
+</blockquote>
+<p><strong>以上的等式都为约等且不遵循四舍五入</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"> 测网速函数。所测速度与network显示的差别不大</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testSpeed</span>(<span class="params">url,fileSize</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> startTime,endTime,duration,speedBps,speedKbps,speedMbps;</span><br><span class="line">    <span class="keyword">var</span> download = <span class="keyword">new</span> Image();</span><br><span class="line">    <span class="keyword">var</span> size = fileSize * <span class="number">8</span>;</span><br><span class="line">    download.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        endTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        duration = (endTime - startTime)/<span class="number">1000</span>;</span><br><span class="line">        speedBps = (size / duration).toFixed(<span class="number">2</span>);</span><br><span class="line">        speedKbps = (speedBps / <span class="number">1024</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">        speedMbps = (speedKbps / <span class="number">1024</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"duration(ms):"</span>+(endTime - startTime));</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"duration(s):"</span>+duration.toFixed(<span class="number">2</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedBps:"</span>+speedBps);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedKbps:"</span>+speedKbps);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedMbps:"</span>+speedMbps);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    startTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    download.src = url + <span class="string">"?n="</span> + <span class="built_in">Math</span>.random();</span><br><span class="line"> &#125;</span><br><span class="line"> testSpeed(<span class="string">"http://t.diaox2.com/view/test/lyf/test_speed.jpeg"</span>,<span class="number">13129</span>);</span><br><span class="line"> <span class="comment">// testSpeed("http://t.diaox2.com/view/test/lyf/test_speed2.png",2660306);</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/13/记录一次移动开发的bug/" itemprop="url">
                   记录一次移动开发的bug
                 </a>
@@ -1306,119 +1441,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/再探闭包/" itemprop="url">
-                  再探闭包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-19T20:15:55+00:00" content="2016-03-19">
-              2016-03-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/20/再探闭包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/再探闭包/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">999</span>;</span><br><span class="line">    nAdd = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        n+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f2 = f1();</span><br><span class="line">f2(); <span class="comment">// 999  把 var n = 999; 注释掉 就是1</span></span><br><span class="line">nAdd(); </span><br><span class="line">f2(); <span class="comment">// 1000 把 var n = 999; 注释掉 就是2</span></span><br><span class="line"><span class="keyword">var</span> f3 = f1();</span><br><span class="line">f3();<span class="comment">// 999 把 var n = 999; 注释掉 就是2</span></span><br></pre></td></tr></table></figure>
-<h3 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"window's name"</span>;</span><br><span class="line"> <span class="keyword">var</span> obj = &#123;</span><br><span class="line">     name : <span class="string">"obj's name"</span>,</span><br><span class="line">     getNameFunc:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">     name : <span class="string">"obj's name"</span>,</span><br><span class="line">     getNameFunc:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">var</span> that = <span class="keyword">this</span>; <span class="comment">// 注意这行</span></span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> that.name;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="built_in">console</span>.log(obj.getNameFunc()()); <span class="comment">// window's name</span></span><br><span class="line"> <span class="built_in">console</span>.log(obj2.getNameFunc()()); <span class="comment">// obj's name</span></span><br></pre></td></tr></table></figure>
-<h3 id="闭包总结"><a href="#闭包总结" class="headerlink" title="闭包总结"></a>闭包总结</h3><ol>
-<li><p>只要是函数嵌套函数都是闭包</p>
-</li>
-<li><p>闭包分为2种</p>
-<ul>
-<li>有意义的闭包，内部函数在外部函数外部执行（一般是return出去）,只有有意义的闭包，GC才不会回收</li>
-<li>无意义的闭包，内部函数在外部函数内部执行或return出去但是没有接收，此时这种闭包没有意义，GC照样会回收外部函数和内部函数的变量对象</li>
-</ul>
-</li>
-</ol>
-<p>详见我提出的问题<a href="https://segmentfault.com/q/1010000004640498?_ea=676318" target="_blank" rel="external">关于JavaScript中的闭包的疑问</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1464,7 +1486,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

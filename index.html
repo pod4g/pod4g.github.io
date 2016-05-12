@@ -269,6 +269,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/13/js不写分号的坑/" itemprop="url">
+                  js不写分号的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-12T18:17:59+00:00" content="2016-05-12">
+              2016-05-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/13/js不写分号的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/13/js不写分号的坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天遇到一个奇怪的报错：<code>index.js:73 Uncaught TypeError: (intermediate value)(intermediate value)(...) is not a function</code></p>
+<p>经过仔细审查代码，发现问题出现在一行代码没有写分号上：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> conf = &#123;</span><br><span class="line">       hash:&#123;</span><br><span class="line">           limit:<span class="string">"#limit"</span>,</span><br><span class="line">           coupon:<span class="string">"#coupon"</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125; <span class="comment">//; 在这儿少些了一个分号，加上就没有问题了</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// do something ...</span></span><br><span class="line"></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<p>上面的代码去掉空格和换行之后变成了这个样子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个鸟样，也难怪会报错了</span></span><br><span class="line"><span class="keyword">var</span> conf = &#123;</span><br><span class="line">        hash:&#123;</span><br><span class="line">            limit:<span class="string">"#limit"</span>,</span><br><span class="line">            coupon:<span class="string">"#coupon"</span></span><br><span class="line">        &#125;</span><br><span class="line"> &#125;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// do something ...</span></span><br><span class="line"></span><br><span class="line"> &#125;)()</span><br></pre></td></tr></table></figure>
+<p>经过实验，又发现了一种情况：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<p>由于分号引起的语法错误，肯定还有其他情况。至于规律，结合着报错信息，我想是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种可以简化成这样</span></span><br><span class="line"><span class="comment">// 把一个对象当成了function调用，显然是错误的</span></span><br><span class="line">&#123;&#125;()()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种可以简化成这样</span></span><br><span class="line"><span class="comment">// 注意，为了好读，我在后面两个()中间加了空格，</span></span><br><span class="line"><span class="comment">// (function()&#123;&#125;)() 这就是一个IIFE，函数执行完毕，返回undefined</span></span><br><span class="line"><span class="comment">// 然后把undefined当成了函数调用，即 undefined()</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)() ()</span><br></pre></td></tr></table></figure>
+<p>以后要注意，虽然引号在js中是可选的，但是最好还是使用引号，写完代码也要用jshint检查一下有没有语法错误</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/10/jade语法/" itemprop="url">
                   jade语法
                 </a>
@@ -1371,141 +1481,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/22/Chrome-DEVTools/" itemprop="url">
-                  Chrome-DEVTools的NETWORK面板
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T14:55:31+00:00" content="2016-04-22">
-              2016-04-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/22/Chrome-DEVTools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/Chrome-DEVTools/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading" target="_blank" rel="external">参考资料：谷歌chrome开发文档</a></p>
-<p>此文是由我的<a href="https://github.com/pod4g/tool/wiki/Chrome-DEVTools%E7%9A%84NETWORK%E9%9D%A2%E6%9D%BF" target="_blank" rel="external">github</a>迁移过来的</p>
-<h1 id="大小相关"><a href="#大小相关" class="headerlink" title="大小相关"></a>大小相关</h1><p>Size：Size is the combined size of the response headers (usually a few hundred bytes) plus the response body, as delivered by the server；</p>
-<p>Size = 响应头（大小通常为几百byte）+ 响应体；<strong>size是真正走网络的大小。</strong></p>
-<p>Content：Content is the size of the resource’s decoded content</p>
-<p>Content是资源在硬盘上的真实大小。</p>
-<p>大多数情况下服务器一般会启用<code>GZIP</code>压缩，所以有<code>size &lt; content</code></p>
-<p>但若是图片或font字体，那么<code>GZIP</code>压缩不起作用，此时有<code>size = content + response header</code>，所以有<code>size &gt; content</code>，可以认为<code>size - content</code>等于<code>response header</code></p>
-<p>:100: </p>
-<hr>
-<h1 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h1><p>Time：Time is total duration, from the start of the request to the receipt of the final byte in the response</p>
-<p>Time是一个资源从<code>开始发送请求</code>到接受到该资源的<code>最后一个byte</code>时的总用时</p>
-<p>Latency：Latency is the time to load the first byte in the response</p>
-<p>Latency是一个资源从<code>开始发送请求</code>到接收到该资源的<code>第一个byte</code>时的总用时</p>
-<p>所以，<code>Latency &lt; Time</code> 永远成立，<strong><code>Time - Latency</code>的差值就是<code>资源下载</code>的时间</strong>。</p>
-<p>Timeline中有两条垂直线，一条蓝色的线是<code>DOMContentLoaded</code>事件触发的时间点，一条红色的线是<code>load</code>事件触发的时间点</p>
-<blockquote>
-<p>含DNS Lookup 和 Initial connection：</p>
-</blockquote>
-<p><img src="http://ww4.sinaimg.cn/large/6fd55a97jw1f0l1yke99gj21kw0d5jvx.jpg" alt="含DNS Lookup 和 Initial connection"></p>
-<p><code>Queueing + Stalled + Proxy negotiation + DNS Lookup + Initial connection + Request sent + TTFB + Content Download = Explanation</code></p>
-<p><code>Stalled + Proxy negotiation + DNS Lookup + Initial connection + Request sent + TTFB + Content Download = Time</code></p>
-<p> 因此有 <code>Queueing + Time = Explannation</code></p>
-<blockquote>
-<p>不含DNS Lookup 和 Initial connection：</p>
-</blockquote>
-<p><img src="http://ww2.sinaimg.cn/large/6fd55a97jw1f0l250q20rj21kw0bpn0w.jpg" alt="不含DNS Lookup 和 Initial connection"></p>
-<p><code>Queueing + Stalled + Proxy negotiation + Request sent + TTFB + Content Download = Explanation</code></p>
-<p><code>Stalled + Proxy negotiation + Request sent + TTFB + Content Download = Time</code></p>
-<p>因此也有 <code>Queueing + Time = Explannation</code></p>
-<blockquote>
-<p>如果含<code>SSL</code>，那么<code>Explannation</code>和<code>Time</code>都不把<code>SSL</code>计算在内。当scheme是HTTPS时，会有<code>SSL</code>，这也是HTTPS慢的原因之一</p>
-</blockquote>
-<p><strong>以上的等式都为约等且不遵循四舍五入</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"> 测网速函数。所测速度与network显示的差别不大</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testSpeed</span>(<span class="params">url,fileSize</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> startTime,endTime,duration,speedBps,speedKbps,speedMbps;</span><br><span class="line">    <span class="keyword">var</span> download = <span class="keyword">new</span> Image();</span><br><span class="line">    <span class="keyword">var</span> size = fileSize * <span class="number">8</span>;</span><br><span class="line">    download.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        endTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        duration = (endTime - startTime)/<span class="number">1000</span>;</span><br><span class="line">        speedBps = (size / duration).toFixed(<span class="number">2</span>);</span><br><span class="line">        speedKbps = (speedBps / <span class="number">1024</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">        speedMbps = (speedKbps / <span class="number">1024</span>).toFixed(<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"duration(ms):"</span>+(endTime - startTime));</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"duration(s):"</span>+duration.toFixed(<span class="number">2</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedBps:"</span>+speedBps);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedKbps:"</span>+speedKbps);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"speedMbps:"</span>+speedMbps);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    startTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    download.src = url + <span class="string">"?n="</span> + <span class="built_in">Math</span>.random();</span><br><span class="line"> &#125;</span><br><span class="line"> testSpeed(<span class="string">"http://t.diaox2.com/view/test/lyf/test_speed.jpeg"</span>,<span class="number">13129</span>);</span><br><span class="line"> <span class="comment">// testSpeed("http://t.diaox2.com/view/test/lyf/test_speed2.png",2660306);</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1551,7 +1526,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

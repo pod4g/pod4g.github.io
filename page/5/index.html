@@ -269,6 +269,117 @@
             
               
                 
+                <a class="post-title-link" href="/2012/07/30/web页面中的中文乱码解决办法/" itemprop="url">
+                  web页面中的中文乱码解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-07-29T20:31:15+00:00" content="2012-07-29">
+              2012-07-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2012/07/30/web页面中的中文乱码解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/30/web页面中的中文乱码解决办法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当表单采用post提交时，浏览器会按照打开该表单所在的页面编码来对表单中的数据进行编码，要防止中文乱码，必须保证三方面 1.文件本身以utf-8保存；2.使浏览器以utf-8的编码格式打开该页；3.获得的参数必须以utf-8解码。只有三方面都保证是同一种编码了，那么就不会出现乱码问题</p>
+<p> 解决乱码问题，具体步骤为：</p>
+<p> step1:<br> 在html文件中，添加<meta http-equiv="content-Type" content="text/html;charset=utf-8"></p>
+<p> 这句话的作用是，告诉浏览器，以utf-8的编码格式来打开该页面</p>
+<p> step2:<br> 表单的提交方式必须是post</p>
+<p> step3:<br> 在服务器端，使用servlet读取表单中的请求参数时：request.setCharacterEncoding(“utf-8”)</p>
+<p> 这句话的作用是，设置解码时的编码格式</p>
+<p> step4:<br> 如果servlet要输出中文，要添加如下代码<br> response.setContentType(“text/html;charset=utf-8”);</p>
+<p> 这句话的作用是，a.指定out.pringln输出时所用的编码<br>                 b.生成一个消息头content-type:text/html;charset=utf-8  告诉浏览器，返回的数据类型<br>                   是html文档，编码是utf-8，这样聪明的浏览器就会以utf-8的方式来解码</p>
+<p>其实b作用和step1中meta是一样的</p>
+<p>按照上面4步做完以后，不管是页面(html、jsp)或者是servlet都不会出现中文乱码啦(当然，保持一致的编码必须支持中文)</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2012/06/09/Servlet的过滤器和监听器/" itemprop="url">
                   Servlet的过滤器和监听器
                 </a>
@@ -409,7 +520,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
