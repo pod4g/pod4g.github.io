@@ -90,7 +90,7 @@
 <meta property="og:description" content="今天遇到一个奇怪的报错：index.js:73 Uncaught TypeError: (intermediate value)(intermediate value)(...) is not a function
 经过仔细审查代码，发现问题出现在一行代码没有写分号上：
 123456789101112var conf = &amp;#123;       hash:&amp;#123;           lim">
-<meta property="og:updated_time" content="2016-05-12T10:35:40.000Z">
+<meta property="og:updated_time" content="2016-05-12T10:38:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js不写分号的坑">
 <meta name="twitter:description" content="今天遇到一个奇怪的报错：index.js:73 Uncaught TypeError: (intermediate value)(intermediate value)(...) is not a function
@@ -329,7 +329,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
 <p>由于分号引起的语法错误，肯定还有其他情况。至于规律，结合着报错信息，我想是这样的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种可以简化成这样</span></span><br><span class="line"><span class="comment">// 把一个对象当成了function调用，显然是错误的</span></span><br><span class="line">&#123;&#125;()()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种可以简化成这样</span></span><br><span class="line"><span class="comment">// 注意，为了好读，我在后面两个()中间加了空格，</span></span><br><span class="line"><span class="comment">// (function()&#123;&#125;)() 这就是一个IIFE，函数执行完毕，返回undefined</span></span><br><span class="line"><span class="comment">// 然后把undefined当成了函数调用，即 undefined()</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)() ()</span><br></pre></td></tr></table></figure>
-<p>以后要注意，虽然引号在js中是可选的，但是最好还是使用引号，写完代码也要用jshint检查一下有没有语法错误</p>
+<p>以后要注意，虽然分号在js中是可选的，但是最好还是使用分号，写完代码也要用jshint检查一下有没有语法错误</p>
 
       
     </div>
