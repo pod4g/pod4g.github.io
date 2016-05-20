@@ -96,7 +96,7 @@ JavaScript中，共有6种类型，其中5种是基本类型，1种复杂类型�
 5种基本类型中，除了null、undefined外都有相应的包装类。 
 除了5种基本类型之外，所有的类型都是Object类型的。 
 typeof操作符是JavaScript中用以判断类型的操作符，返回">
-<meta property="og:updated_time" content="2016-05-20T08:41:25.000Z">
+<meta property="og:updated_time" content="2016-05-20T08:43:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈JavaScript转型">
 <meta name="twitter:description" content="一、类型介绍 
@@ -345,25 +345,18 @@ typeof操作符是JavaScript中用以判断类型的操作符，返回">
 <p>就是使用了if引起的转型。</p>
 <p>0、NaN、null、undefined、”” –&gt; false </p>
 <p>4、!引起的转型 规则是： !null , !undefined , !’’ , !0 , !NaN –&gt; true </p>
-<p>5、&amp;&amp; 和 || 引起的转型<br>   包含两种情况：<br>      a、两边确实是boolean，经过逻辑运算，返回相应的值。如 true &amp;&amp; false –&gt; false， true || false –&gt; true<br>      b、两边不是boolean 下列写法，大家肯定会常常见到。 </p>
-<pre><code> i、javascript var t = a &amp;&amp; b
-
-    相当于 
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line">  t = b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  t = a; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-ii、javascript return a &amp;&amp; b
+<p>5、&amp;&amp; 和 || 引起的转型<br>   包含两种情况：<br>      a、两边确实是boolean，经过逻辑运算，返回相应的值。如 true &amp;&amp; false –&gt; false， true || false –&gt; true<br>      b、两边不是boolean 下列写法，大家肯定会常常见到。<br>        i、var t = a &amp;&amp; b<br>           相当于<br>           <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line">  t = b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  t = a; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>ii、return a &amp;&amp; b
 相当于 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line">  <span class="keyword">return</span> b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-iii、javascript a &amp;&amp; test()
+iii、a &amp;&amp; test()
 相当于
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
  iiii、var t = a || b
  相当于 
-
-    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  t = a;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">t = b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  t = a;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">t = b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><p>二、其它类型转number 转number共有3个函数：Number()、parseInt()、parseFloat() </p>
 <p>  1、Number()引起的转型 </p>
 <p>   规则是： </p>
