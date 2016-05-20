@@ -269,6 +269,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/24/本地已经存在的项目如何和github发生关联/" itemprop="url">
+                  本地已经存在的项目如何和github发生关联
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-23T18:09:15+00:00" content="2016-04-23">
+              2016-04-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/24/本地已经存在的项目如何和github发生关联/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/本地已经存在的项目如何和github发生关联/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。</p>
+</li>
+<li><p>把修改的文件存入暂存区 git add .  </p>
+</li>
+<li><p>生成一次提交 git commit -m ‘initial commit’ </p>
+</li>
+<li><p>与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add origin <a href="https://github.com/pod4g/sku" target="_blank" rel="external">https://github.com/pod4g/sku</a></p>
+<p>可能需要执行git config –global push.default matching命令，使得push命令默认push到github的同名仓库中</p>
+</li>
+<li><p>把本地项目push到远程github仓库 push -u origin master</p>
+</li>
+</ol>
+<blockquote>
+<p>本地仓库与远程仓库解除关联rm -rf .git删除该仓库的工作树即可<br>  第2、3步可以在第4步之后执行</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/22/Chrome-DEVTools/" itemprop="url">
                   Chrome-DEVTools的NETWORK面板
                 </a>
@@ -1299,120 +1415,6 @@
 </ul>
 <p> 13.<br> <a href="http://dillinger.io/" target="_blank" rel="external">在线markdown编辑</a></p>
 <p> 14.<br> <a href="http://html2jade.org/" target="_blank" rel="external">html2jade在线转换</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/22/基本类型与Object类型/" itemprop="url">
-                  基本类型与Object类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-21T20:16:52+00:00" content="2016-03-21">
-              2016-03-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/22/基本类型与Object类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/22/基本类型与Object类型/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.在《JavaScript高级程序设计》第三版的第23页，作者有很明确的描述：</p>
-<blockquote>
-<p>ECMAScript中有5种简单数据类型(Undefined,Null,Boolean,Number,String)，一种复杂类型(Object)</p>
-</blockquote>
-<p>2.在<a href="http://www.jb51.net/onlineread/JavaScript-Garden-CN/" target="_blank" rel="external">JavaScript秘密花园</a>的对象部分，也有很明确的描述：</p>
-<blockquote>
-<p>JavaScript 中所有变量都是对象，除了两个例外 null 和 undefined</p>
-</blockquote>
-<p>显然这两种说法是矛盾的，那么<figure class="highlight plain"><figcaption><span>bol = true; var num = 1; var str = 'abc'```，其中的```bol,num,str``` 到底是对象还是基本类型？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其实它们是**基本类型**</span><br><span class="line"></span><br><span class="line">### 实验：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"></span><br><span class="line">var num = 1;</span><br><span class="line"> var numObj = new Number(1);</span><br><span class="line"> console.log(num instanceof Number); // false</span><br><span class="line"> console.log(num.constructor); // Number</span><br><span class="line"> console.log(numObj instanceof Number); // true</span><br><span class="line"> console.log(numObj.constructor); // Number</span><br><span class="line"></span><br><span class="line"> var bol = true;</span><br><span class="line"> var bolObj = new Boolean(true);</span><br><span class="line"> console.log(bol instanceof Boolean); // false</span><br><span class="line"> console.log(bol.constructor); // Boolean</span><br><span class="line"> console.log(bolObj instanceof Boolean); // true</span><br><span class="line"> console.log(bolObj.constructor); // Boolean</span><br><span class="line"></span><br><span class="line"> var str = &quot;abc&quot;;</span><br><span class="line"> var strObj = new String(&quot;abc&quot;);</span><br><span class="line"> console.log(str instanceof String); // false</span><br><span class="line"> console.log(str.constructor); // String</span><br><span class="line"> console.log(strObj instanceof String); // true</span><br><span class="line"> console.log(strObj.constructor); // String</span><br></pre></td></tr></table></figure></p>
-<p>记住下面一句话：</p>
-<p><strong>只有在表达式中用作对象时，才会<em>自动包装</em>。典型的就是访问成员的表达式(Member Expression)，比如num.constructor，str.length ，基本类型是没有成员的</strong></p>
-<p>或者说：</p>
-<p><strong>但当成对象来用（调用属性，方法）时，才会调用构造器</strong></p>
-<p>GET到的点在<a href="https://segmentfault.com/q/1010000004655644?_ea=681241" target="_blank" rel="external">https://segmentfault.com/q/1010000004655644?_ea=681241</a></p>
 
           
         
