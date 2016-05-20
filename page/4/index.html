@@ -269,8 +269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/22/Chrome插件开发/" itemprop="url">
-                  Chrome插件开发
+                <a class="post-title-link" href="/2015/11/26/浅谈JavaScript转型/" itemprop="url">
+                  浅谈JavaScript转型
                 </a>
               
             
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-21T20:10:07+00:00" content="2016-01-21">
-              2016-01-21
+            <time itemprop="dateCreated" datetime="2015-11-25T21:09:59+00:00" content="2015-11-25">
+              2015-11-25
             </time>
           </span>
 
@@ -294,8 +294,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/22/Chrome插件开发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/Chrome插件开发/" itemprop="commentsCount"></span>
+                <a href="/2015/11/26/浅谈JavaScript转型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/浅谈JavaScript转型/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,36 +320,67 @@
       
         
           
-            <h1 id="记一次成功的Chrome插件开发"><a href="#记一次成功的Chrome插件开发" class="headerlink" title="记一次成功的Chrome插件开发"></a>记一次成功的Chrome插件开发</h1><p>首先，创建一个文件夹，chrome-dev</p>
-<p>分别创建几个文件：</p>
-<ul>
-<li>index.html</li>
-<li>index.css</li>
-<li>manifest.json</li>
-<li>test.js</li>
-</ul>
+            <h1 id="javascript中的转型"><a href="#javascript中的转型" class="headerlink" title="javascript中的转型"></a>javascript中的转型</h1><p>一、类型介绍 </p>
+<p>JavaScript中，共有6种类型，其中5种是基本类型，1种复杂类型。 </p>
+<p>基本类型：number、boolean、string、null、undefined<br>复杂类型：Object </p>
+<p>5种基本类型中，除了null、undefined外都有相应的包装类。 </p>
+<p>除了5种基本类型之外，所有的类型都是Object类型的。 </p>
+<p>typeof操作符是JavaScript中用以判断类型的操作符，返回6种全小写的字符串，分别是’number’、’boolean’、’string’ 、’object’、’undefined’、’function’。</p>
+<p>其中null类型和Object类型的都返回’object’，function也是Object类型的，但是由于其在JavaScript中的特殊性，所以有必要单独区分！！</p>
+<p> 二、其他类型转boolean </p>
+<p>1、Boolean() 引起的转型<br>  规则是：<br>  非0数字（含Infinity）–&gt; true<br>  Object对象 –&gt; true<br>  非空字符串 –&gt; true<br>  0/NaN –&gt; false<br>  null –&gt; false<br>  undefined –&gt; false<br>  “”  –&gt; false </p>
+<p>2、!! 引起的转型 规则同1。</p>
+<p>   所以平时我们写代码或看别人写的代码时，几乎看不到使用Boolean()这种方式来转型boolean的，一般都是使用 !! 来转 </p>
+<p>3、if引起的转型 规则同1。 </p>
+<p>   常见的这种写法<code>if( a ){ // do something }</code>，</p>
+<p>   就是使用了if引起的转型。</p>
+<p>   0、NaN、null、undefined、”” –&gt; false </p>
+<p>4、!引起的转型 规则是：!null , !undefined , !’’ , !0 , !NaN –&gt; true </p>
+<p>5、&amp;&amp; 和 || 引起的转型 </p>
+<p>包含两种情况： </p>
+<p>  a、两边确实是boolean，经过逻辑运算，返回相应的值。如 true &amp;&amp; false –&gt; false， true || false –&gt; true </p>
+<p>  b、两边不是boolean 下列写法，大家肯定会常常见到。 </p>
+<p>i、var t = a &amp;&amp; b</p>
 <blockquote>
-<p>index.html</p>
+<p>相当于 </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;测试chrome插件&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">你好阿斯顿阿达阿斯顿啊</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line"> t = b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"> t = a; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ii、return a &amp;&amp; b</p>
 <blockquote>
-<p>index.css</p>
+<p>相当于 </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html,body&#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line">  <span class="keyword">return</span> b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>iii、a &amp;&amp; test()</p>
 <blockquote>
-<p><strong>manifest.json(此文件很重要，必须要有)</strong></p>
+<p>相当于</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  &quot;name&quot;: &quot;image counter&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;manifest_version&quot;:2,</span><br><span class="line">  &quot;description&quot;: &quot;by 李彦峰&quot;,</span><br><span class="line">  &quot;permissions&quot;: [&quot;http://*/*&quot;],</span><br><span class="line">  &quot;content_scripts&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">       &quot;matches&quot;:[&quot;http://www.diaox2.com/article/1170.html&quot;],</span><br><span class="line">       &quot;css&quot;:[&quot;index.css&quot;],</span><br><span class="line">       &quot;js&quot;:[&quot;test.js&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>iiii、var t = a || b</p>
 <blockquote>
-<p>test.js</p>
+<p>相当于 </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ;(function()&#123;</span><br><span class="line">    var img = document.getElementsByTagName(&apos;img&apos;);</span><br><span class="line">    console.log(img.length);</span><br><span class="line">    alert(&apos;此页面共有 &apos; + img.length +&quot; 张图片&quot;);</span><br><span class="line">&#125;)(this)</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww2.sinaimg.cn/bmiddle/6fd55a97jw1ezk792lakij21kc0fcgnq.jpg" alt="把创建的chrome插件加入到chrome中"></p>
-<hr>
-<ul>
-<li><a href="https://www.zhihu.com/question/20179805" target="_blank" rel="external">知乎上的开发指南</a></li>
-<li><a href="http://open.chrome.360.cn/extension_dev/overview.html" target="_blank" rel="external">360的翻译</a></li>
-</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t; </span><br><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  t = a;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">t = b;</span><br><span class="line">&#125; </span><br><span class="line"><span class="string">``</span><span class="string">` </span><br><span class="line"></span><br><span class="line">二、其它类型转number 转number共有3个函数：Number()、parseInt()、parseFloat() </span><br><span class="line"></span><br><span class="line">  1、Number()引起的转型 </span><br><span class="line"></span><br><span class="line">   规则是： </span><br><span class="line">   </span><br><span class="line">   true --&gt; 1 false --&gt; 0 </span><br><span class="line">   </span><br><span class="line">   如果字符串中只包含数字 如'123' --&gt; 123</span><br><span class="line">   </span><br><span class="line">   如果字符串中包含有效的浮点数字 如'123.99' --&gt;123.99</span><br><span class="line">   </span><br><span class="line">   如果字符串是有效的十六进制数字 如'0xFF' --&gt; 255</span><br><span class="line">   </span><br><span class="line">   如果字符串是空串 '' --&gt; 0</span><br><span class="line">   </span><br><span class="line">   如果字符串包含上述格式之外字符 如'123a' --&gt; NaN</span><br><span class="line"></span><br><span class="line">   如果是对象 则调用对象的valueOf方法，然后按照上述规则进行转换， </span><br><span class="line"></span><br><span class="line">   如果没有valueOf方法，则调用对象的toString方法，然后按照上述规则进行转换。 </span><br><span class="line"></span><br><span class="line">   如果valueOf和toString都存在，则调用valueOf方法！！！ </span><br><span class="line"></span><br><span class="line">   注意：Number会忽略前导0 </span><br><span class="line"></span><br><span class="line">   2、parseInt/parseFloat引起的转型</span><br><span class="line"></span><br><span class="line">   规则是： null, undefined, '', true, false --&gt; NaN</span><br><span class="line"></span><br><span class="line">   如果字符串中只包含数字 如 '123' --&gt; 123</span><br><span class="line"></span><br><span class="line">   如果字符串中包含有效的浮点数字 如'123.99' parseInt --&gt; 123, parseFloat --&gt; 123.99 </span><br><span class="line"></span><br><span class="line">   如果字符串是有效的十六进制数字 如 parseInt '0xFF' --&gt; 255 parseFloat '0xFF' --&gt; 0 </span><br><span class="line"></span><br><span class="line">   解析字符串，直到某个字符不是数字为止 parseInt '123a' --&gt; 123 parseFloat '123.3a' --&gt; '123.3' </span><br><span class="line"></span><br><span class="line">   如果参数是Object类型，会调用toString()方法。注意：并不会调用valueOf方法！！！ </span><br><span class="line"></span><br><span class="line">   3、+, - ,*, /,%, ++, -- 都会引起类型转换，转换规则同1。 </span><br><span class="line"></span><br><span class="line">  四、其它类型转string </span><br><span class="line"></span><br><span class="line">  1、String()引起的转型 </span><br><span class="line">  </span><br><span class="line">  规则是： </span><br><span class="line">  </span><br><span class="line">  如果值有toString()方法，则调用该方法(无参数)，并返回相应的结果</span><br><span class="line">  </span><br><span class="line">  如果值是null，则返回'null' 如果值是undefined， 返回'undefined'</span><br><span class="line"></span><br><span class="line">  2、+ '' 引起的转型，规则同1。</span><br><span class="line"></span><br><span class="line">  例如</span><br><span class="line"></span><br><span class="line">  `</span><span class="string">``</span>javascript</span><br><span class="line">   <span class="keyword">var</span> str = <span class="literal">null</span> + <span class="string">''</span>; <span class="comment">// 'null'</span></span><br><span class="line">   <span class="keyword">var</span> str = <span class="literal">undefined</span> + <span class="string">''</span>; <span class="comment">// 'undefined'</span></span><br><span class="line">   <span class="keyword">var</span> str = &#123;toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="string">'i am a object'</span>&#125;&#125; + <span class="string">''</span>; <span class="comment">// 'i am a object'</span></span><br></pre></td></tr></table></figure>
+<p>  五、包装类型 </p>
+<p>  var num = new Number(123) 转型规则同Number()</p>
+<p>  var bool = new Boolean(true) 转型规则同Boolean()</p>
+<p>  var str = new String(‘123a’) 转型规则同String()</p>
+<p>  <strong>包装类型转换大招：</strong> var val = Object(arg) 如果arg是Object类型，原样返回，如果arg是number，boolean，string，则返回相应的包装实例 如果arg是null，undefined，则返回 {} </p>
+<p>  注意：var val = new Object(arg) 跟不带new的结果一致！！！ </p>
+<p>  六、toString() 和 valueOf() 调用问题 </p>
+<p>  +,-,*,/,%,++,–,Number,isNaN,isFinite 会导致这两个方法被调用，valueOf存在就调用valueOf，不存在就调用toString，两者都存在，调用valueOf</p>
+<p>  parseInt/parseFloat/String() 会导致toString方法被调用。。并不会调用valueOf！！！</p>
+<p>  七、&gt;、&gt;=、&lt;、&lt;=引起的转换</p>
+<p>  规则是：</p>
+<p>  如果两个操作数都是数值，则执行数值比较 如果两个操作数都是字符串，则比较两个字符串对应的字符编码值 </p>
+<p>  如果一个操作数是数值，则将另外一个操作数转换成一个数值，然后执行比较 如 2 &gt; ‘1’ ，会把’1’ 转成 1，然后和2比较 </p>
+<p>  如果一个操作数是对象，则调用这个对象的valueOf方法，用得到的结果，按照前3条的规则转换之后执行 比较，如果对象没有valueOf方法，则调用toString方法，用得到的结果，按照前3条的规则转换之后执行 比较。 </p>
+<p>  如果一个操作数是boolean值，则先将七转换为数值，然后执行比较。true –&gt; 1、false –&gt; 0。</p>
+<p>  八、== 引起的转型</p>
+<p>  规则是：如果有一个操作数是NaN，马上返回false。 </p>
+<p>  如果有一个操作数是boolean值，则在比较相等性之前，先转成数值，false转0，true转1。 </p>
+<p>  如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转为数值。 </p>
+<p>  如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf方法，用得到的基本类型值按照前面 的规则进行比较。 null == undefined –&gt; true </p>
+<p>  如果两个操作数是对象，则比较它们是不是同一个对象，如果两个操作数都指向同一个对象，则相等 操作符返回true，否则，返回false</p>
 
           
         

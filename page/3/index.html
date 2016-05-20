@@ -269,120 +269,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/22/基本类型与Object类型/" itemprop="url">
-                  基本类型与Object类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-21T20:16:52+00:00" content="2016-03-21">
-              2016-03-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/22/基本类型与Object类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/22/基本类型与Object类型/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.在《JavaScript高级程序设计》第三版的第23页，作者有很明确的描述：</p>
-<blockquote>
-<p>ECMAScript中有5种简单数据类型(Undefined,Null,Boolean,Number,String)，一种复杂类型(Object)</p>
-</blockquote>
-<p>2.在<a href="http://www.jb51.net/onlineread/JavaScript-Garden-CN/" target="_blank" rel="external">JavaScript秘密花园</a>的对象部分，也有很明确的描述：</p>
-<blockquote>
-<p>JavaScript 中所有变量都是对象，除了两个例外 null 和 undefined</p>
-</blockquote>
-<p>显然这两种说法是矛盾的，那么<figure class="highlight plain"><figcaption><span>bol = true; var num = 1; var str = 'abc'```，其中的```bol,num,str``` 到底是对象还是基本类型？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其实它们是**基本类型**</span><br><span class="line"></span><br><span class="line">### 实验：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"></span><br><span class="line">var num = 1;</span><br><span class="line"> var numObj = new Number(1);</span><br><span class="line"> console.log(num instanceof Number); // false</span><br><span class="line"> console.log(num.constructor); // Number</span><br><span class="line"> console.log(numObj instanceof Number); // true</span><br><span class="line"> console.log(numObj.constructor); // Number</span><br><span class="line"></span><br><span class="line"> var bol = true;</span><br><span class="line"> var bolObj = new Boolean(true);</span><br><span class="line"> console.log(bol instanceof Boolean); // false</span><br><span class="line"> console.log(bol.constructor); // Boolean</span><br><span class="line"> console.log(bolObj instanceof Boolean); // true</span><br><span class="line"> console.log(bolObj.constructor); // Boolean</span><br><span class="line"></span><br><span class="line"> var str = &quot;abc&quot;;</span><br><span class="line"> var strObj = new String(&quot;abc&quot;);</span><br><span class="line"> console.log(str instanceof String); // false</span><br><span class="line"> console.log(str.constructor); // String</span><br><span class="line"> console.log(strObj instanceof String); // true</span><br><span class="line"> console.log(strObj.constructor); // String</span><br></pre></td></tr></table></figure></p>
-<p>记住下面一句话：</p>
-<p><strong>只有在表达式中用作对象时，才会<em>自动包装</em>。典型的就是访问成员的表达式(Member Expression)，比如num.constructor，str.length ，基本类型是没有成员的</strong></p>
-<p>或者说：</p>
-<p><strong>但当成对象来用（调用属性，方法）时，才会调用构造器</strong></p>
-<p>GET到的点在<a href="https://segmentfault.com/q/1010000004655644?_ea=681241" target="_blank" rel="external">https://segmentfault.com/q/1010000004655644?_ea=681241</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/20/再探闭包/" itemprop="url">
                   再探闭包
                 </a>
@@ -1489,6 +1375,136 @@
 <p>如果不是一个循环，而是一个定时器呢？答案是，当时间足够小时，会先执行定时器，当时间很大，那么就不会执行</p>
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>测试location.href执行时机<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">value</span>=<span class="string">"前往慕课网"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">        btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            location.href = <span class="string">"http://imooc.com"</span>;</span><br><span class="line">            <span class="comment">// 当时间为0或100执行定时器再跳转，当时间为1000时，先跳转。</span></span><br><span class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                alert(<span class="number">2</span>);</span><br><span class="line">            &#125;,<span class="number">100</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="literal">false</span>)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/22/Chrome插件开发/" itemprop="url">
+                  Chrome插件开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-21T20:10:07+00:00" content="2016-01-21">
+              2016-01-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/22/Chrome插件开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/Chrome插件开发/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="记一次成功的Chrome插件开发"><a href="#记一次成功的Chrome插件开发" class="headerlink" title="记一次成功的Chrome插件开发"></a>记一次成功的Chrome插件开发</h1><p>首先，创建一个文件夹，chrome-dev</p>
+<p>分别创建几个文件：</p>
+<ul>
+<li>index.html</li>
+<li>index.css</li>
+<li>manifest.json</li>
+<li>test.js</li>
+</ul>
+<blockquote>
+<p>index.html</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;测试chrome插件&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">你好阿斯顿阿达阿斯顿啊</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>index.css</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">html,body&#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>manifest.json(此文件很重要，必须要有)</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  &quot;name&quot;: &quot;image counter&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;manifest_version&quot;:2,</span><br><span class="line">  &quot;description&quot;: &quot;by 李彦峰&quot;,</span><br><span class="line">  &quot;permissions&quot;: [&quot;http://*/*&quot;],</span><br><span class="line">  &quot;content_scripts&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">       &quot;matches&quot;:[&quot;http://www.diaox2.com/article/1170.html&quot;],</span><br><span class="line">       &quot;css&quot;:[&quot;index.css&quot;],</span><br><span class="line">       &quot;js&quot;:[&quot;test.js&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>test.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ;(function()&#123;</span><br><span class="line">    var img = document.getElementsByTagName(&apos;img&apos;);</span><br><span class="line">    console.log(img.length);</span><br><span class="line">    alert(&apos;此页面共有 &apos; + img.length +&quot; 张图片&quot;);</span><br><span class="line">&#125;)(this)</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww2.sinaimg.cn/bmiddle/6fd55a97jw1ezk792lakij21kc0fcgnq.jpg" alt="把创建的chrome插件加入到chrome中"></p>
+<hr>
+<ul>
+<li><a href="https://www.zhihu.com/question/20179805" target="_blank" rel="external">知乎上的开发指南</a></li>
+<li><a href="http://open.chrome.360.cn/extension_dev/overview.html" target="_blank" rel="external">360的翻译</a></li>
+</ul>
 
           
         
