@@ -96,7 +96,7 @@ JavaScript中，共有6种类型，其中5种是基本类型，1种复杂类型�
 5种基本类型中，除了null、undefined外都有相应的包装类。 
 除了5种基本类型之外，所有的类型都是Object类型的。 
 typeof操作符是JavaScript中用以判断类型的操作符，返回">
-<meta property="og:updated_time" content="2016-05-20T08:47:57.000Z">
+<meta property="og:updated_time" content="2016-05-20T08:49:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈JavaScript转型">
 <meta name="twitter:description" content="一、类型介绍 
@@ -361,8 +361,9 @@ typeof操作符是JavaScript中用以判断类型的操作符，返回">
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123; </span><br><span class="line">  <span class="keyword">return</span> b;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>iii、a &amp;&amp; test()</p>
 <blockquote>
-<p>相当于<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>相当于</p>
 </blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a)&#123;</span><br><span class="line">  test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>iiii、var t = a || b</p>
 <blockquote>
 <p>相当于 </p>
