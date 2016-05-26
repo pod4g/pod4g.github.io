@@ -269,6 +269,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/26/angular的一个坑/" itemprop="url">
+                  angular的一个坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-26T14:55:22+00:00" content="2016-05-26">
+              2016-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/26/angular的一个坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/angular的一个坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="在开发积分商城后台前端程序时，发现了一个很奇怪的问题。"><a href="#在开发积分商城后台前端程序时，发现了一个很奇怪的问题。" class="headerlink" title="在开发积分商城后台前端程序时，发现了一个很奇怪的问题。"></a>在开发积分商城后台前端程序时，发现了一个很奇怪的问题。</h1><h3 id="左侧listView区"><a href="#左侧listView区" class="headerlink" title="左侧listView区"></a>左侧listView区</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"user-list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"user"</span> <span class="attr">ng-repeat</span>=<span class="string">"user in dataFetch.users"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">data-uid</span>=<span class="string">"&#123;&#123;user.uid&#125;&#125;"</span> <span class="attr">ng-click</span>=<span class="string">"eventHandler.paddingRight(user)"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">ng-src</span>=<span class="string">"&#123;&#123;user.auth_info[user.auth_info.platform].head_pic&#125;&#125;"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"nick-name"</span> <span class="attr">ng-bind</span>=<span class="string">"user.auth_info[user.auth_info.platform].nick_name"</span>&gt;</span>这是昵称<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"uid"</span> <span class="attr">ng-bind</span>=<span class="string">"user.uid"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="右侧数据操作区"><a href="#右侧数据操作区" class="headerlink" title="右侧数据操作区"></a>右侧数据操作区</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"userData.score"</span> <span class="attr">disabled</span> <span class="attr">id</span>=<span class="string">"score"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="左右两区通过-eventHandler-paddingRight-user-来传递数据"><a href="#左右两区通过-eventHandler-paddingRight-user-来传递数据" class="headerlink" title="左右两区通过 eventHandler.paddingRight(user) 来传递数据"></a>左右两区通过 <code>eventHandler.paddingRight(user)</code> 来传递数据</h3><p>当管理员点击左侧的listView中的任意一个item，触发paddingRight，并把user作为参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventHandler = &#123;</span><br><span class="line">    <span class="comment">// userData是右侧数据操作区的VM</span></span><br><span class="line">    paddingRight:<span class="function"><span class="keyword">function</span>(<span class="params">user</span>)</span>&#123;</span><br><span class="line">        $scope.userData = user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是发现了一个奇怪的问题，就是在右侧数据操作区，更改了userData.score，左侧listView区中的user.score竟然也跟着发发生了变化。</p>
+<p>这种情况并不是我想要的，我想要的是：listView区，只负责数据的展示。数据操作区负责数据的操作，且操作的是userData，保存时，也是保存的userData，即listView区中的user和操作区的userData是两个独立的VM，两者并不会绑定同一个view。</p>
+<p>经过各种实验，终于找到了解除user和userData之间关联的办法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 深拷贝一个user对象才可以</span></span><br><span class="line">$scope.userData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(user));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 每次new一个Object也不行</span></span><br><span class="line"><span class="comment">// $scope.userData = new Object(user);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// delete掉angular的标识是没有效果的</span></span><br><span class="line"><span class="comment">// 首先删除</span></span><br><span class="line"><span class="comment">// delete $scope.userData;</span></span><br><span class="line"><span class="comment">// 再添加</span></span><br><span class="line"><span class="comment">// delete user.$$hashKey;</span></span><br></pre></td></tr></table></figure>
+<p>后记：<code>$scope.userData = user</code>这句代码使得<code>$scope.userData</code>和<code>user</code>，指向了同一个object,<br>所以我在操作区更改<code>$scope.userData.score</code>，也会引起listView区的<code>user.score</code>的变化。</p>
+<p>记住：在view中绑定事件时，传递的参数其实就是$scope上的同名属性指向的object，在事件回调里，并不会产生一个新的object。要是想要产生新的object就要使用深拷贝了。。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/26/npm配置/" itemprop="url">
                   npm配置
                 </a>
@@ -1347,134 +1457,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/25/多个github帐号的切换/" itemprop="url">
-                  多个github帐号的切换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T11:57:33+00:00" content="2016-04-25">
-              2016-04-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/25/多个github帐号的切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/多个github帐号的切换/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>我有两个Gighub账户，一个是 <a href="https://github.com/MyNameIsJimGreen" target="_blank" rel="external">MyNameIsJimGreen</a> 一个是 <a href="https://github.com/pod4g" target="_blank" rel="external">pod4g</a> ，一个帐号是学习、私人项目使用，一个是工作使用。</p>
-<p>但是现在有一个问题，如何在一个电脑上同时使用这两个账户呢？</p>
-<p><strong>对于Gighub来说，两个帐号是不能添加同一个SSH公钥的（Key is already in use）。</strong></p>
-<p><strong>两个帐号也不能添加同一个email。</strong></p>
-<p><strong>每个github帐号的ssh key并不一定非要使用注册时（绑定）的邮箱</strong></p>
-<p>MyNameIsJimGreen对应的邮箱是：455322185@qq.com<br>pod4g对应的邮箱是           ：1601942611@qq.com</p>
-<p>我想默认使用pod4g账户</p>
-<p>操作系统：Mac OSX EI Capitan 10.11.4<br>terminal：iTerm2<br>相关文章：<a href="http://blog.csdn.net/itmyhome1990/article/details/42643233" target="_blank" rel="external">http://blog.csdn.net/itmyhome1990/article/details/42643233</a></p>
-<hr>
-<h3 id="下面开始配置多个gihub帐号在同一台机器上使用"><a href="#下面开始配置多个gihub帐号在同一台机器上使用" class="headerlink" title="下面开始配置多个gihub帐号在同一台机器上使用"></a>下面开始配置多个gihub帐号在同一台机器上使用</h3><p><strong>1</strong>.首先生成pod4g的ssh key<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;1601942611@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>2</strong>.把生成的位于 ~/.ssh/ 下的 id_rsa.pub 公钥文件内的内容添加到pod4g的帐号中（在github网站操作）</p>
-<p><strong>3</strong>.验证是否验证成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<p>到这一步，pod4g的配置已经完成了</p>
-<hr>
-<p><strong>4</strong>.生成 MyNameIsJimGreen的ssh key<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;455322185@qq.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p><strong>5</strong>.生成key时，不要使用默认名称，如果使用默认的话，会覆盖掉pod4g的key pairs<br>   假如使用的key名称为 jim_rsa</p>
-<p><strong>6</strong>.在  ~/.ssh/ 下，vim config<br>   内容为：<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 第一个帐号 pod4g 默认使用的账户</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"># 第二个帐号 MyNameIsJimGreen</span><br><span class="line">Host github_jim</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~/.ssh/jim_rsa</span><br></pre></td></tr></table></figure></p>
-<p><strong>7</strong>.把生成的位于 ~/.ssh/ 下的 jim_rsa.pub 公钥文件内的内容添加到MyNameIsJimGreen的帐号中（在github网站操作）</p>
-<p><strong>8</strong>.验证是否验证成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github_jim</span><br></pre></td></tr></table></figure></p>
-<p>此时，在一台电脑上我就可以使用两个github帐号了。。</p>
-<p>不过，在第一次使用时，</p>
-<ul>
-<li><p>给MyNameIsJimGreen的管理的项目指定远程仓库（已经存在的项目也需要这么做） git remote add origin_jim git@github_jim:MyNameIsJimGreen/Vuri-BoyKa.git</p>
-</li>
-<li><p>把本地的需要MyNameIsJimGreen的管理的项目push到上一步指定的远程仓库中（在push之前可能需要add和commit） git push -u origin_jim master</p>
-</li>
-</ul>
-<p>以后使用的时候，就按照以前使用github的方式来使用即可。。</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1520,7 +1502,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1530,7 +1512,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
