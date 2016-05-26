@@ -269,6 +269,115 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/26/npm配置/" itemprop="url">
+                  npm配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-26T10:34:05+00:00" content="2016-05-26">
+              2016-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/26/npm配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/npm配置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="npm-help-install"><a href="#npm-help-install" class="headerlink" title="npm help install"></a>npm help install</h3><blockquote>
+<p>Packages are dropped into the node_modules folder under the prefix. Global installs on Unix systems go to {prefix}/lib/node_modules odules. Global installs on Windows go to {prefix}/node_modules(that is,no lib folder)</p>
+</blockquote>
+<h3 id="npm-config-ls-l"><a href="#npm-config-ls-l" class="headerlink" title="npm config ls -l"></a>npm config ls -l</h3><p>可列出npm所有的配置</p>
+<h3 id="查看某项配置"><a href="#查看某项配置" class="headerlink" title="查看某项配置"></a>查看某项配置</h3><p>例如查看prefix配置 <code>npm config ls -l | grep prefix -i</code> or <code>npm config get prefix</code></p>
+<p>修改prefix配置 <code>npm config set prefix &quot;/local&quot;</code></p>
+<p>类Unix系统，</p>
+<p>例如OSX 默认全局安装包在<code>/usr/local/lib/node_modules</code>下，node二进制程序在<code>/usr/local/bin/node</code>下</p>
+<p>linux下默认全局安装包在<code>/usr/lib/node_modules</code>下，node二进制程序在<code>/usr/bin/nodejs</code></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/13/js不写分号的坑/" itemprop="url">
                   js不写分号的坑
                 </a>
@@ -1366,122 +1475,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/24/本地已经存在的项目如何和github发生关联/" itemprop="url">
-                  本地已经存在的项目如何和github发生关联
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T18:09:15+00:00" content="2016-04-23">
-              2016-04-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/24/本地已经存在的项目如何和github发生关联/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/本地已经存在的项目如何和github发生关联/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>切换到本地项目地址 git init 初始化项目。该步骤会创建一个 .git 文件夹是附属于该仓库的工作树。</p>
-</li>
-<li><p>把修改的文件存入暂存区 git add .  </p>
-</li>
-<li><p>生成一次提交 git commit -m ‘initial commit’ </p>
-</li>
-<li><p>与远程仓库发生关联 git remote add origin git@github.com:pod4g/sku.git 或者 git remote add origin <a href="https://github.com/pod4g/sku" target="_blank" rel="external">https://github.com/pod4g/sku</a></p>
-<p>可能需要执行git config –global push.default matching命令，使得push命令默认push到github的同名仓库中</p>
-</li>
-<li><p>把本地项目push到远程github仓库 push -u origin master</p>
-</li>
-</ol>
-<blockquote>
-<p>本地仓库与远程仓库解除关联rm -rf .git删除该仓库的工作树即可<br>  第2、3步可以在第4步之后执行</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1527,7 +1520,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

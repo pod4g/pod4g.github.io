@@ -269,6 +269,115 @@
             
               
                 
+                <a class="post-title-link" href="/2012/09/13/servlet操作cookie/" itemprop="url">
+                  servlet操作cookie
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2012-09-12T20:32:06+00:00" content="2012-09-12">
+              2012-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2012/09/13/servlet操作cookie/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/09/13/servlet操作cookie/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> 通常在servlet或者jsp中需要操作cookie，这样在每一处需要操作cookie的地方都会出现重复代码，为了精简代码，常常写一个cookie操作的工具类 CookieUtil</p>
+<p> 代码如下:</p>
+<p> public class CookieUtil{</p>
+<p>   private static String default_path=”/appname”;//cookie的默认路径为当前项目<br>   private static int default_age =365<em>24</em>3600;//cookie的默认生存时间为1年</p>
+<p>   //此方法实现了在response中放入cookie的功能，指定放入的数据（name和value），及指定的生存时间<br>   public static void addCookie(String name,String value,int age,HttpServletResponse response){<br>      Cookie cookie = new Cookie(name,URLEcoder.ecoder(value,”utf-8”));<br>      cookie.setMaxAge(age);<br>      cookie.setPath(default_path);<br>      response.addCookie(cookie);<br>   }</p>
+<p>   //此方法是上面方法的重载方法，少一个生存时间的参数，使用默认生存时间<br>   public static void addCookie(String name,String value,HttpServletResponse response){<br>      addCookie(name,value,default_age,response);<br>   }</p>
+<p>   //此方法根据cookie的name查找cookie，如果找到就返回相应的value，否则返回null<br>   public static String findCookie(String name,HttpServletRequest request){<br>      String value = null;<br>      Cookie[] cookies = request.getCookies();<br>      if(cookies!=null){<br>         for(Cookie cookie:cookies){<br>           if(cookie.getName().equals(name)){<br>             value = URLDecoder.decode(cookie.getVlaue(),”utf-8”);<br>           }<br>         }<br>      }<br>           return value;<br>   }</p>
+<p>   //此方法实现删除cookie的功能<br>   public static void deleteCookie(String name,HttpServletResponse response){<br>      Cookie cookie = new Cookie(name,””);<br>      cookie.setMaxAge(0);<br>      response.addCookie(cookie);<br>   }</p>
+<p> }</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2012/07/30/web页面中的中文乱码解决办法/" itemprop="url">
                   web页面中的中文乱码解决办法
                 </a>
@@ -520,7 +629,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
