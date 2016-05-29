@@ -329,6 +329,7 @@
 <li>.tar.bz2</li>
 </ul>
 <p>下列所有的压缩命令和打包命令，如果压缩文件和打包文件前面有路径，就压缩或打包到指定的路径下<br>如果路径不存在就报错。</p>
+<p>压缩率：.tar.bz2 &gt; .tar.gz &gt; .zip</p>
 <h3 id="zip格式"><a href="#zip格式" class="headerlink" title=".zip格式"></a>.zip格式</h3><p>压缩命令为：zip 压缩文件名 源文件</p>
 <p>例如：</p>
 <ol>
@@ -376,15 +377,6 @@
 <p> 选项：<br> -x 解打包</p>
 <p> 例如： tar -xvf test.tar</p>
 <p> tar命令不区分文件和目录</p>
-<h3 id="tar-gz"><a href="#tar-gz" class="headerlink" title=".tar.gz"></a>.tar.gz</h3><p> 压缩命令：</p>
-<p> tar -zcvf 压缩包名.tar.gz 源文件</p>
-<p> 压缩多个文件或目录：</p>
-<p> tar -zcvf 压缩包名.tar.gz 源文件1 源文件2 目录</p>
-<p> 选项：<br> -z 压缩为.tar.gz格式</p>
-<p> 解压缩命令：</p>
-<p> tar -zxvf 压缩包名.tar.gz</p>
-<p> 解压缩到指定目录：<br> tar -zxvf 压缩报名.tar.gz -C /tmp</p>
-<p> 选项：<br> -x 解压缩.tar.gz格式</p>
 <h3 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title=".tar.bz2"></a>.tar.bz2</h3><p>压缩命令：</p>
 <p>tar -jcvf 压缩包名.tar.bz2 源文件</p>
 <p>压缩多个文件或目录：</p>
@@ -395,6 +387,15 @@
 <p>解压缩到指定目录：</p>
 <p>tar -jxvf 压缩报名.tar.bz2 -C /tmp</p>
 <p>选项：<br>-x 解压缩.tar.bz2格式</p>
+<h3 id="tar-gz"><a href="#tar-gz" class="headerlink" title=".tar.gz"></a>.tar.gz</h3><p> 压缩命令：</p>
+<p> tar -zcvf 压缩包名.tar.gz 源文件</p>
+<p> 压缩多个文件或目录：</p>
+<p> tar -zcvf 压缩包名.tar.gz 源文件1 源文件2 目录</p>
+<p> 选项：<br> -z 压缩为.tar.gz格式</p>
+<p> 解压缩命令：</p>
+<p> tar -zxvf 压缩包名.tar.gz</p>
+<p> 解压缩到指定目录：<br> tar -zxvf 压缩报名.tar.gz -C /tmp</p>
+<p> 选项：<br> -x 解压缩.tar.gz格式</p>
 
           
         
