@@ -269,6 +269,115 @@
             
               
                 
+                <a class="post-title-link" href="/2013/02/15/Statement和PreparedStatement的区别/" itemprop="url">
+                  Statement和PreparedStatement的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-02-14T20:28:35+00:00" content="2013-02-14">
+              2013-02-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/02/15/Statement和PreparedStatement的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/02/15/Statement和PreparedStatement的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,<br>Statement:</p>
+<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> Statement stmt = con.createStatement();<br> ResultSet rs = stmt.executeQuery(sql);</p>
+<p>PreparedStatement:</p>
+<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> PreparedStatement pstmt = con.preparedStatement(sql);<br> ResultSet rs = pstmt.executeQuery();</p>
+<p>片断2和片断1的区别在于，后者使用了PreparedStatement对象，而前者是普通的Statement对象。<br>PreparedStatement对象不仅包含了SQL语句，而且大多数情况下这个语句已经被预编译过，因而当其执行时，只需DBMS运行SQL语句，而不必先编译。当你需要执行Statement对象多次的时候，PreparedStatement对象将会大大降低运行时间，当然也加快了访问数据库的速度。</p>
+<p>这种转换也给你带来很大的便利，不必重复SQL语句的句法，而只需更改其中变量的值，便可重新执行SQL语句。选择PreparedStatement对象与否，在于相同句法的SQL语句是否执行了多次，而且两次之间的差别仅仅是变量的不同。如果仅仅执行了一次的话，它应该和普通的对象毫无差异，体现不出它预编译的优越性。</p>
+<p>5.执行许多SQL语句的JDBC程序产生大量的Statement和PreparedStatement对象。通常认为PreparedStatement对象比Statement对象更有效,特别是如果带有不同参数的同一SQL语句被多次执行的时候。PreparedStatement对象允许数据库预编译SQL语句，这样在随后的运行中可以节省时间并增加代码的可读性。</p>
+<p>然而，在Oracle环境中，开发人员实际上有更大的灵活性。当使用Statement或PreparedStatement对象时，Oracle数据库会缓存SQL语句以便以后使用。在一些情况下,由于驱动器自身需要额外的处理和在Java应用程序和Oracle服务器间增加的网络活动，执行PreparedStatement对象实际上会花更长的时间。</p>
+<p>使用PreparedStatement比Statement相对安全，Statement使用的sql一般是通过加号拼接而成的，这就给用户提供了利用sql注入的机会，用户可以构造一些数据，如 1’ or ‘1 或者 1 or 1=1 或者 1’  or  ‘1’=’1  就可能会使sql的结构发生变化，从而达到sql注入的目的（本人亲自测试过），所以，当考虑到安全性时，应使用PreparedStatement，当然，如果你使用PreparedStatement的时候，你的sql语句还是用加号拼接完成的，那么，就会和上面的情况是一样的。。防止sql注入，用PreparedStatement，不用加号拼接字符串，用“？”占位，然后再给“？”赋值，即可防止sql注入，因为这样就把sql写死了，该啥样的结构就是啥样的结构，所以用户想构造sql，是不可能的</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2012/10/12/java高性能编程/" itemprop="url">
                   java高性能编程
                 </a>
@@ -731,7 +840,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

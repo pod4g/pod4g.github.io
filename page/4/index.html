@@ -269,6 +269,202 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/03/linux学习/" itemprop="url">
+                  linux学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-02T20:07:15+00:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/03/linux学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/linux学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a>Linux学习笔记</h1><h2 id="一、linux（MAC）上各种快捷键"><a href="#一、linux（MAC）上各种快捷键" class="headerlink" title="一、linux（MAC）上各种快捷键"></a>一、linux（MAC）上各种快捷键</h2><p>1.vi翻滚命令</p>
+<ul>
+<li>j &amp; Ctrl+n 向下滚动一行 </li>
+<li><p>k &amp; Ctrl+p 向上滚动一行 Ctrl+p</p>
+<ul>
+<li>h 向左移动一个字符</li>
+<li><p>l 向右移动一个字符</p>
+</li>
+<li><p>ctrl + f(front) 向下滚动一屏</p>
+</li>
+<li><p>ctrl + b(back)  向上滚动一屏</p>
+</li>
+<li><p>ctrl + d(down)  向下滚动半屏  </p>
+</li>
+<li>ctrl + u(up)    向上滚动半屏</li>
+</ul>
+</li>
+</ul>
+<p>2.ctrl + a 切换到命令行开始</p>
+<p>3.ctrl + e 切换到命令行结尾</p>
+<p>4.ctrl + l 清屏</p>
+<p>5.ctrl + u 删除光标位置到开头的所有字符</p>
+<p>6.ctrl + k 删除光标位置到结尾的所有字符</p>
+<p>7.ctrl + y 粘贴刚才删除的字符（ctrl＋ｕ和 ctrl+k删除的）</p>
+<p>8.ctrl + c 终止当前命令</p>
+<p>9.ctrl + d 退出shell</p>
+<p>10.ctrl + z 转入后台运行</p>
+<p>11.!! 重复执行刚才最后一条命令</p>
+<p>12.history列出所有历史命令</p>
+<p>13.!number 执行第number条历史命令</p>
+<hr>
+<h2 id="二、常用命令（与MAC命令通用）"><a href="#二、常用命令（与MAC命令通用）" class="headerlink" title="二、常用命令（与MAC命令通用）"></a>二、常用命令（与MAC命令通用）</h2><h3 id="1-文件查找命令"><a href="#1-文件查找命令" class="headerlink" title="1.文件查找命令"></a>1.文件查找命令</h3><ul>
+<li><p>find 查找范围 [参数] 被查找内容</p>
+<ul>
+<li>find ./ -name index.html  在当前目录下查找名字为index.html的文件</li>
+<li>find ~/work/webapp -user liyanfeng  在家目录下的work/webapp目录下，查找属于用户liyanfeng的文件</li>
+<li><p>find / -nouser 在根目录下查找没有所属用户的文件（一般为垃圾文件，也有可能是系统产生的文件）</p>
+</li>
+<li><p>find / -mtime +10  在根目录下查找在10天前修改的文件</p>
+</li>
+<li>find / -mtime -10  在根目录下查找在10天内修改的文件</li>
+<li><p>find / -mtime 10  在根目录下查找在10天时修改的文件</p>
+</li>
+<li><p>find / -ctime +10  在根目录下查找在10天前创建的文件</p>
+</li>
+<li>find / -ctime -10  在根目录下查找在10天内创建的文件</li>
+<li><p>find / -ctime 10  在根目录下查找在10天时创建的文件</p>
+</li>
+<li><p>find / -atime +10  在根目录下查找在10天前访问的文件</p>
+</li>
+<li>find / -atime -10  在根目录下查找在10天内访问的文件</li>
+<li><p>find / -atime 10  在根目录下查找在10天时访问的文件</p>
+</li>
+<li><p>find ~ -size +25k  在家目录下查找大于25Kb的文件</p>
+</li>
+<li>find ~ -size -25k  在家目录下查找小于25Kb的文件</li>
+<li><p>find ~ -size 25k  在家目录下查找等于25Kb的文件</p>
+</li>
+<li><p>find ~ -size +25M  在家目录下查找大小大于25Mb的文件</p>
+</li>
+<li>find ~ -size -25M  在家目录下查找大小小于25Mb的文件</li>
+<li><p>find ~ -size 25M  在家目录下查找大小等于25Mb的文件</p>
+</li>
+<li><p>find ~ -size +25k -a -50k 在家目录下查找大小大于25Kb且小于50Kb的文件</p>
+</li>
+<li>find ~ -size +25k -a -size -50k -a -user liyanfeng 在家目录下查找大小大于25Kb且小于50Kb的文件且属于用户liyanfeng的文件</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>locate 文件名</p>
+<ul>
+<li>优点：此查找命令相对于find要快多了</li>
+<li>缺点：没有find命令的功能多，且只能根据文件名查找</li>
+<li>未完待续</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-字符串查找命令"><a href="#2-字符串查找命令" class="headerlink" title="2. 字符串查找命令"></a>2. 字符串查找命令</h3><ul>
+<li><p>grep 要查找的字符串 文件</p>
+<ul>
+<li>grep liyanfeng ~/node.txt  在node.txt下查找字符串liyanfeng，会列出来所有含有该字符串的行</li>
+<li>grep -i liyanfeng ~/node.txt 在node.txt下查找字符串liyanfeng，忽略大小写，会列出来所有含有该字符串的行</li>
+<li>grep -v liyanfeng ~/node.txt在node.txt下查找不包含字符串liyanfeng的行</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-压缩与解压缩命令"><a href="#3-压缩与解压缩命令" class="headerlink" title="3. 压缩与解压缩命令"></a>3. 压缩与解压缩命令</h3><blockquote>
+<p>linux下主要有3种压缩方式：<em>zip</em>、<em>gzip</em>、<em>bzip2</em>，对应的文件格式分别为：<em>.zip</em>、<em>.gz</em>、<em>.bz2</em></p>
+<p>zip可以压缩文件和目录，而gzip只能压缩文件（当压缩目录时，压缩的是目录内的文件），bzip2也是只能压缩文件，它压缩目录时，索性就报错</p>
+<p>所以在压缩之前，先要学会 <em>打包</em> ，linux中有可以把目录<em>打包</em>成文件的<code>tar</code>命令</p>
+</blockquote>
+<h2 id="登录服务器不用密码"><a href="#登录服务器不用密码" class="headerlink" title="登录服务器不用密码"></a>登录服务器不用密码</h2><p>1.ssh-keygen -t [rsa|dsa] 在本机生成两个文件/User/liyanfeng/.ssh/id_dsa &amp; /User/liyanfeng/.ssh/id_rsa.pub</p>
+<p>2.cd /User/liyanfeng/.ssh/ &amp; scp id_rsa.pub user@xxx.xxx.xxx.xxx:~/.ssh</p>
+<p>3.登录到user@xxx.xxx.xxx.xxx &amp; cd ~/.ssh</p>
+<p>4.cat id_dsa.pub &gt;&gt; authorized_keys &amp; rm id_rsa.pub</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/02/location-href跳转的时机/" itemprop="url">
                   location.href跳转的时机
                 </a>
@@ -1330,115 +1526,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/02/15/Statement和PreparedStatement的区别/" itemprop="url">
-                  Statement和PreparedStatement的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-02-14T20:28:35+00:00" content="2013-02-14">
-              2013-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/02/15/Statement和PreparedStatement的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/02/15/Statement和PreparedStatement的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,<br>Statement:</p>
-<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> Statement stmt = con.createStatement();<br> ResultSet rs = stmt.executeQuery(sql);</p>
-<p>PreparedStatement:</p>
-<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> PreparedStatement pstmt = con.preparedStatement(sql);<br> ResultSet rs = pstmt.executeQuery();</p>
-<p>片断2和片断1的区别在于，后者使用了PreparedStatement对象，而前者是普通的Statement对象。<br>PreparedStatement对象不仅包含了SQL语句，而且大多数情况下这个语句已经被预编译过，因而当其执行时，只需DBMS运行SQL语句，而不必先编译。当你需要执行Statement对象多次的时候，PreparedStatement对象将会大大降低运行时间，当然也加快了访问数据库的速度。</p>
-<p>这种转换也给你带来很大的便利，不必重复SQL语句的句法，而只需更改其中变量的值，便可重新执行SQL语句。选择PreparedStatement对象与否，在于相同句法的SQL语句是否执行了多次，而且两次之间的差别仅仅是变量的不同。如果仅仅执行了一次的话，它应该和普通的对象毫无差异，体现不出它预编译的优越性。</p>
-<p>5.执行许多SQL语句的JDBC程序产生大量的Statement和PreparedStatement对象。通常认为PreparedStatement对象比Statement对象更有效,特别是如果带有不同参数的同一SQL语句被多次执行的时候。PreparedStatement对象允许数据库预编译SQL语句，这样在随后的运行中可以节省时间并增加代码的可读性。</p>
-<p>然而，在Oracle环境中，开发人员实际上有更大的灵活性。当使用Statement或PreparedStatement对象时，Oracle数据库会缓存SQL语句以便以后使用。在一些情况下,由于驱动器自身需要额外的处理和在Java应用程序和Oracle服务器间增加的网络活动，执行PreparedStatement对象实际上会花更长的时间。</p>
-<p>使用PreparedStatement比Statement相对安全，Statement使用的sql一般是通过加号拼接而成的，这就给用户提供了利用sql注入的机会，用户可以构造一些数据，如 1’ or ‘1 或者 1 or 1=1 或者 1’  or  ‘1’=’1  就可能会使sql的结构发生变化，从而达到sql注入的目的（本人亲自测试过），所以，当考虑到安全性时，应使用PreparedStatement，当然，如果你使用PreparedStatement的时候，你的sql语句还是用加号拼接完成的，那么，就会和上面的情况是一样的。。防止sql注入，用PreparedStatement，不用加号拼接字符串，用“？”占位，然后再给“？”赋值，即可防止sql注入，因为这样就把sql写死了，该啥样的结构就是啥样的结构，所以用户想构造sql，是不可能的</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1484,7 +1571,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
