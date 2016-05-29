@@ -328,7 +328,9 @@
 <li>.tar.gz</li>
 <li>.tar.bz2</li>
 </ul>
-<h2 id="zip格式"><a href="#zip格式" class="headerlink" title=".zip格式"></a>.zip格式</h2><h3 id="压缩命令为：zip-压缩文件名-源文件"><a href="#压缩命令为：zip-压缩文件名-源文件" class="headerlink" title="压缩命令为：zip 压缩文件名 源文件"></a>压缩命令为：zip 压缩文件名 源文件</h3><p>例如：</p>
+<p>下列所有的压缩命令和打包命令，如果压缩文件和打包文件前面有路径，就压缩或打包到指定的路径下<br>如果路径不存在就报错。</p>
+<h3 id="zip格式"><a href="#zip格式" class="headerlink" title=".zip格式"></a>.zip格式</h3><p>压缩命令为：zip 压缩文件名 源文件</p>
+<p>例如：</p>
 <ol>
 <li>压缩文件          zip test.zip test.txt</li>
 <li>压缩目录          zip -r test.zip test/</li>
@@ -339,13 +341,60 @@
 <blockquote>
 <p>可操作所有目录下的文件，在前面加上绝对或相对路径即可</p>
 </blockquote>
-<h3 id="解压缩命令为：unzip-压缩文件名"><a href="#解压缩命令为：unzip-压缩文件名" class="headerlink" title="解压缩命令为：unzip 压缩文件名"></a>解压缩命令为：unzip 压缩文件名</h3><p>例如：</p>
+<p>解压缩命令为：unzip 压缩文件名</p>
+<p>例如：</p>
 <ol>
 <li>普通解压命令                unzip test.zip </li>
 <li>解压到指定目录              unzip test.zip -d /tmp/</li>
 <li>解压到指定目录没有就创建一个   unzip test.zip -d /tmp/test</li>
 <li>查看压缩包内容               unzip -v test.zip</li>
 </ol>
+<h3 id="gz格式"><a href="#gz格式" class="headerlink" title=".gz格式"></a>.gz格式</h3><p>压缩命令为：</p>
+<p>gzip 源文件<br>压缩为.gz格式的压缩文件，源文件会消失。</p>
+<p>gzip -c 源文件 &gt; 压缩文件<br>如： gzip -c test.txt &gt; text.gz<br>压缩为.gz格式的压缩文件，源文件保留。<br>没有一个像bz2一样的选项可以保留源文件，只能用这种比较trick的方式</p>
+<p>gzip -r 目录<br>压缩目录下所有的子文件，但是不能压缩目录本身。</p>
+<p>解压缩命令为：</p>
+<p>1.gzip -d 压缩文件</p>
+<p>  解压缩文件： gzip -d test.txt.gz<br>  解压缩目录：gzip -dr test</p>
+<p>2.gunzip 压缩文件</p>
+<p>  解压缩文件：gunzip 压缩文件<br>  解压缩目录：gunzip -r 压缩目录</p>
+<h3 id="bz2格式"><a href="#bz2格式" class="headerlink" title=".bz2格式"></a>.bz2格式</h3><p>压缩命令为：bzip2 源文件<br>压缩为.bz2格式的压缩文件，源文件会消失。</p>
+<p>bzip2 -k 源文件<br>压缩为.bz2格式的压缩文件，源文件保留。</p>
+<p>bzip2不能压缩目录</p>
+<p>解压缩命令为：</p>
+<p>1.bzip2 -d 压缩文件</p>
+<p>  解压缩，-k保留压缩文件</p>
+<p>  bzip2 -dk 压缩文件</p>
+<p>2.bunzip2 压缩文件<br>  解压缩，-k保留压缩文件</p>
+<p>  bunzip2 -k 压缩文件</p>
+<h3 id="tar打包"><a href="#tar打包" class="headerlink" title="tar打包"></a>tar打包</h3><p>.gz不能压缩目录本身，.bz2参数压根不能跟目录，如果这样的话，那么这两个压缩命令就太有局限性了。</p>
+<p>但是不要忘了，linux中有一个tar打包命令，可以先给目录打包，生成一个tar文件，然后在进行压缩</p>
+<p>打包：tar -cvf 打包文件名 源文件</p>
+<p>选项：<br> -c 打包<br> -v 显示过程<br> -f 指定打包后的文件名</p>
+<p> 例如： tar -cvf test.tar test</p>
+<p> 解打包：tar -xvf 打包文件名<br> 解打包到指定目录：tar -xvf 打包文件名 -C /tmp</p>
+<p> 选项：<br> -x 解打包</p>
+<p> 例如： tar -xvf test.tar</p>
+<p> tar命令不区分文件和目录</p>
+<h3 id="tar-gz"><a href="#tar-gz" class="headerlink" title=".tar.gz"></a>.tar.gz</h3><p> 压缩命令：</p>
+<p> tar -zcvf 压缩包名.tar.gz 源文件</p>
+<p> 压缩多个文件或目录：</p>
+<p> tar -zcvf 压缩包名.tar.gz 源文件1 源文件2 目录</p>
+<p> 选项：<br> -z 压缩为.tar.gz格式</p>
+<p> 解压缩命令：</p>
+<p> tar -zxvf 压缩包名.tar.gz</p>
+<p> 解压缩到指定目录：<br> tar -zxvf 压缩报名.tar.gz -C /tmp</p>
+<p> 选项：<br> -x 解压缩.tar.gz格式</p>
+<h3 id="tar-bz2"><a href="#tar-bz2" class="headerlink" title=".tar.bz2"></a>.tar.bz2</h3><p>压缩命令：</p>
+<p>tar -jcvf 压缩包名.tar.bz2 源文件</p>
+<p>压缩多个文件或目录：</p>
+<p>tar -jcvf 压缩包名.tar.bz2 源文件1 源文件2 目录</p>
+<p>选项：<br>-j 压缩为.tar.bz2格式</p>
+<p>解压缩命令：</p>
+<p>tar -jxvf 压缩包名.tar.bz2</p>
+<p>解压缩到指定目录：</p>
+<p>tar -jxvf 压缩报名.tar.bz2 -C /tmp</p>
+<p>选项：<br>-x 解压缩.tar.bz2格式</p>
 
           
         
