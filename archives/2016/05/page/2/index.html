@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="后端,java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,19 +80,15 @@
 
 
 
-<meta name="description" content="java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,Statement:
- String sql = “select * from user”; Connection con = DBUtil.getConnection(); Statement stmt = con.createStatement();">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Statement和PreparedStatement的区别">
-<meta property="og:url" content="http://www.liyanshan.com/2013/02/15/Statement和PreparedStatement的区别/index.html">
+<meta name="description" content="全栈工程师 前端、Java、NodeJS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="好奇boy">
+<meta property="og:url" content="http://www.liyanshan.com/archives/2016/05/page/2/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,Statement:
- String sql = “select * from user”; Connection con = DBUtil.getConnection(); Statement stmt = con.createStatement();">
-<meta property="og:updated_time" content="2016-04-25T06:54:19.000Z">
+<meta property="og:description" content="全栈工程师 前端、Java、NodeJS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Statement和PreparedStatement的区别">
-<meta name="twitter:description" content="java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,Statement:
- String sql = “select * from user”; Connection con = DBUtil.getConnection(); Statement stmt = con.createStatement();">
+<meta name="twitter:title" content="好奇boy">
+<meta name="twitter:description" content="全栈工程师 前端、Java、NodeJS">
 
 
 
@@ -110,7 +106,7 @@
   };
 </script>
 
-  <title> Statement和PreparedStatement的区别 | 好奇boy </title>
+  <title> 目录 | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,141 +245,69 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+      
+      OK! 目前共计 46 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
+      
+      
+      
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+      
         
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/05/01/使用zsh/" itemprop="url">
               
-                Statement和PreparedStatement的区别
+                <span itemprop="name">使用zsh</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-02-15T04:28:35+08:00" content="2013-02-14">
-              2013-02-14
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-05-01T00:15:54+00:00"
+              content="2016-05-01" >
+          05-01
+        </time>
+      </div>
 
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/02/15/Statement和PreparedStatement的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/02/15/Statement和PreparedStatement的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p> java.sql.*包下提供了两个执行sql语句的接口，一个是Statement，另一个是PreparedStatement,这两者的区别是,<br>Statement:</p>
-<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> Statement stmt = con.createStatement();<br> ResultSet rs = stmt.executeQuery(sql);</p>
-<p>PreparedStatement:</p>
-<p> String sql = “select * from user”;<br> Connection con = DBUtil.getConnection();<br> PreparedStatement pstmt = con.preparedStatement(sql);<br> ResultSet rs = pstmt.executeQuery();</p>
-<p>片断2和片断1的区别在于，后者使用了PreparedStatement对象，而前者是普通的Statement对象。<br>PreparedStatement对象不仅包含了SQL语句，而且大多数情况下这个语句已经被预编译过，因而当其执行时，只需DBMS运行SQL语句，而不必先编译。当你需要执行Statement对象多次的时候，PreparedStatement对象将会大大降低运行时间，当然也加快了访问数据库的速度。</p>
-<p>这种转换也给你带来很大的便利，不必重复SQL语句的句法，而只需更改其中变量的值，便可重新执行SQL语句。选择PreparedStatement对象与否，在于相同句法的SQL语句是否执行了多次，而且两次之间的差别仅仅是变量的不同。如果仅仅执行了一次的话，它应该和普通的对象毫无差异，体现不出它预编译的优越性。</p>
-<p>5.执行许多SQL语句的JDBC程序产生大量的Statement和PreparedStatement对象。通常认为PreparedStatement对象比Statement对象更有效,特别是如果带有不同参数的同一SQL语句被多次执行的时候。PreparedStatement对象允许数据库预编译SQL语句，这样在随后的运行中可以节省时间并增加代码的可读性。</p>
-<p>然而，在Oracle环境中，开发人员实际上有更大的灵活性。当使用Statement或PreparedStatement对象时，Oracle数据库会缓存SQL语句以便以后使用。在一些情况下,由于驱动器自身需要额外的处理和在Java应用程序和Oracle服务器间增加的网络活动，执行PreparedStatement对象实际上会花更长的时间。</p>
-<p>使用PreparedStatement比Statement相对安全，Statement使用的sql一般是通过加号拼接而成的，这就给用户提供了利用sql注入的机会，用户可以构造一些数据，如 1’ or ‘1 或者 1 or 1=1 或者 1’  or  ‘1’=’1  就可能会使sql的结构发生变化，从而达到sql注入的目的（本人亲自测试过），所以，当考虑到安全性时，应使用PreparedStatement，当然，如果你使用PreparedStatement的时候，你的sql语句还是用加号拼接完成的，那么，就会和上面的情况是一样的。。防止sql注入，用PreparedStatement，不用加号拼接字符串，用“？”占位，然后再给“？”赋值，即可防止sql注入，因为这样就把sql写死了，该啥样的结构就是啥样的结构，所以用户想构造sql，是不可能的</p>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/后端/" rel="tag">#后端</a>
-          
-            <a href="/tags/java/" rel="tag">#java</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2012/10/12/java高性能编程/" rel="next" title="java高性能编程">
-                <i class="fa fa-chevron-left"></i> java高性能编程
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2013/02/19/java线程池/" rel="prev" title="java线程池">
-                java线程池 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2016/05/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2016/05/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
 
 
           </div>
@@ -391,14 +315,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2013/02/15/Statement和PreparedStatement的区别/"
-           data-title="Statement和PreparedStatement的区别" data-url="http://www.liyanshan.com/2013/02/15/Statement和PreparedStatement的区别/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -418,17 +334,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12889190?v=3&s=460"
@@ -471,17 +378,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -578,9 +474,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   
