@@ -269,6 +269,113 @@
             
               
                 
+                <a class="post-title-link" href="/2013/03/17/list删除相同元素的问题/" itemprop="url">
+                  list删除相同元素的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-03-16T20:25:26+00:00" content="2013-03-16">
+              2013-03-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2013/03/17/list删除相同元素的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/17/list删除相同元素的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天研究了一下list的删除元素的问题，发现了很多容易出现错误的点，记录下来，防止自己再犯同样的错误</p>
+<p>代码如下：</p>
+<p> List<string> list = new ArrayList<string>();<br> list.add(“北”);<br> list.add(“京”);<br> list.add(“京”);<br> list.add(“北”);<br> for (String string : list){<br>  if(“北”.equals(string)){<br>   list.remove(string);<br>  }else{<br>   continue;<br>  }<br> }<br>我要删除所有“北”，原先以为这样可以很正常的删掉所有“北”，但是，运行的时候出现异常了：<br>Exception in thread “main” java.util.ConcurrentModificationException<br> at java.util.AbstractList$Itr.checkForComodification(AbstractList.java:372)<br> at java.util.AbstractList$Itr.next(AbstractList.java:343)<br> at day07.pro.TestThread.main(TestThread.java:16)</string></string></p>
+<p>我就想，如果把foreach循环改成普通的for循环会不会在出现这个问题呢？</p>
+<p>试了一下：<br> List<string> list = new ArrayList<string>();<br> list.add(“北”);<br> list.add(“京”);<br> list.add(“京”);<br> list.add(“北”);<br> for(int i=0;i&lt;list.size();i++){<br>  if(“京”.equals(list.get(i))){<br>   list.remove(i);<br>  }else{<br>   continue;<br>  }<br> }<br>运行结果正常，但是如果要remove “京”就不行了，只会把第一个“京”，即，索引为1位置的“京”删除，<br>这是为什么呢？上网查了一下，发现也有人出现这个问题，用普通for循环如果要删除相同的元素只能删掉不相邻的元素，所以用这种方法是不可取的</string></string></p>
+<p>解决办法：<br> 方式一：<br>   for(int i=0;i<list.size();i++) {="" if("京".equals(list.get(i)))="" list.remove(i);="" i--;="" }="" 方式二：="" iterator<string=""> iter = list.iterator();<br>   while(iter.hasNext()){<br>       String s = iter.next();<br>       if(s.equals(“京”)){<br>           iter.remove();<br>       }<br>   }<br>注：使用Iterator遍历，通常情况下，会出现java.util.ConcurrentModificationException，比如在<br>while(it.hasNext()){<br>  String str = it.next();<br>  if(“北”.equals(str)){<br>    list.remove(str);<br>  }<br>}<br>即会出现此异常</list.size();i++)></p>
+<p>解决办法：<br>while(it.hasNext()){<br>  String str = it.next();<br>  if(“北”.equals(str)){<br>    it.remove();<br>  }<br>}</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2013/02/19/java线程池/" itemprop="url">
                   java线程池
                 </a>
@@ -959,7 +1066,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
