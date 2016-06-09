@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="后端,java," />
+  <meta name="keywords" content="前端,javascript," />
 
 
 
@@ -80,19 +80,28 @@
 
 
 
-<meta name="description" content="过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能
-  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：">
+<meta name="description" content="对DOM的修改永远都是异步的例如下面的一个场景：
+在页面上有2个script标签，第一个script标签内动态创建了一个script，去加载一个config.js文件，第二个script标签内，需要用到动态加载的config
+
+config.js1234window.config = &amp;#123;    app:&quot;调调&quot;,    version:&quot;1.1.2&quot;&amp;#125;
+index.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet的过滤器和监听器">
-<meta property="og:url" content="http://www.liyanshan.com/2012/06/09/Servlet的过滤器和监听器/index.html">
+<meta property="og:title" content="对DOM的修改永远都是异步的">
+<meta property="og:url" content="http://www.liyanshan.com/2016/06/09/对DOM的修改永远都是异步的/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能
-  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：">
-<meta property="og:updated_time" content="2016-04-25T06:54:16.000Z">
+<meta property="og:description" content="对DOM的修改永远都是异步的例如下面的一个场景：
+在页面上有2个script标签，第一个script标签内动态创建了一个script，去加载一个config.js文件，第二个script标签内，需要用到动态加载的config
+
+config.js1234window.config = &amp;#123;    app:&quot;调调&quot;,    version:&quot;1.1.2&quot;&amp;#125;
+index.html">
+<meta property="og:updated_time" content="2016-06-09T03:35:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet的过滤器和监听器">
-<meta name="twitter:description" content="过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能
-  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：">
+<meta name="twitter:title" content="对DOM的修改永远都是异步的">
+<meta name="twitter:description" content="对DOM的修改永远都是异步的例如下面的一个场景：
+在页面上有2个script标签，第一个script标签内动态创建了一个script，去加载一个config.js文件，第二个script标签内，需要用到动态加载的config
+
+config.js1234window.config = &amp;#123;    app:&quot;调调&quot;,    version:&quot;1.1.2&quot;&amp;#125;
+index.html">
 
 
 
@@ -110,7 +119,7 @@
   };
 </script>
 
-  <title> Servlet的过滤器和监听器 | 好奇boy </title>
+  <title> 对DOM的修改永远都是异步的 | 好奇boy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +279,7 @@
             
             
               
-                Servlet的过滤器和监听器
+                对DOM的修改永远都是异步的
               
             
           </h1>
@@ -282,8 +291,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2012-06-09T04:30:19+08:00" content="2012-06-08">
-              2012-06-08
+            <time itemprop="dateCreated" datetime="2016-06-09T11:14:26+00:00" content="2016-06-09">
+              2016-06-09
             </time>
           </span>
 
@@ -293,8 +302,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2012/06/09/Servlet的过滤器和监听器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/09/Servlet的过滤器和监听器/" itemprop="commentsCount"></span>
+                <a href="/2016/06/09/对DOM的修改永远都是异步的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/对DOM的修改永远都是异步的/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -317,22 +326,20 @@
       
 
       
-        <p>过滤器的优点：a.可以将多个web组件相同的逻辑写在一个过滤器当中，方便代码的维护；b.可实现代码的“可插拔性”给一个软件增加或者减少某个功能不会影响到已经存在的功能</p>
-<p>  过滤器、监听器和servlet一样，都是一种web组件，可以把过滤器、监听器理解成一种具有特殊功能的servlet<br>  要实现过滤器，只需要让你写的类实现javax.servlet.Filter接口即可，然后实现该接口的三个方法：init(),destroy(),doFilter()<br>  前两个方法又容器调用，所以这两个方法不需要你自己写，需要写的是doFilter方法<br>  代码如下：</p>
-<p>public class FilterTest implements Filter{<br> public FilterTest() {<br>     System.out.println(“filter1 instance….”);<br> }<br> @Override<br> public void destroy() {<br>  System.out.println(“filter1 destory….”);<br> }<br> @Override<br> public void doFilter(ServletRequest arg1, ServletResponse arg2,<br>   FilterChain chain) throws IOException, ServletException {<br>  // TODO Auto-generated method stub<br>  HttpServletRequest request1 =  (HttpServletRequest) arg1;<br>  HttpServletResponse response1 = (HttpServletResponse) arg2;<br>  request1.setCharacterEncoding(“utf-8”);<br>  response1.setContentType(“text/html;charset=utf-8”);<br>  System.out.println(“doFilter1 execute….”);<br>  chain.doFilter(request1, response1);<br> }<br> @Override<br> public void init(FilterConfig filterConfig) throws ServletException {<br>  System.out.println(“filter1 init execute….”);<br> }<br>}<br>在doFilter里写完相应的逻辑之后，要调用chain的doFilter方法，并把request和response对象传递进去，使过滤器链能够继续执行下去</p>
-<p>过滤器常用来实现编码，参数效验等功能</p>
-<p>写完过滤器，需要在web.xml里配置<br>如下：</p>
-<p>  <filter><br>    <filter-name>filter</filter-name><br>    <filter-class>com.vencent.servlet.FilterTest</filter-class><br>  </filter><br>  <filter-mapping><br>    <filter-name>filter</filter-name><br>    <url-pattern>/login.do</url-pattern><br>  </filter-mapping><br>因为我想要过滤login.do这个请求，所以写成/login.do，如果想要过滤所有.do请求，写成<em>.do，如果想要过滤所有请求，写成</em></p>
-<p>当服务器启动的时候，容器会实例化过滤器，紧接着马上调用init方法对其进行初始化，可以再相应的方法里打印信息来追踪其实例化、初始化的点，destroy方法是在容器stop的时候调用的</p>
-<p>监听器</p>
-<p>package com.vencent.servlet;<br>import javax.servlet.ServletContext;<br>import javax.servlet.ServletContextAttributeEvent;<br>import javax.servlet.ServletContextAttributeListener;<br>import javax.servlet.ServletContextEvent;<br>import javax.servlet.ServletContextListener;<br>import javax.servlet.http.HttpSession;<br>import javax.servlet.http.HttpSessionEvent;<br>import javax.servlet.http.HttpSessionListener;<br>public class ListenerTest implements ServletContextListener,HttpSessionListener,<br> ServletContextAttributeListener{<br> @Override<br> public void contextDestroyed(ServletContextEvent arg0) {}<br> @Override<br> public void contextInitialized(ServletContextEvent event) {<br>  ServletContext sc = event.getServletContext();<br>  sc.setAttribute(“user”, 123);<br> }<br> @Override<br> public void sessionCreated(HttpSessionEvent event) {<br>  // TODO Auto-generated method stub<br>  HttpSession session = event.getSession();<br> }<br> @Override<br> public void sessionDestroyed(HttpSessionEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeAdded(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeRemoved(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br> @Override<br> public void attributeReplaced(ServletContextAttributeEvent arg0) {<br>  // TODO Auto-generated method stub</p>
-<p> }<br>}<br>然后在web.xml里，配置如下：</p>
-<p>   com.vencent.servlet.ListenerTest.java</p>
-<p>比如统计在线人数，就要使用监听器了</p>
-<p>监听器和过滤器一样，也是伴随着web容器的启动而启动（然后实例化）、停止而销毁的</p>
+        <h1 id="对DOM的修改永远都是异步的"><a href="#对DOM的修改永远都是异步的" class="headerlink" title="对DOM的修改永远都是异步的"></a>对DOM的修改永远都是异步的</h1><p>例如下面的一个场景：</p>
+<p>在页面上有2个script标签，第一个script标签内动态创建了一个script，去加载一个config.js文件，第二个script标签内，<br>需要用到动态加载的config</p>
+<blockquote>
+<p>config.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.config = &#123;</span><br><span class="line">    app:<span class="string">"调调"</span>,</span><br><span class="line">    version:<span class="string">"1.1.2"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>index.html</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 第一个script</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> (function()&#123;</span><br><span class="line">    var script = document.createElement('script');</span><br><span class="line">    script.src = "config.js";</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"> &#125;)()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">// 第二个script</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        var config = window.config;</span><br><span class="line">        console.log(config); // undefined</span><br><span class="line">    &#125;)()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>出现上面问题的原因在于：</p>
+<p><em>对dom的修改永远都是异步的</em></p>
+<p>也就是说要等到所有已经加载的脚本执行完毕，再去修改DOM，然后加载并执行新的脚本</p>
+<p>要根治这个问题，可以才用成熟的模块加载其如<code>RequireJS</code>,<code>SeaJS</code></p>
+<h3 id="写了一段代码进一步验证-对dom的修改永远都是异步的"><a href="#写了一段代码进一步验证-对dom的修改永远都是异步的" class="headerlink" title="写了一段代码进一步验证 对dom的修改永远都是异步的"></a>写了一段代码进一步验证 对dom的修改永远都是异步的</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>dom异步<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d"</span>&gt;</span>默认文本<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">d.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.innerHTML = <span class="string">"往div里添加的新文本"</span>;<span class="comment">//更改一个节点</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">"input"</span>));<span class="comment">//插入一个节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">10000000000</span>;i++);</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>原先的理解是：js修改dom是同步的，执行很快，但是渲染线程跟js引擎线程是互斥的，由于下面还有js代码要执行<br>所以渲染线程得不到机会来渲染新的修改后的dom。</p>
+<p>现在的理解：js修改dom是异步的，下面的代码执行完毕，然后再来更新dom树，这些都完毕之后，渲染线程才得到机会来渲染新的<br>修改后的dom</p>
 
       
     </div>
@@ -353,9 +360,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/后端/" rel="tag">#后端</a>
+            <a href="/tags/前端/" rel="tag">#前端</a>
           
-            <a href="/tags/java/" rel="tag">#java</a>
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
           
         </div>
       
@@ -364,13 +371,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/06/04/Promise用法全总结/" rel="next" title="Promise用法总结">
+                <i class="fa fa-chevron-left"></i> Promise用法总结
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2012/07/30/web页面中的中文乱码解决办法/" rel="prev" title="web页面中的中文乱码解决办法">
-                web页面中的中文乱码解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -396,8 +403,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2012/06/09/Servlet的过滤器和监听器/"
-           data-title="Servlet的过滤器和监听器" data-url="http://www.liyanshan.com/2012/06/09/Servlet的过滤器和监听器/">
+      <div class="ds-thread" data-thread-key="2016/06/09/对DOM的修改永远都是异步的/"
+           data-title="对DOM的修改永远都是异步的" data-url="http://www.liyanshan.com/2016/06/09/对DOM的修改永远都是异步的/">
       </div>
     
   </div>
@@ -481,7 +488,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对DOM的修改永远都是异步的"><span class="nav-number">1.</span> <span class="nav-text">对DOM的修改永远都是异步的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写了一段代码进一步验证-对dom的修改永远都是异步的"><span class="nav-number">1.0.1.</span> <span class="nav-text">写了一段代码进一步验证 对dom的修改永远都是异步的</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

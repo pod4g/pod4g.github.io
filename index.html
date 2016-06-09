@@ -269,6 +269,120 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/09/对DOM的修改永远都是异步的/" itemprop="url">
+                  对DOM的修改永远都是异步的
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-09T11:14:26+00:00" content="2016-06-09">
+              2016-06-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/09/对DOM的修改永远都是异步的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/对DOM的修改永远都是异步的/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="对DOM的修改永远都是异步的"><a href="#对DOM的修改永远都是异步的" class="headerlink" title="对DOM的修改永远都是异步的"></a>对DOM的修改永远都是异步的</h1><p>例如下面的一个场景：</p>
+<p>在页面上有2个script标签，第一个script标签内动态创建了一个script，去加载一个config.js文件，第二个script标签内，<br>需要用到动态加载的config</p>
+<blockquote>
+<p>config.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.config = &#123;</span><br><span class="line">    app:<span class="string">"调调"</span>,</span><br><span class="line">    version:<span class="string">"1.1.2"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>index.html</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 第一个script</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> (function()&#123;</span><br><span class="line">    var script = document.createElement('script');</span><br><span class="line">    script.src = "config.js";</span><br><span class="line">    document.head.appendChild(script);</span><br><span class="line"> &#125;)()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">// 第二个script</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        var config = window.config;</span><br><span class="line">        console.log(config); // undefined</span><br><span class="line">    &#125;)()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>出现上面问题的原因在于：</p>
+<p><em>对dom的修改永远都是异步的</em></p>
+<p>也就是说要等到所有已经加载的脚本执行完毕，再去修改DOM，然后加载并执行新的脚本</p>
+<p>要根治这个问题，可以才用成熟的模块加载其如<code>RequireJS</code>,<code>SeaJS</code></p>
+<h3 id="写了一段代码进一步验证-对dom的修改永远都是异步的"><a href="#写了一段代码进一步验证-对dom的修改永远都是异步的" class="headerlink" title="写了一段代码进一步验证 对dom的修改永远都是异步的"></a>写了一段代码进一步验证 对dom的修改永远都是异步的</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>dom异步<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d"</span>&gt;</span>默认文本<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">d.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.innerHTML = <span class="string">"往div里添加的新文本"</span>;<span class="comment">//更改一个节点</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createElement(<span class="string">"input"</span>));<span class="comment">//插入一个节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">10000000000</span>;i++);</span><br><span class="line">&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>原先的理解是：js修改dom是同步的，执行很快，但是渲染线程跟js引擎线程是互斥的，由于下面还有js代码要执行<br>所以渲染线程得不到机会来渲染新的修改后的dom。</p>
+<p>现在的理解：js修改dom是异步的，下面的代码执行完毕，然后再来更新dom树，这些都完毕之后，渲染线程才得到机会来渲染新的<br>修改后的dom</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/04/Promise用法全总结/" itemprop="url">
                   Promise用法总结
                 </a>
@@ -1328,142 +1442,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/node-js之REPL/" itemprop="url">
-                  node.js之REPL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T21:54:17+00:00" content="2016-05-03">
-              2016-05-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/04/node-js之REPL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/node-js之REPL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="WIKI"><a href="#WIKI" class="headerlink" title="WIKI"></a>WIKI</h3><blockquote>
-<p>“读取-求值-输出-循环”（英语：Read-Eval-Paint-Loop）</p>
-</blockquote>
-<p>REPL既可以作为独立单机程序，也可以被其他的程序包含在内的程序。</p>
-<p>它提供了一种交互方式，即“执行程序，展现结果”。</p>
-<p>它可以被用作debugging，testing 或者只是执行操作得到一些结果。</p>
-<h3 id="执行REPL"><a href="#执行REPL" class="headerlink" title="执行REPL"></a>执行REPL</h3><p>打开命令行，输入 node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<p>然后你就可以像浏览器console里一样写js了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; var age = 12</span><br><span class="line">undefined</span><br><span class="line">&gt; age</span><br><span class="line">12</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; function getAge()&#123;</span><br><span class="line">... console.log(this.age)</span><br><span class="line">... &#125;</span><br><span class="line">undefined</span><br><span class="line"></span><br><span class="line">&gt; getAge()</span><br><span class="line">12</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
-<p>因为REPL环境内部使用eval函数来评估该表达式的执行结果，所以有些东西我们可以直接这样写，如对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; &#123;a:1,b:2&#125;</span><br><span class="line">&#123; a: 1, b: 2 &#125;</span><br><span class="line"></span><br><span class="line">&gt; [1,2,3,4,5]</span><br><span class="line">[ 1, 2, 3, 4, 5 ]</span><br></pre></td></tr></table></figure>
-<h3 id="如何进入多行模式"><a href="#如何进入多行模式" class="headerlink" title="如何进入多行模式"></a>如何进入多行模式</h3><p> 在REPL中进入多行模式是很简单的，只要不闭合配对的符号就可以，当输入配对的闭合符号时，会自动退出多行模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// 例1</span><br><span class="line">&gt; var arr = [ // 输入不闭合符号，自动进入多行模式</span><br><span class="line">... 1,2,3,</span><br><span class="line">... 4,5,6</span><br><span class="line">... ] // 输入配对符号 ] 自动闭合标签</span><br><span class="line">&gt; arr</span><br><span class="line">[ 1, 2, 3, 4, 5, 6 ]</span><br><span class="line"></span><br><span class="line">// 例2</span><br><span class="line">&gt; function test()&#123;</span><br><span class="line">... console.log(&apos;hello&apos;);</span><br><span class="line">... console.log(&apos;function&apos;);</span><br><span class="line">... console.log(&apos;a&apos;);</span><br><span class="line">... &#125;</span><br><span class="line">&gt; a()</span><br><span class="line">hello</span><br><span class="line">function</span><br><span class="line">a</span><br><span class="line"></span><br><span class="line">//例3</span><br><span class="line">&gt; var arr = [1,2,3]</span><br><span class="line">undefined</span><br><span class="line">&gt; arr.forEach(function(v,i)&#123;</span><br><span class="line">... console.log(i);</span><br><span class="line">... console.log(v);</span><br><span class="line">... &#125;)</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-<h3 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h3><p>使用_可以指代上一次的操作执行后的值，比如</p>
-<p>对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; &#123;a:1,b:2,c:3&#125;</span><br><span class="line">&#123; a: 1, b: 2, c: 3 &#125;</span><br><span class="line"></span><br><span class="line">&gt; for(var key in _)&#123;</span><br><span class="line">..... console.log(&apos;key : &apos; + key + &apos;,value : &apos; + _[key]);</span><br><span class="line">..... &#125;</span><br><span class="line"></span><br><span class="line">key : a,value : 1</span><br><span class="line">key : b,value : 2</span><br><span class="line">key : c,value : 3</span><br><span class="line">//这里的_指代的是上一次执行操作后的对象</span><br></pre></td></tr></table></figure>
-<p>数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; [1,2,3,4,5]</span><br><span class="line">[ 1, 2, 3, 4, 5 ] </span><br><span class="line">&gt; Object.keys(_)                        //这里的_指代的时上一次执行的数组</span><br><span class="line">[ &apos;0&apos;, &apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos; ]             //获取index值</span><br><span class="line"></span><br><span class="line">注意  下面的值不是我们的预期，因为_指代的已经不是原先的数组了！</span><br><span class="line"></span><br><span class="line">&gt; _.map(function(k)&#123;return _[k]*_[k]&#125;)  </span><br><span class="line">[ 0, 1, 4, 9, 16 ]                      //获取元素值</span><br></pre></td></tr></table></figure>
-<p>正确的结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; [1,2,3,4,5]</span><br><span class="line">[ 1, 2, 3, 4, 5 ]                       //数组</span><br><span class="line">&gt; Object.keys(_).map(function(k)&#123;return _[k]*_[k]&#125;)</span><br><span class="line">[ 1, 4, 9, 16, 25 ]                     //元素值</span><br></pre></td></tr></table></figure>
-<h3 id="内置REPL方法"><a href="#内置REPL方法" class="headerlink" title="内置REPL方法"></a>内置REPL方法</h3><p>一些REPL里的方法，通过键入.help可以看到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; .help</span><br><span class="line">break   Sometimes you get stuck, this gets you out</span><br><span class="line">clear   Alias for .break</span><br><span class="line">exit    Exit the repl</span><br><span class="line">help    Show repl options</span><br><span class="line">load    Load JS from a file into the REPL session</span><br><span class="line">save    Save all evaluated commands in this REPL session to a file</span><br></pre></td></tr></table></figure>
-<p><strong>.break &amp; .clear</strong></p>
-<p>作用：中断当前的出入<br>你想退出你当前的输入环境，使用.break 或者 .clear</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; function show()&#123;</span><br><span class="line">... console.log(&apos;&apos;);</span><br><span class="line">... .clear           //.clear 或 .break</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>.exit</strong></p>
-<p>作用：退出REPL ；快捷键：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + c</span><br></pre></td></tr></table></figure>
-<p>直接退出REPL，回到命令行。</p>
-<p><strong>.save</strong></p>
-<p>将当前REPL中所有会话保存到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; function sum(a,b)&#123;</span><br><span class="line">... return a + b;</span><br><span class="line">... &#125;</span><br><span class="line">undefined</span><br><span class="line"></span><br><span class="line">&gt; function substract(a,b)&#123;</span><br><span class="line">... return a - b;</span><br><span class="line">... &#125;</span><br><span class="line">undefined</span><br><span class="line"></span><br><span class="line">&gt; .save calculator.js</span><br><span class="line">Session saved to:calculator.js</span><br></pre></td></tr></table></figure>
-<p><strong>.load</strong></p>
-<p>加载文件进入到当前的REPL会话。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; .load calculator.js</span><br><span class="line"></span><br><span class="line">&gt; function sum(a,b)&#123;</span><br><span class="line">... return a + b;</span><br><span class="line">... &#125;</span><br><span class="line">undefined</span><br><span class="line"></span><br><span class="line">&gt; function substract(a,b)&#123;</span><br><span class="line">... return a - b;</span><br><span class="line">... &#125;</span><br><span class="line">undefined</span><br><span class="line"></span><br><span class="line">&gt; sum(3,5)</span><br><span class="line">8</span><br><span class="line"></span><br><span class="line">&gt; substract(8,2)</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1509,7 +1487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
