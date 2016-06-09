@@ -80,25 +80,19 @@
 
 
 
-<meta name="description" content="闭包和柯里化
-JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
-
-全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是window对象，因此所有全局变量和函数都是作为window对象的属性和方法创建的。当JS开始执行时，会构建一个全局执行环境，全局执行环境直到应用程序退出–例如">
+<meta name="description" content="闭包和柯里化JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
+全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是123456789101112131415161718192021222324252627282930313233343536373839404142     执行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包和柯里化">
 <meta property="og:url" content="http://www.liyanshan.com/2016/03/13/闭包和柯里化/index.html">
 <meta property="og:site_name" content="好奇boy">
-<meta property="og:description" content="闭包和柯里化
-JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
-
-全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是window对象，因此所有全局变量和函数都是作为window对象的属性和方法创建的。当JS开始执行时，会构建一个全局执行环境，全局执行环境直到应用程序退出–例如">
-<meta property="og:updated_time" content="2016-04-25T06:51:23.000Z">
+<meta property="og:description" content="闭包和柯里化JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
+全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是123456789101112131415161718192021222324252627282930313233343536373839404142     执行">
+<meta property="og:updated_time" content="2016-06-09T06:39:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包和柯里化">
-<meta name="twitter:description" content="闭包和柯里化
-JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
-
-全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是window对象，因此所有全局变量和函数都是作为window对象的属性和方法创建的。当JS开始执行时，会构建一个全局执行环境，全局执行环境直到应用程序退出–例如">
+<meta name="twitter:description" content="闭包和柯里化JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境
+全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局执行环境是123456789101112131415161718192021222324252627282930313233343536373839404142     执行">
 
 
 
@@ -323,18 +317,19 @@ JavaScript中只有两种执行环境，一种是全局执行环境，一种是�
       
 
       
-        <h1 id="闭包和柯里化"><a href="#闭包和柯里化" class="headerlink" title="闭包和柯里化"></a>闭包和柯里化</h1><ol>
-<li><p>JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境</p>
-<ul>
-<li><p>全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局<br>执行环境是<code>window</code>对象，因此所有全局变量和函数都是作为<code>window</code>对象的属性和方法创建的。当JS开始执行时，会构建一个全局<br>执行环境，全局执行环境直到应用程序退出–例如浏览器关闭–时才会被销毁。</p>
-</li>
-<li><p>局部执行环境：每当函数被调用的时候，就会产生一个新的环境，此环境就会被推入一个环境栈中，而在函数执行之后，栈将其弹出，把控制权返回给之前的环境。局部执行环境是一种概念，是运行中的函数的意思，他不是对象。</p>
-</li>
-<li><p>某个执行环境执行完后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁</p>
-</li>
+        <h1 id="闭包和柯里化"><a href="#闭包和柯里化" class="headerlink" title="闭包和柯里化"></a>闭包和柯里化</h1><h3 id="JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境"><a href="#JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境" class="headerlink" title="JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境"></a>JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境</h3><ul>
+<li>全局执行环境：是最外围的一个环境，根据ECMAScript实现所在的宿主环境的不同，表示执行环境的对象也不一样，为WEB浏览器中，全局<br>执行环境是<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">     执行环境，全局执行环境直到应用程序退出--例如浏览器关闭--时才会被销毁。</span><br><span class="line">   </span><br><span class="line">   * 局部执行环境：每当函数被调用的时候，就会产生一个新的环境，此环境就会被推入一个环境栈中，而在函数执行之后，栈将其弹出，把控制权返回给之前的环境。局部执行环境是一种概念，是运行中的函数的意思，他不是对象。</span><br><span class="line"></span><br><span class="line">   * 某个执行环境执行完后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁</span><br><span class="line"></span><br><span class="line">### 闭包和柯里化之间的关系</span><br><span class="line"></span><br><span class="line">函数嵌套函数的形式叫做闭包，闭包的本质是 **内部函数迟于外部函数执行**</span><br><span class="line"></span><br><span class="line">闭包分为2种： </span><br><span class="line"></span><br><span class="line">1. 有意义的闭包</span><br><span class="line">   * return function  这种就是柯里化</span><br><span class="line">   * return &#123; xx:function()&#123;&#125; &#125;</span><br><span class="line">   * setTimeout/setInterval</span><br><span class="line">   * 把内部函数的值赋值给一个不属于外部函数作用域之内的变量</span><br><span class="line">   * 事件</span><br><span class="line">   * ...</span><br><span class="line"></span><br><span class="line">2. 无意义的闭包</span><br><span class="line"> 内部函数在外部函数内部执行。即虽然是函数嵌套函数的形式，但其实内部函数是和外部函数一起执行的。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">柯里化是闭包的一种，柯里化一定是闭包。但闭包不一定是柯里化（还有可能是其他形式）。</span><br><span class="line"></span><br><span class="line">### 柯里化的作用</span><br><span class="line"></span><br><span class="line">1. 参数复用</span><br><span class="line"></span><br><span class="line">`underscore`中很多地方用到了这个作用：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"> var property = function(key) &#123;</span><br><span class="line">    return function(obj) &#123;</span><br><span class="line">      return obj == null ? void 0 : obj[key];</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">  // 使用</span><br><span class="line">  var getLength = prototype(&quot;length&quot;);</span><br><span class="line">  var arr = [1,2,3];</span><br><span class="line">  console.log(getLength(arr)); // length</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<ol>
+<li>提前返回</li>
 </ol>
+<p>关于提前返回的一个常见的例子，兼容现代浏览器及IE浏览器的事件添加方法。我们通常情况下会这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">el, type, fn, capture</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">        el.addEventListener(type, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            fn.call(el, e);</span><br><span class="line">        &#125;, capture);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">        el.attachEvent(<span class="string">"on"</span> + type, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            fn.call(el, e);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">``</span><span class="string">`    </span><br><span class="line">上面这样写的问题很明显，就是我们每次使用`</span>addEvent<span class="string">`为元素添加事件时，都会执行一边`</span><span class="keyword">if</span>...else <span class="keyword">if</span> ...<span class="string">`</span><br><span class="line"></span><br><span class="line">其实最好的办法就是判定一次，处处使用。我们改成下面的例子：</span><br><span class="line"></span><br><span class="line">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="keyword">var</span> addEvent = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, sType, fn, capture</span>) </span>&#123;</span><br><span class="line">            el.addEventListener(sType, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                fn.call(el, e);</span><br><span class="line">            &#125;, (capture));</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, sType, fn, capture</span>) </span>&#123;</span><br><span class="line">            el.attachEvent(<span class="string">"on"</span> + sType, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">                fn.call(el, e);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>延迟计算</li>
+</ol>
+<p>例如计算学生各科总成绩，如果一次性取出所有成绩，那么相加就可以了。但是学生的成绩出来的肯定有先有后，<br>所以延迟计算就适合这个场景</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var calcScore = function()&#123;</span><br><span class="line">    var totalScore = 0;</span><br><span class="line">    return function(score)&#123;</span><br><span class="line">        score = score || 0;</span><br><span class="line">        totalScore += score;</span><br><span class="line">        return totalScore;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">var addScore = calcScore();</span><br><span class="line"></span><br><span class="line">// 语文成绩出来了。考了120分！</span><br><span class="line">var score = addScore(120); </span><br><span class="line">console.log(score); // 现在的总成绩为：120</span><br><span class="line"></span><br><span class="line">// 数学成绩出来了。考了130分！</span><br><span class="line">score = addScore(130);</span><br><span class="line">console.log(score); // 现在总成绩为：250（二百五？额..）</span><br><span class="line"></span><br><span class="line">// 英语成绩出来了。英语比较搓，考了80分！</span><br><span class="line">score = addScore(80);</span><br><span class="line">console.log(score); // 现在总成绩为：330分</span><br></pre></td></tr></table></figure>
+<p>因为柯里化也是闭包，所以其实这3个用处都是基于一个理论：闭包之后，外部函数内的变量和参数不会被回收。</p>
 
       
     </div>
@@ -489,7 +484,7 @@ JavaScript中只有两种执行环境，一种是全局执行环境，一种是�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包和柯里化"><span class="nav-number">1.</span> <span class="nav-text">闭包和柯里化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包和柯里化"><span class="nav-number">1.</span> <span class="nav-text">闭包和柯里化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境"><span class="nav-number">1.0.1.</span> <span class="nav-text">JavaScript中只有两种执行环境，一种是全局执行环境，一种是局部执行环境</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
