@@ -269,6 +269,153 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/26/ES规范转型之双等和全等/" itemprop="url">
+                  ES规范转型之双等和全等
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-26T15:00:19+00:00" content="2016-06-26">
+              2016-06-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/26/ES规范转型之双等和全等/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/ES规范转型之双等和全等/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关于双等"><a href="#关于双等" class="headerlink" title="关于双等"></a>关于双等</h1><p> 在比较双等时，javascript使用的是<code>抽象相等比较算法</code></p>
+<p> 算法描述：</p>
+<blockquote>
+<p>比较运算x==y，其中x和y是值，产生true或者false。这样的比较按如下方式进行：</p>
+<pre><code> 1. 若Type(x)与Type(y)相等，则
+    a. 若Type(x)为Undefined，则返回true。
+    b. 若Type(x)为Null，则返回true。
+    c. 若Type(x)为Number，则
+       i.   若x为NaN，返回false。
+       ii.  若y为NaN，返回false。
+       iii. 若x与y为相等数值，则返回true。
+       iv.  若x为+0，y为-0，返回true。
+       v.   若x为-0，y为+0，返回true。
+       vi.  返回false。
+    d. 若Type(x)为String，则当x和y为完全相等的字符序列（长度相等且相同字符出现在同样位置）时返回true。否则，返回false。
+    e. 若Type(x)为Boolean，则当x和y同为true或者同为false返回true。否则，返回false。
+    f. 若Type(x)为Object，则当x和y引用同一个对象时返回true。否则返回false。
+2. 若x为null且y为undefined，返回true。
+3. 若x为undefined且y为null，返回true。
+4. 若Type(x)为Number且Type(y)为String，返回comparison x == ToNumber(y)的结果。
+5. 若Type(x)为String且Type(y)为Number，
+6. 返回toNumber(x) == y的结果。
+7. 若Type(x)为Boolean，返回比较ToNumber(x) == y的结果。
+8. 若Type(y)为Boolean，返回比较 x == ToNumber(y)的结果。
+8. 若Type(x)为Object且Type(y)为String或Number，返回比较ToPrimitive(x) == y的结果。
+10. 返回false。
+</code></pre></blockquote>
+<p>从规范的定义可知<code>抽象相等比较算法</code>有时候会递归调用。</p>
+<p>例如true == “abc”：<br> true == “abc”，根据<code>7</code>，把true转为1，即<br> 1 == “abc”，然后再根据<code>4</code>，比较 1 == ToNumber(“abc”)，即<br> 1 == NaN，然后根据<code>1.c.ii</code>，最终返回false</p>
+<p>例如true == “1”：<br> true == “1”，根据<code>7</code>，把true转为1，即<br> 1 == “1”，然后在根据<code>4</code>，比较 1 == ToNumber(“1”)，即<br> 1 == 1，然后根据<code>1.c.iii</code>，最终返回true</p>
+<h1 id="关于全等"><a href="#关于全等" class="headerlink" title="关于全等"></a>关于全等</h1><p> 在比较全等时，javascript使用的是<code>严格相等比较算法</code></p>
+<p> 算法描述：</p>
+<blockquote>
+<p>比较x===y，x和y为值，需要产出true或false。比较过程如下：</p>
+<ol>
+<li>若Type(x)与Type(y)的结果不一致，返回false，否则</li>
+<li>如果Type(x)为Undefined，返回true</li>
+<li>如果Type(x)为Null，返回true</li>
+<li>如果Type(x)为Number，则<br>a. 如果x为NaN，返回false<br>b. 如果y为NaN，返回false<br>c. 如果x和y为同一个数字，返回true<br>d. 如果x为+0，y为-0，返回true<br>e. 如果x为-0，y为+0，返回true<br>f. 返回false<ol>
+<li>如果Type(x)为String，如果x与y为完全相同的字符序列（相同长度和相同的字符对应相同的位置），返回true，否则，返回false</li>
+<li>如果Type(x)为Boolean，如果x与y都为true或false，则返回true，否则，返回false</li>
+<li>如果x和y引用同一个Obejct对象，返回true，否则，返回false</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p> 从算法描述上可知，全等是双等的一种情况，对应的是双等的<code>1</code></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/09/对DOM的修改永远都是异步的/" itemprop="url">
                   对DOM的修改永远都是异步的
                 </a>
@@ -1342,110 +1489,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/字符串排版的小技巧/" itemprop="url">
-                  字符串排版的小技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T10:17:53+00:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/04/字符串排版的小技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/字符串排版的小技巧/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有时候需要写大量的html字符串拼接，以前都是写在一行，现在发现了一种小技巧，可以进行排版</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> html = <span class="string">'&lt;div id="lg"&gt; \</span><br><span class="line">               &lt;img hide focus="true" src="//www.baidu.com/img/bd_logo1.png" width="270" height="129"&gt; \</span><br><span class="line">            &lt;/div&gt;'</span></span><br></pre></td></tr></table></figure>
-<p>现在ES6中已经有对多行字符串的支持了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> html = <span class="string">`</span><br><span class="line">            &lt;div id="lg"&gt; </span><br><span class="line">               &lt;img hide focus="true" src="//www.baidu.com/img/bd_logo1.png" width="270" height="129"&gt; \</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">           `</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1491,7 +1534,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1501,7 +1544,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
