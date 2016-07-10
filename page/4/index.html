@@ -269,6 +269,158 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/19/function应用技巧/" itemprop="url">
+                  function应用技巧
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T20:04:10+00:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/19/function应用技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/19/function应用技巧/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、new-function的用法"><a href="#一、new-function的用法" class="headerlink" title="一、new function的用法"></a>一、new function的用法</h3><p>1.<strong>用法一</strong></p>
+<blockquote>
+<p>此种用法的跟使用<code>{}</code>的区别是：它比较灵活，可以在内部定义变量、函数等</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> a = <span class="number">1</span>; </span><br><span class="line">   <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">this</span>.total = a + b;</span><br><span class="line">   <span class="keyword">return</span> a + b; <span class="comment">// 被忽略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相当于：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  total : <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.<strong>用法二</strong></p>
+<blockquote>
+<p>此种用法就是闭包而已</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">3</span>);<span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相当于：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> a + b + c;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">test(<span class="number">3</span>);<span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+<h3 id="Function-apply-call的用法"><a href="#Function-apply-call的用法" class="headerlink" title="Function.apply.call的用法"></a>Function.apply.call的用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(<span class="built_in">window</span>.console)&#123;</span><br><span class="line">         <span class="comment">// 第一个参数是apply要执行的函数，第二个参数为context，第三个参数为要执行函数的参数列表</span></span><br><span class="line">         <span class="built_in">Function</span>.apply.call(<span class="built_in">console</span>.log,<span class="built_in">console</span>,<span class="built_in">arguments</span>);</span><br><span class="line">         <span class="comment">// console.log.apply(console,arguments); // 为什么不这样写？</span></span><br><span class="line">         <span class="comment">// Function.prototype.apply.call(console.log,console,arguments); // 也是可以的。</span></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、构造函数中return"><a href="#二、构造函数中return" class="headerlink" title="二、构造函数中return"></a>二、构造函数中return</h3><p>1.<strong>构造函数return基本类型的值</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">this</span>.a = a;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> a;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.dir(p); <span class="comment">// 此时p的值并不是2，而是一个有一个属性a其值为2的对象</span></span><br></pre></td></tr></table></figure>
+<p>2.<strong>构造函数return Object类型的值</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">       name:<span class="string">"李彦峰"</span>,</span><br><span class="line">       a : a</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.dir(p); <span class="comment">// 此时p为一个对象 &#123;name:"李彦峰",a:2&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>结论：</strong></p>
+<ol>
+<li><p>在构造器中<code>return</code>，如果是基本类型的值，那么使用<code>new</code>操作符将会按照预期，返回一个对象，就相当于构造函数中的<code>return</code>语句不存在一样</p>
+</li>
+<li><p>在构造器中如果<code>return</code>的是一个Object类型（function/基本类型的包装类型/Object类型），那么<code>new</code>操作符就相当于不存在一样，也就是说，js引擎会把<code>return</code>出去的引用值作为变量，而不会把<code>new</code>出来的新对象的引用赋值给相应的变量。。</p>
+</li>
+</ol>
+<h3 id="三、函数的属性"><a href="#三、函数的属性" class="headerlink" title="三、函数的属性"></a>三、函数的属性</h3><ol>
+<li><p><strong>函数的属性列表</strong></p>
+<ul>
+<li>arguments</li>
+<li>caller </li>
+<li>length</li>
+<li>name</li>
+<li>prototype</li>
+</ul>
+</li>
+</ol>
+<p>上述的属性都可以通过 <code>函数名.属性</code>来引用，<code>length</code>是形参的个数。如果是函数表达式的话，<code>name</code>是空串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(outer.arguments); <span class="comment">// [1,2,3,4]</span></span><br><span class="line">    <span class="built_in">console</span>.log(outer.caller); <span class="comment">// null</span></span><br><span class="line">    <span class="built_in">console</span>.log(outer.length); <span class="comment">// 3</span></span><br><span class="line">    <span class="built_in">console</span>.log(outer.name); <span class="comment">// outer</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(inner.arguments); <span class="comment">// []</span></span><br><span class="line">        <span class="built_in">console</span>.log(inner.caller); <span class="comment">// 打印出整个函数体</span></span><br><span class="line">        <span class="built_in">console</span>.log(inner.length); <span class="comment">// 0</span></span><br><span class="line">        <span class="built_in">console</span>.log(inner.name); <span class="comment">// inner</span></span><br><span class="line">        <span class="comment">// 内部函数访问外部函数的属性    </span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.caller.arguments); <span class="comment">// [1,2,3,4]</span></span><br><span class="line">        <span class="comment">// console.log(inner.caller.arguments);  // [1,2,3,4]</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.caller.caller); <span class="comment">// null</span></span><br><span class="line">        <span class="comment">// console.log(inner.caller.caller); // null</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.caller.length); <span class="comment">// 3</span></span><br><span class="line">        <span class="comment">// console.log(inner.caller.length); // 3</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.caller.name); <span class="comment">// outer</span></span><br><span class="line">        <span class="comment">// console.log(inner.caller.name); // outer</span></span><br><span class="line">    &#125;</span><br><span class="line">    inner();</span><br><span class="line">&#125;</span><br><span class="line">outer(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="四、局部变量"><a href="#四、局部变量" class="headerlink" title="四、局部变量"></a>四、局部变量</h3><p>对于局部声明的重复变量，只有第一个声明有效，也就是说，js引擎会<strong>忽略</strong>除了第一个之外的所有的声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"李彦峰"</span>;</span><br><span class="line">    <span class="keyword">var</span> name; </span><br><span class="line">    <span class="built_in">console</span>.log(name); <span class="comment">// 李彦峰</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"李彦峰"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(name); <span class="comment">// 李彦峰</span></span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：第二种好像不符合 <strong>对于局部声明的重复变量，只有第一个声明有效</strong>的说法，其实也是符合的，因为js引擎会对函数进行2轮处理，局部变量的声明在第1轮处理（变量声明提升），所以第1轮会保证只有一个name被声明，第2轮才进行局部变量的初始化（代码执行到赋值语句才进行初始化），即会把第1轮声明的局部变量赋值。。</p>
+<p><strong>严格模式下不能通过<code>函数名.arguments</code>的方式访问<code>arguments</code>对象，不能访问<code>caller</code></strong>属性</p>
+<h3 id="五、arguments"><a href="#五、arguments" class="headerlink" title="五、arguments"></a>五、arguments</h3><p><code>arguments</code>对象拥有一个<code>callee</code>属性，该属性是一个指针，指向拥有这个<code>arguments</code>对象的函数</p>
+<p><code>arguments</code>对象内部属性值是跟参数一一对应的，改变其中一个的值都会影响另外一个。</p>
+<p>看代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// [1,2,4]</span></span><br><span class="line">    a = <span class="number">8</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// [8,2,4]</span></span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">1</span>] = <span class="number">909</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 909</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>); <span class="comment">// [8,909,4]</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>严格模式下不能访问<code>arguments</code>对象的<code>callee</code>属性</strong></p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/13/闭包和柯里化/" itemprop="url">
                   闭包和柯里化
                 </a>
@@ -1482,110 +1634,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="url">
-                  Integer.parseInt和Integer.valueOf方法性能比较
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2013-05-22T20:29:43+00:00" content="2013-05-22">
-              2013-05-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/05/23/Integer-parseInt和Integer-valueOf方法性能比较/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>闲来无事，打算比较一下Integer.parseInt方法和Integer.valueOf方法的性能那个更优越<br> 全部代码如下：<br>public class Test {<br>  public static void main(String[] args) {<br> testIntegerParstInt(100000);<br> testIntegerValueOf(100000);<br>}<br>  public static void testIntegerValueOf(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.valueOf(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ValueOf方法的时间性能为:”+(end-start)+”ms”);</p>
-<p>  }<br>  public static void testIntegerParstInt(int n){<br>   long start = System.currentTimeMillis();<br>   String[] s = new String[n];<br>   for(int i=0;i<br>    s[i]=i+””;<br>   }<br>   for(int i=0;i<br>    Integer.parseInt(s[i]);<br>   }<br>   long end = System.currentTimeMillis();<br>   System.out.println(“使用ParseInt方法的时间性能为:”+(end-start)+”ms”);<br>  }<br>}<br>经过测试，发现valueOf方法性能比parseInt方法高好几倍，以后尽量使用valueOf方法</p>
-<p>我在网上查ifelse和三目运算谁的效率高？很多人说是三目效率高，也有相应的测试代码，但是语言是c#的，我用java测试了一下，发现ifelse和三目运算的效率是相当的，ifelse比三目稍快个几毫秒（和c#的结论相反）</p>
-<p>还有ifelse和switch的效率，是switch的效率稍高</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1631,7 +1679,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
